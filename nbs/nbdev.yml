@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "blog"
+  site-url: "https://avivleemann.github.io/blog"
+  description: "my blog"
+  repo-branch: main
+  repo-url: "https://github.com/avivleemann/blog"
