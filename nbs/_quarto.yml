@@ -1,20 +1,29 @@
 project:
   type: website
 
-format:
-  html:
-    theme: cosmo
-    css: styles.css
-    toc: true
-
 website:
   twitter-card: true
   open-graph: true
   repo-actions: [issue]
   navbar:
+    left:
+      - text: About
+        href: about.qmd  
+      - text: Posts
+        href: index.qmd
+    right: 
+      - icon: github
+        href: https://github.com/avivleemann
+      - icon: linkedin
+        href: https://LinkedIn.com/in/avivleemann
+
     background: primary
     search: true
-  sidebar:
-    style: floating
 
-metadata-files: [nbdev.yml, sidebar.yml]
+metadata-files: [nbdev.yml]
+
+
+format:
+  html:
+    theme: lumen
+    css: styles.css

@@ -1,0 +1,14 @@
+---
+title: My Posts
+subtitle: contains some of my documented work.
+listing:
+  sort: "date desc"
+  contents: posts/**/*.qmd
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+page-layout: full
+title-block-banner: false
+---
+
