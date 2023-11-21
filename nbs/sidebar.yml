@@ -1,0 +1,40 @@
+website:
+  sidebar:
+    contents:
+      - index.qmd
+      - section: blog
+        contents:
+          - blog/about.qmd
+          - section: posts
+            contents:
+              - section: 2023-03-06-astrocytoma
+                contents:
+                  - blog/posts/2023-03-06-astrocytoma/index.qmd
+      - section: blog
+        contents:
+          - section: posts
+            contents:
+              - section: 2023-03-06-breast-cacner
+                contents:
+                  - blog/posts/2023-03-06-breast-cacner/index.qmd
+      - section: blog
+        contents:
+          - section: posts
+            contents:
+              - section: 2023-03-06-glioblastoma
+                contents:
+                  - blog/posts/2023-03-06-glioblastoma/index.qmd
+      - section: blog
+        contents:
+          - section: posts
+            contents:
+              - section: 2023-03-06-mir-432-5p
+                contents:
+                  - blog/posts/2023-03-06-mir-432-5p/index.qmd
+      - section: blog
+        contents:
+          - section: posts
+            contents:
+              - section: 2023-03-06-mir-486-3p
+                contents:
+                  - blog/posts/2023-03-06-mir-486-3p/index.qmd
