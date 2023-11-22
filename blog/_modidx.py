@@ -5,4 +5,4 @@ d = { 'settings': { 'branch': 'main',
                 'doc_host': 'https://avivleemann.github.io',
                 'git_url': 'https://github.com/avivleemann/blog',
                 'lib_path': 'blog'},
-  'syms': {'blog.core': {'blog.core.foo': ('core.html#foo', 'blog/core.py')}}}
+  'syms': {}}
