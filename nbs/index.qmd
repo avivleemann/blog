@@ -3,7 +3,7 @@ title: My Posts
 subtitle: contains some of my documented work.
 listing:
   sort: "date desc"
-  contents: blog/posts/**/*.qmd
+  contents: "blog/posts"
   filter-ui: false
   categories: true
   feed: true

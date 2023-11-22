@@ -1,19 +1,16 @@
 ---
-title: Import
+title: RS Virus RNA-Seq
+Author: Aviv Leemann
+Date: '2023-19-11'
+summary: 'RSV or RS virus, short for respiratory syncytial virus, is a single-stranded RNA virus belonging to the pneumovirus genus of the virus family. Symptoms are usually mild, similar to a cold, but can cause very serious illness in infants. a total of 8 RNA-Seq data from acute and chronic phases in nasal samples of 4 infants.'
+categories: ['RNA-seq','RSV']
 jupyter: python3
 ---
 
-    # RS Virus RNA-Seq 
-    ================
-    Author: Aviv Leemann 
-    Date: 2023-19-11
-    Description: RSV or RS virus, short for respiratory syncytial virus, is a single-stranded RNA virus belonging to the pneumovirus genus of the virus family.
-                Symptoms are usually mild, similar to a cold, but can cause very serious illness in infants.
-                a total of 8 RNA-Seq data from acute and chronic phases in nasal samples of 4 infants.
-
-
+RSV or RS virus, short for respiratory syncytial virus, is a single-stranded RNA virus belonging to the pneumovirus genus of the virus family. Symptoms are usually mild, similar to a cold, but can cause very serious illness in infants. a total of 8 RNA-Seq data from acute and chronic phases in nasal samples of 4 infants.
 
 ```{python}
+#| vscode: {languageId: python}
 import pandas as pd
 import numpy as np
 import re
@@ -36,12 +33,13 @@ variable | description
 @padj_cutoff | Adjusted p-values cutoff.
 @lfc2_cutoff | Log2 fold change cutoff.
 
-
 ```{python}
+#| vscode: {languageId: python}
 count_file_path = list(Path().cwd().glob('*count*.csv'))[0]
 ```
 
 ```{python}
+#| vscode: {languageId: python}
 data_path = Path().cwd() / 'RSV_count.csv'
 output = Path().cwd()
 n_cpus_use = 2
@@ -52,6 +50,7 @@ lfc2_cutoff = 2
 ## assign significance function
 
 ```{python}
+#| vscode: {languageId: python}
 def assign_sig(p_value : int, log2FoldChange: int, padj: float=padj_cutoff , lfc2: int=lfc2_cutoff ) -> str:
    '''
    assigns a gene to a category based on the p_value and log2FoldChange, p_value and lfc2, p_value, lfc2 or non-sig.
@@ -74,19 +73,23 @@ def assign_sig(p_value : int, log2FoldChange: int, padj: float=padj_cutoff , lfc
 ```
 
 ```{python}
+#| vscode: {languageId: python}
 data = pd.read_csv(data_path, index_col=0)
 data.shape
 ```
 
 ```{python}
+#| vscode: {languageId: python}
 data.head()
 ```
 
 ```{python}
+#| vscode: {languageId: python}
 data.info()
 ```
 
 ```{python}
+#| vscode: {languageId: python}
 df_counts = data[data.columns[data.columns.str.contains('SRR.*')]].T
 # Convert the count matrix to numeric values and replace NaN with zeros
 df_counts = df_counts.apply(pd.to_numeric, errors='coerce').fillna(0)
@@ -96,6 +99,7 @@ df_counts
 ```
 
 ```{python}
+#| vscode: {languageId: python}
 metadata_d = {'patient1' : {'acute' : 'SRR7011737', 'chronic' : 'SRR7011738', 'Age' : '0.31-0.54yr'},
             'patient2' : {'acute' : 'SRR7011742', 'chronic' : 'SRR7011743', 'Age' : '0.24-0.35yr'},
             'patient3' : {'acute' : 'SRR7011755', 'chronic' : 'SRR7011756', 'Age' :  '0.23-0.36yr'},
@@ -122,7 +126,7 @@ metadata.index.isin(df_counts.index).all()
 ```
 
 ```{python}
-
+#| vscode: {languageId: python}
 print(df_counts.index.isin(metadata.index).all(),metadata.index.isin(df_counts.index).all(), sep='\n')   
 ```
 
@@ -140,13 +144,14 @@ print(df_counts.index.isin(metadata.index).all(),metadata.index.isin(df_counts.i
 ```
 
 ```{python}
-
+#| vscode: {languageId: python}
 df_counts.index = df_counts.index.astype(str)  
 metadata.index = metadata.index.astype(str)  
 df_counts = df_counts.reindex(metadata.index)
 ```
 
 ```{python}
+#| vscode: {languageId: python}
 dds = DeseqDataSet(
     counts=df_counts,
     metadata=metadata,
@@ -160,6 +165,7 @@ dds.deseq2( )
 save DEseq2 Object to pickle file:
 
 ```{python}
+#| vscode: {languageId: python}
 with open( output / "dds.pkl", "wb") as f:
     pkl.dump(dds, f)
 ```
@@ -168,16 +174,19 @@ with open( output / "dds.pkl", "wb") as f:
 Run statistical analysis.</br>
 
 ```{python}
+#| vscode: {languageId: python}
 stat_res = DeseqStats(dds, n_cpus = n_cpus_use)
 stat_res.summary()
 ```
 
 ```{python}
+#| vscode: {languageId: python}
 res = stat_res.results_df.reset_index().rename(columns={'index':'gene_id','log2FoldChange':'log2FC','pvalue':'p_value','padj':'p_adj'})
 res.to_csv(output / 'deseq2_results.csv', index=False)
 ```
 
 ```{python}
+#| vscode: {languageId: python}
 sigs = res[(abs(res.log2FC) > 2) & (res.p_adj < 0.05) ]
 sigs.to_csv(output / 'deseq2_results_sigs.csv', index=False)
 ```
@@ -185,7 +194,7 @@ sigs.to_csv(output / 'deseq2_results_sigs.csv', index=False)
 ## processings and plots
 
 ```{python}
-
+#| vscode: {languageId: python}
 dds.layers['log1p'] = np.log1p(dds.layers['normed_counts']) # log1p transform the normalized counts
 dds_sigs = dds[:, sigs.index]
 
@@ -200,6 +209,7 @@ plotly used to create volcano plot.</br>
 The plot is interactive and can be used to zoom in and out and to hover over points to see the gene name and the log2 fold change and the p-value.
 
 ```{python}
+#| vscode: {languageId: python}
 res = res.assign(log10pvalue = -np.log10(res.p_value),
                 sig = (res.p_value < 0.05) & (abs(res.log2FC) > 2),
                 regulated = res[['p_value','log2FC']].apply( lambda x: assign_sig(x.p_value, x.log2FC ), axis=1))
@@ -207,6 +217,7 @@ res.head()
 ```
 
 ```{python}
+#| vscode: {languageId: python}
 import plotly.express as px
 plot_title = "Volcano plot control vs treatment" #@param {type:"string"}
 x_axis_title = "log2 fold change" #@param {type:"string"}
@@ -243,6 +254,7 @@ fig.show()
 matplotlib package was used to plot the volcano plot as a static plot.
 
 ```{python}
+#| vscode: {languageId: python}
 from adjustText import adjust_text
 
 plt.figure(figsize=(8,8))
@@ -281,12 +293,13 @@ plt.savefig(output / "volcano_plot_matplotlib.png", dpi=300)
 ```
 
 ```{python}
+#| vscode: {languageId: python}
 res.head()
 res.rename(columns={'log10pvalue':'log10p'}, inplace=True)
 ```
 
 ```{python}
-
+#| vscode: {languageId: python}
 import matplotlib.pyplot as plt
 from typing import Optional, Type
 import pandas as pd
@@ -386,10 +399,10 @@ The volcano plot shows the genes that are significantly differentially expressed
 The genes that are significantly differentially expressed are the genes that are located in the upper part of the plot and are colored in red.
 
 ```{python}
+#| vscode: {languageId: python}
 sigs
 ```
 
 # References:
 1. pydeseq2: 
-
 
