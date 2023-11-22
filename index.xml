@@ -12,6 +12,520 @@
 <generator>quarto-1.3.450</generator>
 <lastBuildDate>Sun, 05 Mar 2023 22:00:00 GMT</lastBuildDate>
 <item>
+  <title>miR-432-5p</title>
+  <dc:creator>Aviv leemann</dc:creator>
+  <link>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="enrichmet-analysis-hsa-mir-432-5p-targets" class="level1">
+<h1>Enrichmet analysis: hsa-miR-432-5p targets</h1>
+<p>enrichment analysis purpose is to check if there are: pathways, molecular function, biological process &amp; cellular components that is connected or related to this bio-marker target.</p>
+<section id="libreris" class="level2">
+<h2 class="anchored" data-anchor-id="libreris">libreris</h2>
+<p>pacman library purpose is to load multiple libraries from a vector</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(pacman)</span>
+<span id="cb1-2">lab <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"GO.db"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"GOstats"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cRegulome"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"readxl"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ggplot2"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"tidyverse"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"R.utils"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MeSHDbi"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"AnnotationHub"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"KEGGREST"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"AnnotationDbi"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"org.Hs.eg.db"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"clusterProfiler"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"meshr"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pathview"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ReactomePA"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"meshes"</span>)</span>
+<span id="cb1-3">pacman<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">p_load</span>(lab,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">install =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">character.only =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span></code></pre></div>
+</section>
+<section id="files" class="level2">
+<h2 class="anchored" data-anchor-id="files">files</h2>
+<p>loading miR targets files acquired from mirWalk</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">mir432_5p_targets <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"miRWalk_miRNA_Targets_432_5p_3UTR.csv"</span>)</span>
+<span id="cb2-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># annotations_ahb &lt;- read.csv("annotations_ahb.csv")</span></span></code></pre></div>
+</section>
+<section id="head" class="level2">
+<h2 class="anchored" data-anchor-id="head">head</h2>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">mir432_5p_targets <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>()</span></code></pre></div>
+<pre><code>##          mirnaid     refseqid genesymbol
+## 1 hsa-miR-432-5p NM_001353214        DYM
+## 2 hsa-miR-432-5p NM_001374442        DYM
+## 3 hsa-miR-432-5p NM_001291932    SEC14L2
+## 4 hsa-miR-432-5p NM_001301068       ARL1
+## 5 hsa-miR-432-5p    NM_003387      WIPF1
+## 6 hsa-miR-432-5p    NM_012215        OGA
+##                                                                                    duplex
+## 1 TCTTGGAGTAGGTCATTGGGTGG#CCACCCGGACCCCTCCAGC#..((((((..((((..(((((((#))))))))))).)))))).
+## 2 TCTTGGAGTAGGTCATTGGGTGG#CCACCCGGACCCCTCCAGC#..((((((..((((..(((((((#))))))))))).)))))).
+## 3 TCTTGGAGTAGGTCATTGGGTGG#ACCCAGGATTGTCTCCAAC#..((((((..((((.((((((..#))))))))))..)))))).
+## 4 TCTTGGAGTAGGTCATTGGGTGG#CACCCATTCCTACTTTAGT#..((((((((((....((((((.#))))))..)))))))))).
+## 5 TCTTGGAGTAGGTCATTGGGTGG#GCCTAATGACCCATTTCAC#...((((((.(((((((((((..#))))))))))).)))))).
+## 6   TCTTGGAGTAGGTCATTGGGTGG#TACCTAGTGACTTCCAAC#..(((((...((((((((((((.#))))))))))))))))).
+##   start  end  bindingp energy seed accessibility    au phylopstem phylopflank
+## 1  2491 2510 0.9500000  -24.3    1   0.005542395 0.441  0.0000000   0.0000000
+## 2  1756 1775 0.9500000  -24.3    1   0.005542395 0.441  0.0000000   0.0000000
+## 3  3555 3574 0.9529915  -21.4    1   0.002860247 0.456  0.0000000   0.0000000
+## 4  2116 2135 0.9538462  -22.2    1   0.232450300 0.603  1.2249763   0.8797262
+## 5  3702 3721 0.9538462  -22.9    0   0.053886420 0.647  2.1715973   2.1847662
+## 6  4641 4659 0.9538462  -21.3    0   0.048461950 0.588  0.9082432   1.0060216
+##          me number_of_pairings binding_region_length
+## 1 -8.224395                 17                    19
+## 2 -8.224395                 17                    19
+## 3 -7.991346                 16                    19
+## 4 -8.071470                 16                    19
+## 5 -7.757047                 17                    19
+## 6 -9.569532                 17                    18
+##   longest_consecutive_pairings position validated TargetScan miRDB
+## 1                           11     3UTR                    0     0
+## 2                           11     3UTR                    0     0
+## 3                           10     3UTR                    0     0
+## 4                           10     3UTR                    0     0
+## 5                           11     3UTR                    0     0
+## 6                           17     3UTR                    0     0</code></pre>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">mir432_5p_targets <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">colnames</span>()</span></code></pre></div>
+<pre><code>##  [1] "mirnaid"                      "refseqid"                    
+##  [3] "genesymbol"                   "duplex"                      
+##  [5] "start"                        "end"                         
+##  [7] "bindingp"                     "energy"                      
+##  [9] "seed"                         "accessibility"               
+## [11] "au"                           "phylopstem"                  
+## [13] "phylopflank"                  "me"                          
+## [15] "number_of_pairings"           "binding_region_length"       
+## [17] "longest_consecutive_pairings" "position"                    
+## [19] "validated"                    "TargetScan"                  
+## [21] "miRDB"</code></pre>
+</section>
+<section id="preprocessing" class="level2">
+<h2 class="anchored" data-anchor-id="preprocessing">preprocessing</h2>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">colnames</span>(mir432_5p_targets)[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SYMBOL"</span></span>
+<span id="cb7-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">colnames</span>(mir432_5p_targets)[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"miR"</span></span>
+<span id="cb7-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">colnames</span>(mir432_5p_targets)[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"score"</span></span></code></pre></div>
+<p>maps the gene to ENTREZID</p>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">mir432_5p_targets<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ENTREZ <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mapIds</span>(org.Hs.eg.db,</span>
+<span id="cb8-2">                                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">key =</span> mir432_5p_targets<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>SYMBOL,  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># data to use for retrieval</span></span>
+<span id="cb8-3">                                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">column =</span>  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ENTREZID"</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># information to retreive for given data</span></span>
+<span id="cb8-4">                                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">keytype =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SYMBOL"</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">multiVals =</span>  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"first"</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># mir_532_5_mapIDs &lt;- bitr( mir432_5p_targets$SYMBOL,  "SYMBOL","ENTREZID", OrgDb = org.Hs.eg.db)</span></span></code></pre></div>
+</section>
+<section id="kegg" class="level2">
+<h2 class="anchored" data-anchor-id="kegg">KEGG</h2>
+<p>run KEGG enrichment via cluster Profiler package</p>
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">clusterProfiler_KEGG_432_5p <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">enrichKEGG</span>(mir432_5p_targets<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ENTREZ)</span></code></pre></div>
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summary</span>(clusterProfiler_KEGG_432_5p)[, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>])</span></code></pre></div>
+<pre><code>##                ID              Description GeneRatio  BgRatio       pvalue
+## hsa05032 hsa05032       Morphine addiction   35/1487  91/8292 2.819029e-06
+## hsa04727 hsa04727        GABAergic synapse   31/1487  89/8292 9.720160e-05
+## hsa04728 hsa04728     Dopaminergic synapse   41/1487 132/8292 1.570806e-04
+## hsa04713 hsa04713    Circadian entrainment   32/1487  97/8292 2.406306e-04
+## hsa04014 hsa04014    Ras signaling pathway   64/1487 236/8292 2.570959e-04
+## hsa04371 hsa04371 Apelin signaling pathway   42/1487 139/8292 2.572457e-04
+##              p.adjust       qvalue Count
+## hsa05032 0.0009387366 0.0007744911    35
+## hsa04727 0.0142771350 0.0117791441    31
+## hsa04728 0.0142771350 0.0117791441    41
+## hsa04713 0.0142771350 0.0117791441    32
+## hsa04014 0.0142771350 0.0117791441    64
+## hsa04371 0.0142771350 0.0117791441    42</code></pre>
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dotplot</span>(clusterProfiler_KEGG_432_5p, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">showCategory=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hsa-miR-432-5p targets KEGG pathways"</span>)</span></code></pre></div>
+<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/KEGG enrichment 432_5-1.jpeg" class="img-fluid"></p>
+</section>
+<section id="go-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="go-analysis">GO analysis</h2>
+<section id="bp-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="bp-analysis">BP analysis</h3>
+<p>no results</p>
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">clusterProfiler_bp_432_5p <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">enrichGO</span>(mir432_5p_targets<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ENTREZ, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ont=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"BP"</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">OrgDb =</span>org.Hs.eg.db)</span>
+<span id="cb14-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#summary(clusterProfiler_bp_432_5p) %&gt;% head()</span></span>
+<span id="cb14-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#dotplot(clusterProfiler_bp_432_5p, showCategory=20)</span></span></code></pre></div>
+<p>no results</p>
+</section>
+<section id="cc-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="cc-analysis">CC analysis</h3>
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">clusterProfiler_cc_432_5p <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">enrichGO</span>(mir432_5p_targets<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ENTREZ, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ont=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CC"</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">OrgDb =</span>org.Hs.eg.db)</span>
+<span id="cb15-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summary</span>(clusterProfiler_cc_432_5p)[,<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>])</span></code></pre></div>
+<pre><code>##                    ID                           Description GeneRatio   BgRatio
+## GO:0005769 GO:0005769                        early endosome  104/3317 414/19869
+## GO:0031965 GO:0031965                      nuclear membrane   79/3317 305/19869
+## GO:0005635 GO:0005635                      nuclear envelope  116/3317 488/19869
+## GO:0031228 GO:0031228 intrinsic component of Golgi membrane   25/3317  69/19869
+## GO:0000151 GO:0000151              ubiquitin ligase complex   78/3317 309/19869
+## GO:0043197 GO:0043197                       dendritic spine   49/3317 175/19869
+##                  pvalue    p.adjust      qvalue Count
+## GO:0005769 6.841258e-06 0.005199356 0.004500828   104
+## GO:0031965 2.694279e-05 0.007917530 0.006853817    79
+## GO:0005635 3.125341e-05 0.007917530 0.006853817   116
+## GO:0031228 7.110974e-05 0.011447826 0.009909821    25
+## GO:0000151 7.705279e-05 0.011447826 0.009909821    78
+## GO:0043197 1.164215e-04 0.011447826 0.009909821    49</code></pre>
+<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dotplot</span>(clusterProfiler_cc_432_5p, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">showCategory=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hsa-miR-432-5p targets CC GO"</span>)</span></code></pre></div>
+<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/CC 432_5-1.jpeg" class="img-fluid"></p>
+<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">goplot</span>(clusterProfiler_cc_432_5p )</span></code></pre></div>
+<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/goplot cc-1.jpeg" class="img-fluid"></p>
+</section>
+<section id="mf-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="mf-analysis">MF analysis</h3>
+<div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">clusterProfiler_mf_432_5p <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">enrichGO</span>(mir432_5p_targets<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ENTREZ, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ont=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MF"</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">OrgDb =</span>org.Hs.eg.db)</span>
+<span id="cb19-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summary</span>(clusterProfiler_mf_432_5p)[,<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>] )</span></code></pre></div>
+<pre><code>##                    ID                   Description GeneRatio   BgRatio
+## GO:0019001 GO:0019001     guanyl nucleotide binding  111/3240 401/18432
+## GO:0032561 GO:0032561 guanyl ribonucleotide binding  111/3240 401/18432
+## GO:0003924 GO:0003924               GTPase activity   94/3240 331/18432
+## GO:0005525 GO:0005525                   GTP binding  104/3240 379/18432
+## GO:0019003 GO:0019003                   GDP binding   30/3240  73/18432
+## GO:0003925 GO:0003925            G protein activity   18/3240  41/18432
+##                  pvalue     p.adjust       qvalue Count
+## GO:0019001 2.696462e-07 0.0001620574 0.0001558271   111
+## GO:0032561 2.696462e-07 0.0001620574 0.0001558271   111
+## GO:0003924 6.380072e-07 0.0002556282 0.0002458007    94
+## GO:0005525 9.916314e-07 0.0002979852 0.0002865293   104
+## GO:0019003 2.039762e-06 0.0004903587 0.0004715070    30
+## GO:0003925 7.950900e-05 0.0159283036 0.0153159448    18</code></pre>
+<div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dotplot</span>(clusterProfiler_mf_432_5p, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">showCategory=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hsa-miR-432-5p targets MF GO"</span>)</span></code></pre></div>
+<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/MF 432_5-1.jpeg" class="img-fluid"></p>
+<div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">goplot</span>(clusterProfiler_mf_432_5p )</span></code></pre></div>
+<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/goplot mf-1.jpeg" class="img-fluid"></p>
+</section>
+</section>
+<section id="reactome-pathways" class="level2">
+<h2 class="anchored" data-anchor-id="reactome-pathways">Reactome Pathways</h2>
+<div class="sourceCode" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">reactome_432_5<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">enrichPathway</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gene=</span>mir432_5p_targets<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ENTREZ, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pvalueCutoff =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">readable=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb23-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dotplot</span>(reactome_432_5,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">showCategory=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hsa-miR-432-5p targets reactome pathways"</span>)</span></code></pre></div>
+<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/reactome pathways-1.jpeg" class="img-fluid"></p>
+</section>
+<section id="mesh" class="level2">
+<h2 class="anchored" data-anchor-id="mesh">MESH</h2>
+<div class="sourceCode" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># already created </span></span>
+<span id="cb24-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># creating meshDBi</span></span>
+<span id="cb24-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ah &lt;- AnnotationHub(localHub=TRUE)</span></span>
+<span id="cb24-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># hsa &lt;- query(ah, c("MeSHDb", "Homo sapiens"))</span></span>
+<span id="cb24-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># file_hsa &lt;- hsa[[1]]</span></span>
+<span id="cb24-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># db &lt;- MeSHDbi::MeSHDb(file_hsa)</span></span></code></pre></div>
+<div class="sourceCode" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># saved &amp; read the mehses </span></span>
+<span id="cb25-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># meshes432 &lt;- enrichMeSH(mir432_5p_targets$ENTREZ, MeSHDb = db, database='gendoo', category = 'C')</span></span>
+<span id="cb25-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># saveRDS(meshes432,'meshes432.rds')</span></span>
+<span id="cb25-4">meshes432 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">readRDS</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'meshes432.rds'</span>)</span>
+<span id="cb25-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dotplot</span>(meshes432) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hsa-miR-432-5p targets mesh gendoo Diseases"</span>)</span></code></pre></div>
+<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/mesh gendoo-1.jpeg" class="img-fluid"></p>
+<div class="sourceCode" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># meshes432_pubmed &lt;- enrichMeSH(mir432_5p_targets$ENTREZ, MeSHDb = db, database='gene2pubmed', category = 'C')</span></span>
+<span id="cb26-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># dotplot(meshes432_pubmed) + labs(title ="hsa-miR-432-5p targets mesh gene2pubmed Diseases")</span></span></code></pre></div>
+</section>
+</section>
+<section id="session-info" class="level1">
+<h1>session info</h1>
+<div class="sourceCode" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sessionInfo</span>()[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>]</span></code></pre></div>
+<pre><code>## $basePkgs
+## [1] "stats4"    "stats"     "graphics"  "grDevices" "utils"     "datasets" 
+## [7] "methods"   "base"</code></pre>
+
+
+</section>
+
+ ]]></description>
+  <category>enrichment</category>
+  <category>miR-432-5p</category>
+  <guid>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index.html</guid>
+  <pubDate>Sun, 05 Mar 2023 22:00:00 GMT</pubDate>
+</item>
+<item>
   <title>atrocytoma</title>
   <dc:creator>Aviv Leemann</dc:creator>
   <link>https://avivleemann.github.io/blog/blog/posts/2023-03-06-astrocytoma/index.html</link>
@@ -2340,520 +2854,6 @@ font-style: inherit;">25</span>))</span></code></pre></div>
   <category>single cell</category>
   <category>glioblastoma</category>
   <guid>https://avivleemann.github.io/blog/blog/posts/2023-03-06-glioblastoma/index.html</guid>
-  <pubDate>Sun, 05 Mar 2023 22:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>miR-432-5p</title>
-  <dc:creator>Aviv leemann</dc:creator>
-  <link>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="enrichmet-analysis-hsa-mir-432-5p-targets" class="level1">
-<h1>Enrichmet analysis: hsa-miR-432-5p targets</h1>
-<p>enrichment analysis purpose is to check if there are: pathways, molecular function, biological process &amp; cellular components that is connected or related to this bio-marker target.</p>
-<section id="libreris" class="level2">
-<h2 class="anchored" data-anchor-id="libreris">libreris</h2>
-<p>pacman library purpose is to load multiple libraries from a vector</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(pacman)</span>
-<span id="cb1-2">lab <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"GO.db"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"GOstats"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"cRegulome"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"readxl"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"ggplot2"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"tidyverse"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"R.utils"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MeSHDbi"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"AnnotationHub"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"KEGGREST"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"AnnotationDbi"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"org.Hs.eg.db"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"clusterProfiler"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"meshr"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"pathview"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"ReactomePA"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"meshes"</span>)</span>
-<span id="cb1-3">pacman<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">p_load</span>(lab,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">install =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">character.only =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>)</span></code></pre></div>
-</section>
-<section id="files" class="level2">
-<h2 class="anchored" data-anchor-id="files">files</h2>
-<p>loading miR targets files acquired from mirWalk</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">mir432_5p_targets <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"miRWalk_miRNA_Targets_432_5p_3UTR.csv"</span>)</span>
-<span id="cb2-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># annotations_ahb &lt;- read.csv("annotations_ahb.csv")</span></span></code></pre></div>
-</section>
-<section id="head" class="level2">
-<h2 class="anchored" data-anchor-id="head">head</h2>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">mir432_5p_targets <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">head</span>()</span></code></pre></div>
-<pre><code>##          mirnaid     refseqid genesymbol
-## 1 hsa-miR-432-5p NM_001353214        DYM
-## 2 hsa-miR-432-5p NM_001374442        DYM
-## 3 hsa-miR-432-5p NM_001291932    SEC14L2
-## 4 hsa-miR-432-5p NM_001301068       ARL1
-## 5 hsa-miR-432-5p    NM_003387      WIPF1
-## 6 hsa-miR-432-5p    NM_012215        OGA
-##                                                                                    duplex
-## 1 TCTTGGAGTAGGTCATTGGGTGG#CCACCCGGACCCCTCCAGC#..((((((..((((..(((((((#))))))))))).)))))).
-## 2 TCTTGGAGTAGGTCATTGGGTGG#CCACCCGGACCCCTCCAGC#..((((((..((((..(((((((#))))))))))).)))))).
-## 3 TCTTGGAGTAGGTCATTGGGTGG#ACCCAGGATTGTCTCCAAC#..((((((..((((.((((((..#))))))))))..)))))).
-## 4 TCTTGGAGTAGGTCATTGGGTGG#CACCCATTCCTACTTTAGT#..((((((((((....((((((.#))))))..)))))))))).
-## 5 TCTTGGAGTAGGTCATTGGGTGG#GCCTAATGACCCATTTCAC#...((((((.(((((((((((..#))))))))))).)))))).
-## 6   TCTTGGAGTAGGTCATTGGGTGG#TACCTAGTGACTTCCAAC#..(((((...((((((((((((.#))))))))))))))))).
-##   start  end  bindingp energy seed accessibility    au phylopstem phylopflank
-## 1  2491 2510 0.9500000  -24.3    1   0.005542395 0.441  0.0000000   0.0000000
-## 2  1756 1775 0.9500000  -24.3    1   0.005542395 0.441  0.0000000   0.0000000
-## 3  3555 3574 0.9529915  -21.4    1   0.002860247 0.456  0.0000000   0.0000000
-## 4  2116 2135 0.9538462  -22.2    1   0.232450300 0.603  1.2249763   0.8797262
-## 5  3702 3721 0.9538462  -22.9    0   0.053886420 0.647  2.1715973   2.1847662
-## 6  4641 4659 0.9538462  -21.3    0   0.048461950 0.588  0.9082432   1.0060216
-##          me number_of_pairings binding_region_length
-## 1 -8.224395                 17                    19
-## 2 -8.224395                 17                    19
-## 3 -7.991346                 16                    19
-## 4 -8.071470                 16                    19
-## 5 -7.757047                 17                    19
-## 6 -9.569532                 17                    18
-##   longest_consecutive_pairings position validated TargetScan miRDB
-## 1                           11     3UTR                    0     0
-## 2                           11     3UTR                    0     0
-## 3                           10     3UTR                    0     0
-## 4                           10     3UTR                    0     0
-## 5                           11     3UTR                    0     0
-## 6                           17     3UTR                    0     0</code></pre>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">mir432_5p_targets <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">colnames</span>()</span></code></pre></div>
-<pre><code>##  [1] "mirnaid"                      "refseqid"                    
-##  [3] "genesymbol"                   "duplex"                      
-##  [5] "start"                        "end"                         
-##  [7] "bindingp"                     "energy"                      
-##  [9] "seed"                         "accessibility"               
-## [11] "au"                           "phylopstem"                  
-## [13] "phylopflank"                  "me"                          
-## [15] "number_of_pairings"           "binding_region_length"       
-## [17] "longest_consecutive_pairings" "position"                    
-## [19] "validated"                    "TargetScan"                  
-## [21] "miRDB"</code></pre>
-</section>
-<section id="preprocessing" class="level2">
-<h2 class="anchored" data-anchor-id="preprocessing">preprocessing</h2>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">colnames</span>(mir432_5p_targets)[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>] <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"SYMBOL"</span></span>
-<span id="cb7-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">colnames</span>(mir432_5p_targets)[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>] <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"miR"</span></span>
-<span id="cb7-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">colnames</span>(mir432_5p_targets)[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7</span>] <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"score"</span></span></code></pre></div>
-<p>maps the gene to ENTREZID</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">mir432_5p_targets<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>ENTREZ <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mapIds</span>(org.Hs.eg.db,</span>
-<span id="cb8-2">                                  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">key =</span> mir432_5p_targets<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>SYMBOL,  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># data to use for retrieval</span></span>
-<span id="cb8-3">                                  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">column =</span>  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"ENTREZID"</span>, <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># information to retreive for given data</span></span>
-<span id="cb8-4">                                  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">keytype =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"SYMBOL"</span>,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">multiVals =</span>  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"first"</span> )</span></code></pre></div>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># mir_532_5_mapIDs &lt;- bitr( mir432_5p_targets$SYMBOL,  "SYMBOL","ENTREZID", OrgDb = org.Hs.eg.db)</span></span></code></pre></div>
-</section>
-<section id="kegg" class="level2">
-<h2 class="anchored" data-anchor-id="kegg">KEGG</h2>
-<p>run KEGG enrichment via cluster Profiler package</p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">clusterProfiler_KEGG_432_5p <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">enrichKEGG</span>(mir432_5p_targets<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>ENTREZ)</span></code></pre></div>
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">head</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summary</span>(clusterProfiler_KEGG_432_5p)[, <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span>])</span></code></pre></div>
-<pre><code>##                ID              Description GeneRatio  BgRatio       pvalue
-## hsa05032 hsa05032       Morphine addiction   35/1487  91/8292 2.819029e-06
-## hsa04727 hsa04727        GABAergic synapse   31/1487  89/8292 9.720160e-05
-## hsa04728 hsa04728     Dopaminergic synapse   41/1487 132/8292 1.570806e-04
-## hsa04713 hsa04713    Circadian entrainment   32/1487  97/8292 2.406306e-04
-## hsa04014 hsa04014    Ras signaling pathway   64/1487 236/8292 2.570959e-04
-## hsa04371 hsa04371 Apelin signaling pathway   42/1487 139/8292 2.572457e-04
-##              p.adjust       qvalue Count
-## hsa05032 0.0009387366 0.0007744911    35
-## hsa04727 0.0142771350 0.0117791441    31
-## hsa04728 0.0142771350 0.0117791441    41
-## hsa04713 0.0142771350 0.0117791441    32
-## hsa04014 0.0142771350 0.0117791441    64
-## hsa04371 0.0142771350 0.0117791441    42</code></pre>
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dotplot</span>(clusterProfiler_KEGG_432_5p, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">showCategory=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">title =</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"hsa-miR-432-5p targets KEGG pathways"</span>)</span></code></pre></div>
-<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/KEGG enrichment 432_5-1.jpeg" class="img-fluid"></p>
-</section>
-<section id="go-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="go-analysis">GO analysis</h2>
-<section id="bp-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="bp-analysis">BP analysis</h3>
-<p>no results</p>
-<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">clusterProfiler_bp_432_5p <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">enrichGO</span>(mir432_5p_targets<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>ENTREZ, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ont=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"BP"</span>,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">OrgDb =</span>org.Hs.eg.db)</span>
-<span id="cb14-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#summary(clusterProfiler_bp_432_5p) %&gt;% head()</span></span>
-<span id="cb14-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#dotplot(clusterProfiler_bp_432_5p, showCategory=20)</span></span></code></pre></div>
-<p>no results</p>
-</section>
-<section id="cc-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="cc-analysis">CC analysis</h3>
-<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">clusterProfiler_cc_432_5p <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">enrichGO</span>(mir432_5p_targets<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>ENTREZ, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ont=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CC"</span>,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">OrgDb =</span>org.Hs.eg.db)</span>
-<span id="cb15-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">head</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summary</span>(clusterProfiler_cc_432_5p)[,<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span>])</span></code></pre></div>
-<pre><code>##                    ID                           Description GeneRatio   BgRatio
-## GO:0005769 GO:0005769                        early endosome  104/3317 414/19869
-## GO:0031965 GO:0031965                      nuclear membrane   79/3317 305/19869
-## GO:0005635 GO:0005635                      nuclear envelope  116/3317 488/19869
-## GO:0031228 GO:0031228 intrinsic component of Golgi membrane   25/3317  69/19869
-## GO:0000151 GO:0000151              ubiquitin ligase complex   78/3317 309/19869
-## GO:0043197 GO:0043197                       dendritic spine   49/3317 175/19869
-##                  pvalue    p.adjust      qvalue Count
-## GO:0005769 6.841258e-06 0.005199356 0.004500828   104
-## GO:0031965 2.694279e-05 0.007917530 0.006853817    79
-## GO:0005635 3.125341e-05 0.007917530 0.006853817   116
-## GO:0031228 7.110974e-05 0.011447826 0.009909821    25
-## GO:0000151 7.705279e-05 0.011447826 0.009909821    78
-## GO:0043197 1.164215e-04 0.011447826 0.009909821    49</code></pre>
-<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dotplot</span>(clusterProfiler_cc_432_5p, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">showCategory=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">title =</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"hsa-miR-432-5p targets CC GO"</span>)</span></code></pre></div>
-<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/CC 432_5-1.jpeg" class="img-fluid"></p>
-<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">goplot</span>(clusterProfiler_cc_432_5p )</span></code></pre></div>
-<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/goplot cc-1.jpeg" class="img-fluid"></p>
-</section>
-<section id="mf-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="mf-analysis">MF analysis</h3>
-<div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">clusterProfiler_mf_432_5p <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">enrichGO</span>(mir432_5p_targets<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>ENTREZ, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ont=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MF"</span>,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">OrgDb =</span>org.Hs.eg.db)</span>
-<span id="cb19-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">head</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summary</span>(clusterProfiler_mf_432_5p)[,<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span>] )</span></code></pre></div>
-<pre><code>##                    ID                   Description GeneRatio   BgRatio
-## GO:0019001 GO:0019001     guanyl nucleotide binding  111/3240 401/18432
-## GO:0032561 GO:0032561 guanyl ribonucleotide binding  111/3240 401/18432
-## GO:0003924 GO:0003924               GTPase activity   94/3240 331/18432
-## GO:0005525 GO:0005525                   GTP binding  104/3240 379/18432
-## GO:0019003 GO:0019003                   GDP binding   30/3240  73/18432
-## GO:0003925 GO:0003925            G protein activity   18/3240  41/18432
-##                  pvalue     p.adjust       qvalue Count
-## GO:0019001 2.696462e-07 0.0001620574 0.0001558271   111
-## GO:0032561 2.696462e-07 0.0001620574 0.0001558271   111
-## GO:0003924 6.380072e-07 0.0002556282 0.0002458007    94
-## GO:0005525 9.916314e-07 0.0002979852 0.0002865293   104
-## GO:0019003 2.039762e-06 0.0004903587 0.0004715070    30
-## GO:0003925 7.950900e-05 0.0159283036 0.0153159448    18</code></pre>
-<div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dotplot</span>(clusterProfiler_mf_432_5p, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">showCategory=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">title =</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"hsa-miR-432-5p targets MF GO"</span>)</span></code></pre></div>
-<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/MF 432_5-1.jpeg" class="img-fluid"></p>
-<div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">goplot</span>(clusterProfiler_mf_432_5p )</span></code></pre></div>
-<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/goplot mf-1.jpeg" class="img-fluid"></p>
-</section>
-</section>
-<section id="reactome-pathways" class="level2">
-<h2 class="anchored" data-anchor-id="reactome-pathways">Reactome Pathways</h2>
-<div class="sourceCode" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">reactome_432_5<span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">enrichPathway</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">gene=</span>mir432_5p_targets<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>ENTREZ, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">pvalueCutoff =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.05</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">readable=</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>)</span>
-<span id="cb23-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dotplot</span>(reactome_432_5,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">showCategory=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">title =</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"hsa-miR-432-5p targets reactome pathways"</span>)</span></code></pre></div>
-<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/reactome pathways-1.jpeg" class="img-fluid"></p>
-</section>
-<section id="mesh" class="level2">
-<h2 class="anchored" data-anchor-id="mesh">MESH</h2>
-<div class="sourceCode" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># already created </span></span>
-<span id="cb24-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># creating meshDBi</span></span>
-<span id="cb24-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># ah &lt;- AnnotationHub(localHub=TRUE)</span></span>
-<span id="cb24-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># hsa &lt;- query(ah, c("MeSHDb", "Homo sapiens"))</span></span>
-<span id="cb24-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># file_hsa &lt;- hsa[[1]]</span></span>
-<span id="cb24-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># db &lt;- MeSHDbi::MeSHDb(file_hsa)</span></span></code></pre></div>
-<div class="sourceCode" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># saved &amp; read the mehses </span></span>
-<span id="cb25-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># meshes432 &lt;- enrichMeSH(mir432_5p_targets$ENTREZ, MeSHDb = db, database='gendoo', category = 'C')</span></span>
-<span id="cb25-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># saveRDS(meshes432,'meshes432.rds')</span></span>
-<span id="cb25-4">meshes432 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">readRDS</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'meshes432.rds'</span>)</span>
-<span id="cb25-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dotplot</span>(meshes432) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">title =</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"hsa-miR-432-5p targets mesh gendoo Diseases"</span>)</span></code></pre></div>
-<p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index_files/figure-html/mesh gendoo-1.jpeg" class="img-fluid"></p>
-<div class="sourceCode" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># meshes432_pubmed &lt;- enrichMeSH(mir432_5p_targets$ENTREZ, MeSHDb = db, database='gene2pubmed', category = 'C')</span></span>
-<span id="cb26-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># dotplot(meshes432_pubmed) + labs(title ="hsa-miR-432-5p targets mesh gene2pubmed Diseases")</span></span></code></pre></div>
-</section>
-</section>
-<section id="session-info" class="level1">
-<h1>session info</h1>
-<div class="sourceCode" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sessionInfo</span>()[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">6</span>]</span></code></pre></div>
-<pre><code>## $basePkgs
-## [1] "stats4"    "stats"     "graphics"  "grDevices" "utils"     "datasets" 
-## [7] "methods"   "base"</code></pre>
-
-
-</section>
-
- ]]></description>
-  <category>enrichment</category>
-  <category>miR-432-5p</category>
-  <guid>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index.html</guid>
   <pubDate>Sun, 05 Mar 2023 22:00:00 GMT</pubDate>
 </item>
 <item>
