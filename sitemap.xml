@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://avivleemann.github.io/blog/index.html</loc>
-    <lastmod>2023-11-22T17:55:19.727Z</lastmod>
-  </url>
-  <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-486-3p/index.html</loc>
-    <lastmod>2023-11-22T17:55:18.659Z</lastmod>
-  </url>
-  <url>
-    <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-glioblastoma/index.html</loc>
-    <lastmod>2023-11-22T17:55:17.723Z</lastmod>
-  </url>
-  <url>
-    <loc>https://avivleemann.github.io/blog/blog/about.html</loc>
-    <lastmod>2023-11-22T17:55:16.379Z</lastmod>
+    <lastmod>2023-11-22T08:09:46.547Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-breast-cacner/index.html</loc>
-    <lastmod>2023-11-22T17:55:17.191Z</lastmod>
+    <lastmod>2023-11-22T08:09:45.442Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index.html</loc>
-    <lastmod>2023-11-22T17:55:18.187Z</lastmod>
+    <lastmod>2023-11-22T08:09:44.402Z</lastmod>
+  </url>
+  <url>
+    <loc>https://avivleemann.github.io/blog/index.html</loc>
+    <lastmod>2023-11-22T08:09:43.633Z</lastmod>
+  </url>
+  <url>
+    <loc>https://avivleemann.github.io/blog/blog/about.html</loc>
+    <lastmod>2023-11-22T08:09:43.903Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-astrocytoma/index.html</loc>
-    <lastmod>2023-11-22T17:55:19.163Z</lastmod>
+    <lastmod>2023-11-22T08:09:44.889Z</lastmod>
+  </url>
+  <url>
+    <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-glioblastoma/index.html</loc>
+    <lastmod>2023-11-22T08:09:46.070Z</lastmod>
   </url>
 </urlset>
