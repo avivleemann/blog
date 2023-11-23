@@ -1,20 +1,18 @@
 ---
-title:  'glioblastoma'
+title: 'Glioblastoma - GBM'
 date: '2023-03-06'
-slug: 'glioblastoma'
-categories: ['single cell','glioblastoma']
+slug: 'Glioblastoma - GBM'
+categories: ['SCRNA-seq','Glioblastoma','GBM']
 subtitle: ''
-summary: 'glioblastoma data was obtained from single cell portal. single cell analysis executed with **R** program and Seurat package, Pallad expression was examined in glioblastoma data.'
-lastmod: '2023-03-06T17:07:25+02:00'
-featured: no
-projects: ['single cell','glioblastoma']
+summary: 'Glioblastoma data was obtained from single cell portal. single cell analysis executed with **R** program and Seurat package, Pallad expression was examined in glioblastoma data.'
+projects: ['SCRNA-seq','Glioblastoma','GBM']
 ---
 
-## single cell analysis - glioblasotma
+## SCRNA-seq analysis - Glioblasotma
 
 glioblastoma data was obtained from single cell portal. single cell analysis executed with **R** program and Seurat package, Pallad expression was examined in glioblastoma data.
 
-## libreries
+## Libreries
 
 pacman library purpose is to load multiple libraries from a vector
 
@@ -26,9 +24,9 @@ pacman::p_load(labrvec,install = TRUE,character.only = TRUE)
 library(ggpubr)
 ```
 
-## files
+## Files
 
-loading relevant files, because i have already prepared the rds for plot i will load the rds file
+Loading relevant files, because i have already prepared the rds for plot i will load the rds file
 
 ```r
 glioblastoma_seurat <- readRDS("glioblastoma_seurat.rds")
@@ -39,7 +37,7 @@ glioblastoma_seurat <- readRDS("glioblastoma_seurat.rds")
 # glioblastoma_expressed_matrix  <- read.csv("IDHwtGBM.processed.SS2.logTPM.txt" ,sep = "\t")
 ```
 
-## processing data
+## Processing data
 
 editing features to work with Seurat package
 

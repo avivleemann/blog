@@ -3,11 +3,9 @@ title: 'miR-432-5p'
 date: '2023-03-10'
 slug: 'miR-432-5p'
 subtitle: ''
-summary: 'enrichment analysis purpose is to check if there are pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target.'
-categories: ['enrichment','miR-432-5p']
-lastmod: '2023-03-06T20:06:52+02:00'
-featured: no
-projects: ['enrichment','miR-432-5p']
+summary: 'Enrichment analysis purpose is to check if there are pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target.'
+categories: ['Enrichment','miR-432-5p']
+projects: ['Enrichment','miR-432-5p']
 ---
 
 # Enrichmet analysis: hsa-miR-432-5p targets

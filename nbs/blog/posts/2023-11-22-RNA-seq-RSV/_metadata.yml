@@ -3,14 +3,14 @@
 # freeze computational output
 freeze: true
 # Enable banner style title blocks
-title-block-banner: false
+# title-block-banner: false
 
-# Author name of all blog posts
-author: 'Aviv Leemann'
+# # Author name of all blog posts
+# author: 'Aviv Leemann'
 
-# Table of content settings
-toc: true
-toc-depth: 2
+# # Table of content settings
+# toc: true
+# toc-depth: 2
 
-page-layout: article
+# page-layout: article
 

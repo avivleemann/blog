@@ -1,21 +1,18 @@
 ---
-title: 'atrocytoma'
-author: 'Aviv Leemann'
+title: 'Atrocytoma'
 date: '2023-03-06'
 slug: 'astrocytoma'
-categories: ['single cell','atrocytoma']
+categories: ['SCRNA-seq','Atrocytoma']
 subtitle: ''
-summary: 'astrocytoma data was obtained from single cell portal. single cell analysis executed with **R** program and Seurat package, Pallad expression was examined in astrocytoma data.'
-lastmod: '2023-03-06T17:48:07+02:00'
-featured: no
-projects: ['single cell','atrocytoma']
+summary: 'Astrocytoma data was obtained from single cell portal. single cell analysis executed with **R** program and Seurat package, Pallad expression was examined in astrocytoma data.'
+projects: ['SCRNA-seq','atrocytoma']
 ---
 
-## single cell analysis - astrocytoma
+## SCRNA-seq analysis - astrocytoma
 
 astrocytoma data was obtained from single cell portal. single cell analysis executed with **R** program and Seurat package, Pallad expression was examined in astrocytoma data.
 
-## libreries
+## Libreries
 
 pacman library purpose is to load multiple libraries from a vector
 
@@ -27,7 +24,7 @@ labrvec <- c("tidyverse","ggplot2","ggpubr",
 pacman::p_load(labrvec,install = TRUE,character.only = TRUE)
 ```
 
-## files
+## Files
 
 loading RDS file after analysis, instead of building the file
 

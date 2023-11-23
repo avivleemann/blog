@@ -3,11 +3,9 @@ title: 'miR-486-3p'
 date: '2023-03-10'
 slug: 'miR-486-3p'
 subtitle: ''
-summary: 'enrichment analysis purpose is to check if there are pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target.'
-categories: ['enrichment','miR-486-3p']
-lastmod: '2023-03-06T20:06:52+02:00'
-featured: no
-projects: ['enrichment','miR-486-3p']
+summary: 'Enrichment analysis purpose is to check if there are pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target.'
+categories: ['Enrichment','miR-486-3p']
+projects: ['Enrichment','miR-486-3p']
 ---
 
 # Enrichmet analysis: hsa-miR-486-3p targets
@@ -15,7 +13,7 @@ projects: ['enrichment','miR-486-3p']
 enrichment analysis purpose is to check if there are:
 pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target.
 
-## libreris
+## Libreris
 pacman library purpose is to load multiple libraries from a vector
 
 ```r
@@ -25,7 +23,7 @@ lab <-  c("GO.db","GOstats","cRegulome","readxl","ggplot2","tidyverse","R.utils"
 pacman::p_load(lab,install = FALSE,character.only = TRUE)
 ```
 
-## files
+## Files
 
 loading miR targets files acquired from mirWalk
 

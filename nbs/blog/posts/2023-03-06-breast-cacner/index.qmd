@@ -1,24 +1,19 @@
 ---
 title: 'Breast cancer'
 date: '2023-03-06'
-slug: 'breast-cancer'
-categories: ['single cell','breast-cancer']
+slug: 'Breast-cancer'
+categories: ['SCRNA-seq','Breast-cancer']
 subtitle: ''
 summary:  'Breast cancer data was obtained from single cell portal, Pallad expression was examined in Breast cancer data'
-lastmod: '2023-03-06T17:52:47+02:00'
-featured: no
-projects: ['single cell','Breast cancer']
+projects: ['SCRNA-seq','Breast cancer']
 ---
 
-
-
-
-# single cell Breast cancer -analysis
+# SCRNA-seq Breast cancer -analysis
 
 Breast cancer data was obtained from single cell portal. single cell analysis executed with **R** program and Seurat package, Pallad expression was examined in Breast cancer data.\
 our lab found PALLD express in breast cancr, PALLD expression was examined between different cell type , different cluster groups, alsotop 10 mrker for each cluster was obtained
 
-## libreries
+## Libreries
 
 
 ```r
@@ -29,7 +24,7 @@ labrvec <- c("tidyverse","ggplot2","Matrix","AnnotationDbi","readxl",
 pacman::p_load(labrvec,install = TRUE,character.only = TRUE)
 ```
 
-## files
+## Files
 
 
 ```r
@@ -37,12 +32,12 @@ pacman::p_load(labrvec,install = TRUE,character.only = TRUE)
 BCdata <- readRDS("BCdatageneral.rds")
 ```
 
-## pre-processing
+## Pre-Processing
 
-wont be used at the creation of this files because already created and RDS will be use
+Won't be used at the creation of this files because already created and RDS will be use.
 
 
-```r
+```r 
 # define nultiprocess for seurat
 # 
 # Breast.cancer.SCdata<-Read10X(

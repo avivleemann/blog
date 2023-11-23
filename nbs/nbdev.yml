@@ -2,7 +2,7 @@ project:
   output-dir: _docs
 
 website:
-  title: "Bioinformatics and Data Science"
+  title: "Aviv Leemann's Blog"
   site-url: "https://avivleemann.github.io/blog"
   description: "A blog about bioinformatics and data science"
   repo-branch: main
