@@ -213,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># astrocytoma.matrix &lt;- read.csv(file = "IDH_A_processed_data_portal.txt",sep ="\t",check.names = FALSE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="processing-data" class="level2">
-<h2 class="anchored" data-anchor-id="processing-data">processing data</h2>
+<h2 class="anchored" data-anchor-id="processing-data">Processing Data</h2>
 <p>editing features to work with Seurat package</p>
 <p>reading metadata looking &amp; processing</p>
 <p>head(astrocytoma_metadata)</p>
@@ -312,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="index_files/figure-html/Dimplot &amp; heatmap-4.jpeg" class="img-fluid"></p>
 </section>
 <section id="elbowplot-jackstraw-plot" class="level2">
-<h2 class="anchored" data-anchor-id="elbowplot-jackstraw-plot">elbowplot &amp; jackstraw plot</h2>
+<h2 class="anchored" data-anchor-id="elbowplot-jackstraw-plot">Elbowplot &amp; Jackstraw plot</h2>
 <p>astrocytoma_seurat &lt;- JackStraw(astrocytoma_seurat, num.replicate = 100)</p>
 <p>astrocytoma_seurat &lt;- ScoreJackStraw(astrocytoma_seurat, dims = 1:20)</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">JackStrawPlot</span>(astrocytoma_seurat,<span class="at">dims =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -321,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="index_files/figure-html/elbowplot &amp; jackstraw plot-2.jpeg" class="img-fluid"></p>
 </section>
 <section id="umap-tsne-plot" class="level2">
-<h2 class="anchored" data-anchor-id="umap-tsne-plot">Umap &amp; tsne plot</h2>
+<h2 class="anchored" data-anchor-id="umap-tsne-plot">Umap &amp; Tsne plot</h2>
 <p>unspecified in this case was ignored</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># astrocytoma_seurat &lt;- FindNeighbors(astrocytoma_seurat, dims = 1:10)</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># astrocytoma_seurat &lt;- FindClusters(astrocytoma_seurat, resolution = 0.5)</span></span>

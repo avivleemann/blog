@@ -191,20 +191,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>enrichment analysis purpose is to check if there are: pathways, molecular function, biological process &amp; cellular components that is connected or related to this bio-marker target.</p>
 </section>
 <section id="libreris" class="level2">
-<h2 class="anchored" data-anchor-id="libreris">libreris</h2>
+<h2 class="anchored" data-anchor-id="libreris">Libreris</h2>
 <p>pacman library purpose is to load multiple libraries from a vector</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>lab <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"GO.db"</span>,<span class="st">"GOstats"</span>,<span class="st">"cRegulome"</span>,<span class="st">"readxl"</span>,<span class="st">"ggplot2"</span>,<span class="st">"tidyverse"</span>,<span class="st">"R.utils"</span>,<span class="st">"MeSHDbi"</span>,<span class="st">"AnnotationHub"</span>,<span class="st">"KEGGREST"</span>,<span class="st">"AnnotationDbi"</span>,<span class="st">"org.Hs.eg.db"</span>,<span class="st">"clusterProfiler"</span>,<span class="st">"meshr"</span>,<span class="st">"pathview"</span>,<span class="st">"ReactomePA"</span>,<span class="st">"meshes"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(lab,<span class="at">install =</span> <span class="cn">FALSE</span>,<span class="at">character.only =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="files" class="level2">
-<h2 class="anchored" data-anchor-id="files">files</h2>
+<h2 class="anchored" data-anchor-id="files">Files</h2>
 <p>loading miR targets files acquired from mirWalk</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mir432_5p_targets <span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"miRWalk_miRNA_Targets_432_5p_3UTR.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># annotations_ahb &lt;- read.csv("annotations_ahb.csv")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="head" class="level2">
-<h2 class="anchored" data-anchor-id="head">head</h2>
+<h2 class="anchored" data-anchor-id="head">Head</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mir432_5p_targets <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>##          mirnaid     refseqid genesymbol
 ## 1 hsa-miR-432-5p NM_001353214        DYM
@@ -254,8 +254,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ## [19] "validated"                    "TargetScan"                  
 ## [21] "miRDB"</code></pre>
 </section>
-<section id="preprocessing" class="level2">
-<h2 class="anchored" data-anchor-id="preprocessing">preprocessing</h2>
+<section id="pre-processing" class="level2">
+<h2 class="anchored" data-anchor-id="pre-processing">Pre-processing</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mir432_5p_targets)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"SYMBOL"</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mir432_5p_targets)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"miR"</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mir432_5p_targets)[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="st">"score"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -369,7 +369,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dotplot(meshes432_pubmed) + labs(title ="hsa-miR-432-5p targets mesh gene2pubmed Diseases")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="session-info" class="level1">
-<h1>session info</h1>
+<h1>Session Info</h1>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()[<span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>## $basePkgs
 ## [1] "stats4"    "stats"     "graphics"  "grDevices" "utils"     "datasets" 

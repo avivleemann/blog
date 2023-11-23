@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-486-3p/index.html</loc>
-    <lastmod>2023-11-23T17:06:35.776Z</lastmod>
-  </url>
-  <url>
-    <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-breast-cacner/index.html</loc>
-    <lastmod>2023-11-23T17:06:34.896Z</lastmod>
-  </url>
-  <url>
-    <loc>https://avivleemann.github.io/blog/blog/posts/2023-11-22-RNA-seq-RSV/index.html</loc>
-    <lastmod>2023-11-23T17:06:33.946Z</lastmod>
-  </url>
-  <url>
-    <loc>https://avivleemann.github.io/blog/blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html</loc>
-    <lastmod>2023-11-23T17:06:32.026Z</lastmod>
-  </url>
-  <url>
-    <loc>https://avivleemann.github.io/blog/index.html</loc>
-    <lastmod>2023-11-23T17:06:31.146Z</lastmod>
-  </url>
-  <url>
-    <loc>https://avivleemann.github.io/blog/blog/about.html</loc>
-    <lastmod>2023-11-23T17:06:31.426Z</lastmod>
-  </url>
-  <url>
-    <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index.html</loc>
-    <lastmod>2023-11-23T17:06:32.466Z</lastmod>
+    <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-glioblastoma/index.html</loc>
+    <lastmod>2023-11-23T18:18:18.764Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-astrocytoma/index.html</loc>
-    <lastmod>2023-11-23T17:06:34.416Z</lastmod>
+    <lastmod>2023-11-23T18:18:17.924Z</lastmod>
   </url>
   <url>
-    <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-glioblastoma/index.html</loc>
-    <lastmod>2023-11-23T17:06:35.346Z</lastmod>
+    <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index.html</loc>
+    <lastmod>2023-11-23T18:18:16.114Z</lastmod>
+  </url>
+  <url>
+    <loc>https://avivleemann.github.io/blog/blog/about.html</loc>
+    <lastmod>2023-11-23T18:18:15.234Z</lastmod>
+  </url>
+  <url>
+    <loc>https://avivleemann.github.io/blog/index.html</loc>
+    <lastmod>2023-11-23T18:18:14.984Z</lastmod>
+  </url>
+  <url>
+    <loc>https://avivleemann.github.io/blog/blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html</loc>
+    <lastmod>2023-11-23T18:18:15.704Z</lastmod>
+  </url>
+  <url>
+    <loc>https://avivleemann.github.io/blog/blog/posts/2023-11-22-RNA-seq-RSV/index.html</loc>
+    <lastmod>2023-11-23T18:18:17.504Z</lastmod>
+  </url>
+  <url>
+    <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-breast-cacner/index.html</loc>
+    <lastmod>2023-11-23T18:18:18.324Z</lastmod>
+  </url>
+  <url>
+    <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-486-3p/index.html</loc>
+    <lastmod>2023-11-23T18:18:19.174Z</lastmod>
   </url>
 </urlset>

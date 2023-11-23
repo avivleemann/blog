@@ -106,6 +106,7 @@ font-style: inherit;">git</span> push</span></code></pre></div>
 <li><a href="https://nbdev.fast.ai/tutorials/tutorial.html">https://nbdev.fast.ai/tutorials/tutorial.html</a></li>
 <li><a href="https://quarto.org/docs/websites/website-blog.html">https://quarto.org/docs/websites/website-blog.html</a></li>
 <li><a href="hugo-to-quarto-migration">https://www.andreashandel.com/posts/2022-10-01-hugo-to-quarto-migration/</a></li>
+<li><a href="Migrating from Hugo to Quarto by Lucy D’Agostino McGowan">https://livefreeordichotomize.com/posts/2022-09-19-migrating-from-hugo-to-quarto/</a></li>
 </ul>
 
 
@@ -2664,7 +2665,7 @@ font-style: inherit;">'log10p'</span>)</span></code></pre></div>
 <p>enrichment analysis purpose is to check if there are: pathways, molecular function, biological process &amp; cellular components that is connected or related to this bio-marker target.</p>
 </section>
 <section id="libreris" class="level2">
-<h2 class="anchored" data-anchor-id="libreris">libreris</h2>
+<h2 class="anchored" data-anchor-id="libreris">Libreris</h2>
 <p>pacman library purpose is to load multiple libraries from a vector</p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2723,7 +2724,7 @@ background-color: null;
 font-style: inherit;">TRUE</span>)</span></code></pre></div>
 </section>
 <section id="files" class="level2">
-<h2 class="anchored" data-anchor-id="files">files</h2>
+<h2 class="anchored" data-anchor-id="files">Files</h2>
 <p>loading miR targets files acquired from mirWalk</p>
 <div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">mir432_5p_targets <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -2737,7 +2738,7 @@ background-color: null;
 font-style: inherit;"># annotations_ahb &lt;- read.csv("annotations_ahb.csv")</span></span></code></pre></div>
 </section>
 <section id="head" class="level2">
-<h2 class="anchored" data-anchor-id="head">head</h2>
+<h2 class="anchored" data-anchor-id="head">Head</h2>
 <div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">mir432_5p_targets <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
@@ -2795,8 +2796,8 @@ font-style: inherit;">colnames</span>()</span></code></pre></div>
 ## [19] "validated"                    "TargetScan"                  
 ## [21] "miRDB"</code></pre>
 </section>
-<section id="preprocessing" class="level2">
-<h2 class="anchored" data-anchor-id="preprocessing">preprocessing</h2>
+<section id="pre-processing" class="level2">
+<h2 class="anchored" data-anchor-id="pre-processing">Pre-processing</h2>
 <div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">colnames</span>(mir432_5p_targets)[<span class="dv" style="color: #AD0000;
@@ -3146,7 +3147,7 @@ background-color: null;
 font-style: inherit;"># dotplot(meshes432_pubmed) + labs(title ="hsa-miR-432-5p targets mesh gene2pubmed Diseases")</span></span></code></pre></div>
 </section>
 <section id="session-info" class="level1">
-<h1>session info</h1>
+<h1>Session Info</h1>
 <div class="sourceCode" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sessionInfo</span>()[<span class="dv" style="color: #AD0000;
@@ -3704,7 +3705,7 @@ background-color: null;
 font-style: inherit;"># dotplot(meshes486) + labs(title ="hsa-miR-486-3p targets mesh gene2pubmed Diseases")</span></span></code></pre></div>
 </section>
 <section id="session-info" class="level1">
-<h1>session info</h1>
+<h1>Session Info</h1>
 <div class="sourceCode" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sessionInfo</span>()[<span class="dv" style="color: #AD0000;
@@ -3815,7 +3816,7 @@ background-color: null;
 font-style: inherit;"># astrocytoma.matrix &lt;- read.csv(file = "IDH_A_processed_data_portal.txt",sep ="\t",check.names = FALSE)</span></span></code></pre></div>
 </section>
 <section id="processing-data" class="level2">
-<h2 class="anchored" data-anchor-id="processing-data">processing data</h2>
+<h2 class="anchored" data-anchor-id="processing-data">Processing Data</h2>
 <p>editing features to work with Seurat package</p>
 <p>reading metadata looking &amp; processing</p>
 <p>head(astrocytoma_metadata)</p>
@@ -4164,7 +4165,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 <p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-astrocytoma/index_files/figure-html/Dimplot &amp; heatmap-4.jpeg" class="img-fluid"></p>
 </section>
 <section id="elbowplot-jackstraw-plot" class="level2">
-<h2 class="anchored" data-anchor-id="elbowplot-jackstraw-plot">elbowplot &amp; jackstraw plot</h2>
+<h2 class="anchored" data-anchor-id="elbowplot-jackstraw-plot">Elbowplot &amp; Jackstraw plot</h2>
 <p>astrocytoma_seurat &lt;- JackStraw(astrocytoma_seurat, num.replicate = 100)</p>
 <p>astrocytoma_seurat &lt;- ScoreJackStraw(astrocytoma_seurat, dims = 1:20)</p>
 <div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
@@ -4185,7 +4186,7 @@ font-style: inherit;">ElbowPlot</span>(astrocytoma_seurat)</span></code></pre></
 <p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-astrocytoma/index_files/figure-html/elbowplot &amp; jackstraw plot-2.jpeg" class="img-fluid"></p>
 </section>
 <section id="umap-tsne-plot" class="level2">
-<h2 class="anchored" data-anchor-id="umap-tsne-plot">Umap &amp; tsne plot</h2>
+<h2 class="anchored" data-anchor-id="umap-tsne-plot">Umap &amp; Tsne plot</h2>
 <p>unspecified in this case was ignored</p>
 <div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -4828,7 +4829,7 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-breast-cacner/index_files/figure-html/feature scatter-3.jpeg" class="img-fluid"></p>
 </section>
 <section id="variable-feature-plot" class="level2">
-<h2 class="anchored" data-anchor-id="variable-feature-plot">variable Feature-plot</h2>
+<h2 class="anchored" data-anchor-id="variable-feature-plot">Variable Feature-plot</h2>
 <p>BCdata &lt;- NormalizeData(BCdata)</p>
 <p>BCdata &lt;- FindVariableFeatures(BCdata, selection.method = “vst”, nfeatures = 2000)</p>
 <div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="do" style="color: #5E5E5E;
@@ -5190,7 +5191,7 @@ background-color: null;
 font-style: inherit;">"celltype_minor"</span></span></code></pre></div>
 </section>
 <section id="umap-tsne-cancer-cells" class="level2">
-<h2 class="anchored" data-anchor-id="umap-tsne-cancer-cells">umap &amp; tsne cancer cells</h2>
+<h2 class="anchored" data-anchor-id="umap-tsne-cancer-cells">Umap &amp; Tsne Cancer Cells</h2>
 <div class="sourceCode" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">DimPlot</span>(BCdata_cancer, <span class="at" style="color: #657422;
@@ -5234,8 +5235,8 @@ background-color: null;
 font-style: inherit;">NoLegend</span>()</span></code></pre></div>
 <p><img src="https://avivleemann.github.io/blog/blog/posts/2023-03-06-breast-cacner/index_files/figure-html/violin cancer-1.jpeg" class="img-fluid"></p>
 </section>
-<section id="find-all-marker-by-cancer-idents" class="level2">
-<h2 class="anchored" data-anchor-id="find-all-marker-by-cancer-idents">find all marker by cancer idents</h2>
+<section id="find-all-markers-by-cancer-idents" class="level2">
+<h2 class="anchored" data-anchor-id="find-all-markers-by-cancer-idents">Find all markers by cancer idents</h2>
 <div class="sourceCode" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">Idents</span>(BCdata) <span class="ot" style="color: #003B4F;

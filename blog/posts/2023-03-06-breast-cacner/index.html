@@ -278,7 +278,7 @@ our lab found PALLD express in breast cancr, PALLD expression was examined betwe
 <p><img src="index_files/figure-html/feature scatter-3.jpeg" class="img-fluid"></p>
 </section>
 <section id="variable-feature-plot" class="level2">
-<h2 class="anchored" data-anchor-id="variable-feature-plot">variable Feature-plot</h2>
+<h2 class="anchored" data-anchor-id="variable-feature-plot">Variable Feature-plot</h2>
 <p>BCdata &lt;- NormalizeData(BCdata)</p>
 <p>BCdata &lt;- FindVariableFeatures(BCdata, selection.method = “vst”, nfeatures = 2000)</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## what are our variable genes ?</span></span>
@@ -374,7 +374,7 @@ our lab found PALLD express in breast cancr, PALLD expression was examined betwe
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Idents</span>(BCdata_cancer) <span class="ot">&lt;-</span> <span class="st">"celltype_minor"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="umap-tsne-cancer-cells" class="level2">
-<h2 class="anchored" data-anchor-id="umap-tsne-cancer-cells">umap &amp; tsne cancer cells</h2>
+<h2 class="anchored" data-anchor-id="umap-tsne-cancer-cells">Umap &amp; Tsne Cancer Cells</h2>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(BCdata_cancer, <span class="at">reduction =</span> <span class="st">"umap"</span>,<span class="at">label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="index_files/figure-html/umap &amp; tsne cancer-1.jpeg" class="img-fluid"></p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(BCdata_cancer, <span class="at">reduction =</span> <span class="st">"tsne"</span> ,<span class="at">label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -382,8 +382,8 @@ our lab found PALLD express in breast cancr, PALLD expression was examined betwe
 <div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">VlnPlot</span>(BCdata_cancer, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"PALLD"</span>), <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> <span class="fu">NoLegend</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="index_files/figure-html/violin cancer-1.jpeg" class="img-fluid"></p>
 </section>
-<section id="find-all-marker-by-cancer-idents" class="level2">
-<h2 class="anchored" data-anchor-id="find-all-marker-by-cancer-idents">find all marker by cancer idents</h2>
+<section id="find-all-markers-by-cancer-idents" class="level2">
+<h2 class="anchored" data-anchor-id="find-all-markers-by-cancer-idents">Find all markers by cancer idents</h2>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Idents</span>(BCdata) <span class="ot">&lt;-</span> <span class="st">'normal_cell_call'</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># BCdata_markers_normal_cell_call &lt;- FindAllMarkers(BCdata, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>BCdata_markers_normal_cell_call <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">'BCdata_markers_normal_cell_call.rds'</span>)</span>
