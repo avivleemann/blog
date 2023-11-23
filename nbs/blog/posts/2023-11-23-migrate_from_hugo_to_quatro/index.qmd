@@ -1,0 +1,99 @@
+---
+title: Migrate Blog from Hugo to Quarto
+jupyter: python3
+---
+
+```markdown
+This blog was created using Hugo.
+I decided to migrate to quarto as it is easier to use, and I can use Jupyter notebooks to create blog posts.
+As I found it easier to use notebooks to create blog posts, I decided to migrate to quarto.
+In the process, I used nbdev and quarto to update my old blog posts and create new content.
+nbdev and quarto can also be used to create and maintain a package.
+
+Example:
+I created a small package called [volcanoPlot](https://avivleemann.github.io/volcanoPlot/).
+```
+
+
+## install nbdev and quarto
+```markdown
+The first step is to install nbdev. I used the following guide. 
+https://nbdev.fast.ai/tutorial.html#Install-nbdev
+i'm using micromamba to manage my conda environments.
+in my jupyter environment i ran the following commands:
+
+`micromamba install -c fastai -y nbdev`
+`nbdev_install_quarto`
+
+## create a new nbdev project
+```markdown
+I then created a new repository on github and cloned it to my local machine.
+the next step is to create a new nbdev project, and quarto docs.
+
+Folder structure
+
+Below is an overview of the general folder structure for a blog within a nbdev site:
+
+nbs/blog
+├── index.qmd
+└── posts
+    ├── 2022-07-28-nbdev2
+    │   ├── cover.png
+    │   ├── index.qmd
+    │   ├── ...
+    └── 2022-08-25-jupyter-git
+        ├── friendly-conflict.png
+        ├── index.qmd
+        └── ...
+    ...
+
+## Changes for blog insted of package:
+```markdown
+
+In MANIFEST.in i changed the following line:
+`include README.md -> exclude README.md`
+To exclude the README.md file from the blog.
+
+Every blog post could be written in a notebook, or markdown file.
+When using a notebook, the notebook should be converted to qmd before committing to git, and publishing to the blog.
+Example:
+
+`quarto convert blog/posts/2023-11-22-RNA-seq-RSV/RNA-seq.ipynb`
+
+In settings.ini i ichanged the following lines:
+`doc_path = _docs  -> doc_path = nbs/_docs`
+`lib_path = blog -> lib_path = nbs/blog`
+
+## create a new blog post
+```markdown
+to publish the site with gh-pages, i used the following command from nbs folder:
+
+`cd nbs/`
+`quarto publish gh-pages`
+
+quatro publsih gh-pages will create a new branch called gh-pages, and push the site to that branch.
+on github, i changed the settings to use gh-pages as the source for the site.
+
+incase i want to freeze the posts rendered in the site, i can use _metadata.yml file for each post folder. 
+changing the following line: freeze: false -> freeze: true.
+
+## Hugo old posts to quarto
+```markdown
+I copied all my posts content from hugo to quarto.
+than i ran `nbdev_migrate --path posts/`, and changed manually files names from markdown to qmd.
+in the markdown section i check that all variables are correct.
+than all images link's were changed from hugo format to qmd [volcanoPlot](https://avivleemann.github.io/volcanoPlot/). 
+the final hceck for all altered been made is to run `quarto preview` and check that all posts are displayed correctly.
+
+## update all files on github
+```markdown
+to update files on github still have to use git push main as the main branch is still the default branch and pointed to the remote main branch.
+`git add .`
+`git commit -m "update blog"`
+`git push`
+
+# Resources:
+- [https://nbdev.fast.ai/tutorials/tutorial.html](https://nbdev.fast.ai/tutorials/tutorial.html)
+- [https://quarto.org/docs/websites/website-blog.html](https://quarto.org/docs/websites/website-blog.html)
+- [https://www.andreashandel.com/posts/2022-10-01-hugo-to-quarto-migration/](hugo-to-quarto-migration)
+
