@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Aviv leemann">
-<meta name="dcterms.date" content="2023-03-06">
+<meta name="dcterms.date" content="2023-03-10">
 
-<title>blog - miR-486-3p</title>
+<title>Aviv Leemann’s Blog - miR-486-3p</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,12 +97,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="blog - miR-486-3p">
-<meta property="og:description" content="single cell analysis hsa-miR-486-3p">
+<meta property="og:title" content="Aviv Leemann’s Blog - miR-486-3p">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-486-3p/index_files/figure-html/KEGG enrichment 486_3-1.jpeg">
-<meta property="og:site-name" content="blog">
-<meta name="twitter:title" content="blog - miR-486-3p">
-<meta name="twitter:description" content="single cell analysis hsa-miR-486-3p">
+<meta property="og:site-name" content="Aviv Leemann's Blog">
+<meta name="twitter:title" content="Aviv Leemann’s Blog - miR-486-3p">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-486-3p/index_files/figure-html/KEGG enrichment 486_3-1.jpeg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -116,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../../index.html">
-    <span class="navbar-title">blog</span>
+    <span class="navbar-title">Aviv Leemann’s Blog</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -163,9 +162,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">miR-486-3p</h1>
-<p class="subtitle lead">single cell analysis hsa-miR-486-3p</p>
   <div class="quarto-categories">
-    <div class="quarto-category">enrichment</div>
+    <div class="quarto-category">Enrichment</div>
     <div class="quarto-category">miR-486-3p</div>
   </div>
   </div>
@@ -174,17 +172,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Aviv leemann </p>
-          </div>
-  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 6, 2023</p>
+      <p class="date">March 10, 2023</p>
     </div>
   </div>
   
@@ -198,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Enrichmet analysis: hsa-miR-486-3p targets</h1>
 <p>enrichment analysis purpose is to check if there are: pathways, molecular function, biological process &amp; cellular components that is connected or related to this bio-marker target.</p>
 <section id="libreris" class="level2">
-<h2 class="anchored" data-anchor-id="libreris">libreris</h2>
+<h2 class="anchored" data-anchor-id="libreris">Libreris</h2>
 <p>pacman library purpose is to load multiple libraries from a vector</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>lab <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"GO.db"</span>,<span class="st">"GOstats"</span>,<span class="st">"cRegulome"</span>,<span class="st">"readxl"</span>,<span class="st">"ggplot2"</span>,<span class="st">"tidyverse"</span>,<span class="st">"R.utils"</span>,<span class="st">"MeSHDbi"</span>,<span class="st">"AnnotationHub"</span>,</span>
@@ -206,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(lab,<span class="at">install =</span> <span class="cn">FALSE</span>,<span class="at">character.only =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="files" class="level2">
-<h2 class="anchored" data-anchor-id="files">files</h2>
+<h2 class="anchored" data-anchor-id="files">Files</h2>
 <p>loading miR targets files acquired from mirWalk</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mir486_3p_targets <span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"miRWalk_miRNA_Targets_486_3p_3UTR.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># annotations_ahb &lt;- read.csv("annotations_ahb.csv")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

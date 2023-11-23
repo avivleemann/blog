@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Aviv Leemann">
 <meta name="dcterms.date" content="2023-03-06">
 
-<title>blog - atrocytoma</title>
+<title>Aviv Leemann’s Blog - Atrocytoma</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,11 +97,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="blog - atrocytoma">
+<meta property="og:title" content="Aviv Leemann’s Blog - Atrocytoma">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://avivleemann.github.io/blog/blog/posts/2023-03-06-astrocytoma/index_files/figure-html/processing-1.jpeg">
-<meta property="og:site-name" content="blog">
-<meta name="twitter:title" content="blog - atrocytoma">
+<meta property="og:site-name" content="Aviv Leemann's Blog">
+<meta name="twitter:title" content="Aviv Leemann’s Blog - Atrocytoma">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://avivleemann.github.io/blog/blog/posts/2023-03-06-astrocytoma/index_files/figure-html/processing-1.jpeg">
 <meta name="twitter:card" content="summary_large_image">
@@ -116,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../../index.html">
-    <span class="navbar-title">blog</span>
+    <span class="navbar-title">Aviv Leemann’s Blog</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -162,10 +161,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">atrocytoma</h1>
+<h1 class="title">Atrocytoma</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">single cell</div>
-    <div class="quarto-category">atrocytoma</div>
+    <div class="quarto-category">SCRNA-seq</div>
+    <div class="quarto-category">Atrocytoma</div>
   </div>
   </div>
 
@@ -173,12 +172,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Aviv Leemann </p>
-          </div>
-  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
@@ -193,12 +186,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="single-cell-analysis---astrocytoma" class="level2">
-<h2 class="anchored" data-anchor-id="single-cell-analysis---astrocytoma">single cell analysis - astrocytoma</h2>
+<section id="scrna-seq-analysis---astrocytoma" class="level2">
+<h2 class="anchored" data-anchor-id="scrna-seq-analysis---astrocytoma">SCRNA-seq analysis - astrocytoma</h2>
 <p>astrocytoma data was obtained from single cell portal. single cell analysis executed with <strong>R</strong> program and Seurat package, Pallad expression was examined in astrocytoma data.</p>
 </section>
 <section id="libreries" class="level2">
-<h2 class="anchored" data-anchor-id="libreries">libreries</h2>
+<h2 class="anchored" data-anchor-id="libreries">Libreries</h2>
 <p>pacman library purpose is to load multiple libraries from a vector</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>labrvec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>,<span class="st">"ggplot2"</span>,<span class="st">"ggpubr"</span>,</span>
@@ -207,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(labrvec,<span class="at">install =</span> <span class="cn">TRUE</span>,<span class="at">character.only =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="files" class="level2">
-<h2 class="anchored" data-anchor-id="files">files</h2>
+<h2 class="anchored" data-anchor-id="files">Files</h2>
 <p>loading RDS file after analysis, instead of building the file</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load RDS file</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>astrocytoma_seurat <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"astrocytomaWmetadata.rds"</span>)</span>

@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-11-11">
 
-<title>Aviv Leemann’s Blog - About</title>
+<title>Aviv Leemann’s Blog - Migrate Blog from Hugo to Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,21 +58,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -94,16 +96,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Aviv Leemann’s Blog - About">
-<meta property="og:image" content="https://avivleemann.github.io/blog/blog/profile.png">
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="Aviv Leemann’s Blog - Migrate Blog from Hugo to Quarto">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://avivleemann.github.io/blog/blog/posts/2023-11-23-migrate_from_hugo_to_quatro/thumbnail.jpg">
 <meta property="og:site-name" content="Aviv Leemann's Blog">
-<meta property="og:image:height" content="500">
-<meta property="og:image:width" content="500">
-<meta name="twitter:title" content="Aviv Leemann’s Blog - About">
-<meta name="twitter:image" content="https://avivleemann.github.io/blog/blog/profile.png">
-<meta name="twitter:image-height" content="500">
-<meta name="twitter:image-width" content="500">
+<meta name="twitter:title" content="Aviv Leemann’s Blog - Migrate Blog from Hugo to Quarto">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://avivleemann.github.io/blog/blog/posts/2023-11-23-migrate_from_hugo_to_quatro/thumbnail.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Aviv Leemann’s Blog</span>
     </a>
   </div>
@@ -125,11 +125,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../blog/about.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../../../blog/about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
+    <a class="nav-link" href="../../../index.html" rel="" target="">
  <span class="menu-text">Posts</span></a>
   </li>  
 </ul>
@@ -157,57 +157,104 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="profile.png" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
-</div>
-<div class="quarto-title-meta">
+<h1 class="title">Migrate Blog from Hugo to Quarto</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Hugo</div>
+    <div class="quarto-category">Quarto</div>
+    <div class="quarto-category">gh-pages</div>
   </div>
-</header><main class="content" id="quarto-document-content">
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>My background is in bioinformatics and data science.</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>The position I hold at Aummune Ltd. is that of a Bioinformatics researcher. </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>I completed my master's degree at Tel Aviv University Shomron Lab, and I work with both Python and R. </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>My future plans include more public projects.</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>My main areas of interest are bioinformatics and healthcare data science.</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Interests:</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Computational biology</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Artificial Intelligence</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Bioinformatics</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Data science</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Education:</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>M.Sc.  Medical Science &amp; Bioinformatics</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Tel Aviv University, 2020 - 2022</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>B.Sc. in Life Science</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>Tel Aviv University, 2017 - 2020</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>B.Sc. in Computer Science</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Israel Open Aviv University, 2022 - current</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+  </div>
 
 
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://linkedin.com" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 11, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>This blog was created using Hugo.<br> I decided to migrate to quarto as it is easier to use, and I can use Jupyter notebooks to create blog posts.<br> As I found it easier to use notebooks to create blog posts, I decided to migrate to quarto.<br> In the process, I used nbdev and quarto to update my old blog posts and create new content.<br> nbdev and quarto can also be used to create and maintain a package.<br> Example: I created a small package called <a href="https://avivleemann.github.io/volcanoPlot/">volcanoPlot</a>.</p>
+<p><img src="thumbnail.jpg" class="img-fluid"></p>
+<section id="install-nbdev-and-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="install-nbdev-and-quarto">install nbdev and quarto</h2>
+<p>The first step is to install nbdev. I used the following guide: <a href="https://nbdev.fast.ai/tutorial.html">End-To-End Walkthrough</a>. <br> i’m using micromamba to manage my conda environments.<br> in my jupyter environment i ran the following commands:<br></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-c</span> fastai <span class="at">-y</span> nbdev</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_install_quarto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="create-a-new-nbdev-project" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-new-nbdev-project">create a new nbdev project</h2>
+<p>I then created a new repository on github, activated gh-pages and cloned it to my local machine.<br> the next step is to create a new nbdev project, and quarto docs.</p>
+<p><br>Folder structure<br></p>
+<p>Below is an overview of the general folder structure for a blog within a nbdev site:<br></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nbs/blog</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>├── index.qmd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>└── posts</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    ├── 2022-07-28-nbdev2</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    │   ├── cover.png</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    │   ├── index.qmd</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    │   ├── ...</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    └── 2022-08-25-jupyter-git</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        ├── friendly-conflict.png</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        ├── index.qmd</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        └── ...</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="changes-for-blog-insted-of-package" class="level2">
+<h2 class="anchored" data-anchor-id="changes-for-blog-insted-of-package">Changes for blog insted of package:</h2>
+<p>In MANIFEST.in i changed the following line:<br></p>
+<p>include README.md -&gt; exclude README.md<br></p>
+<p>To exclude the README.md file from the blog.<br></p>
+<p>In settings.ini i ichanged the following lines:<br></p>
+<p>doc_path = _docs -&gt; doc_path = nbs/_docs<br> lib_path = blog -&gt; lib_path = nbs/blog<br></p>
+<p>Every blog post could be written in a notebook, or markdown file.<br> When using a notebook, the notebook should be converted to qmd before committing to git, and publishing to the blog.<br> Example:<br></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert blog/posts/2023-11-22-RNA-seq-RSV/RNA-seq.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="create-a-new-blog-post" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-new-blog-post">create a new blog post</h2>
+<p>quatro publsih gh-pages will create a new branch called gh-pages, and push the site to that branch.<br> on github, i changed the settings to use gh-pages as the source for the site.<br></p>
+<p>incase i want to freeze the posts rendered in the site, i can use _metadata.yml file for each post folder. <br> changing the following line: “freeze: false -&gt; freeze: true.”<br></p>
+<p>to publish the site with gh-pages, i used the following command from nbs folder:<br></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> nbs/</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="hugo-old-posts-to-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="hugo-old-posts-to-quarto">Hugo old posts to quarto</h2>
+<p>I copied all my posts content from hugo to quarto.<br> Than i ran nbdev_migrate –path posts/<br> I changed manually files names from markdown to qmd.<br> In the markdown section i check that all variables are correct.<br> Than all images link’s were changed from hugo format to qmd “<img src="path/to/image.png" class="img-fluid">”. <br> The final hceck for all altered been made is to run quarto preview and check that all posts are displayed correctly.<br></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="update-all-files-on-github" class="level2">
+<h2 class="anchored" data-anchor-id="update-all-files-on-github">update all files on github</h2>
+<p>to update files on github still have to use git push main as the main branch is still the default branch and pointed to the remote main branch.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"update blog"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="resources" class="level1">
+<h1>Resources:</h1>
+<ul>
+<li><a href="https://nbdev.fast.ai/tutorials/tutorial.html">https://nbdev.fast.ai/tutorials/tutorial.html</a></li>
+<li><a href="https://quarto.org/docs/websites/website-blog.html">https://quarto.org/docs/websites/website-blog.html</a></li>
+<li><a href="hugo-to-quarto-migration">https://www.andreashandel.com/posts/2022-10-01-hugo-to-quarto-migration/</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -228,6 +275,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

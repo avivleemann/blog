@@ -2,34 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-486-3p/index.html</loc>
-    <lastmod>2023-11-22T21:54:23.124Z</lastmod>
+    <lastmod>2023-11-23T17:00:27.746Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-breast-cacner/index.html</loc>
-    <lastmod>2023-11-22T21:54:21.835Z</lastmod>
+    <lastmod>2023-11-23T17:00:26.676Z</lastmod>
   </url>
   <url>
-    <loc>https://avivleemann.github.io/blog/blog/posts/2023-11-22-RNA-seq-RSV/RNA-seq.html</loc>
-    <lastmod>2023-11-22T21:54:20.243Z</lastmod>
+    <loc>https://avivleemann.github.io/blog/blog/posts/2023-11-22-RNA-seq-RSV/index.html</loc>
+    <lastmod>2023-11-23T17:00:25.636Z</lastmod>
   </url>
   <url>
-    <loc>https://avivleemann.github.io/blog/blog/about.html</loc>
-    <lastmod>2023-11-22T21:53:23.628Z</lastmod>
+    <loc>https://avivleemann.github.io/blog/blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html</loc>
+    <lastmod>2023-11-23T16:59:37.866Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/index.html</loc>
-    <lastmod>2023-11-22T21:53:23.194Z</lastmod>
+    <lastmod>2023-11-23T16:59:37.116Z</lastmod>
+  </url>
+  <url>
+    <loc>https://avivleemann.github.io/blog/blog/about.html</loc>
+    <lastmod>2023-11-23T16:59:37.376Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index.html</loc>
-    <lastmod>2023-11-22T21:53:24.505Z</lastmod>
+    <lastmod>2023-11-23T16:59:38.306Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-astrocytoma/index.html</loc>
-    <lastmod>2023-11-22T21:54:21.012Z</lastmod>
+    <lastmod>2023-11-23T17:00:26.126Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-glioblastoma/index.html</loc>
-    <lastmod>2023-11-22T21:54:22.615Z</lastmod>
+    <lastmod>2023-11-23T17:00:27.226Z</lastmod>
   </url>
 </urlset>
