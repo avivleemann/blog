@@ -8,13 +8,13 @@ categories: ['Enrichment','miR-432-5p']
 projects: ['Enrichment','miR-432-5p']
 ---
 
-# Enrichmet analysis: hsa-miR-432-5p targets
+## Enrichmet analysis: hsa-miR-432-5p targets
 
 enrichment analysis purpose is to check if there are:
 pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target.
 
 
-## libreris
+## Libreris
 pacman library purpose is to load multiple libraries from a vector
 
 
@@ -24,7 +24,7 @@ lab <-  c("GO.db","GOstats","cRegulome","readxl","ggplot2","tidyverse","R.utils"
 pacman::p_load(lab,install = FALSE,character.only = TRUE)
 ```
 
-## files
+## Files
 
 loading miR targets files acquired from mirWalk
 
@@ -34,7 +34,7 @@ mir432_5p_targets <-read.csv("miRWalk_miRNA_Targets_432_5p_3UTR.csv")
 # annotations_ahb <- read.csv("annotations_ahb.csv")
 ```
 
-## head
+## Head
 
 
 ```r
@@ -97,7 +97,7 @@ mir432_5p_targets %>% colnames()
 ## [21] "miRDB"
 ```
 
-## preprocessing
+## Pre-processing
 
 
 ```r
@@ -292,7 +292,7 @@ dotplot(meshes432) + labs(title ="hsa-miR-432-5p targets mesh gendoo Diseases")
 # dotplot(meshes432_pubmed) + labs(title ="hsa-miR-432-5p targets mesh gene2pubmed Diseases")
 ```
 
-# session info
+# Session Info
 
 
 ```r

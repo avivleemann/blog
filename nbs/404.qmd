@@ -1,0 +1,7 @@
+---
+title: Page Not Found
+listing:
+  contents: posts
+  type: table
+  sort: "date"
+---

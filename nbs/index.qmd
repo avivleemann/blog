@@ -1,5 +1,5 @@
 ---
-title: My Posts
+title: Posts
 subtitle: contains some of my documented work.
 listing:
   sort: "date desc"

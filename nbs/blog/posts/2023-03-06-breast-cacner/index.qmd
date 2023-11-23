@@ -8,7 +8,7 @@ summary:  'Breast cancer data was obtained from single cell portal, Pallad expre
 projects: ['SCRNA-seq','Breast cancer']
 ---
 
-# SCRNA-seq Breast cancer -analysis
+## SCRNA-seq Breast cancer -analysis
 
 Breast cancer data was obtained from single cell portal. single cell analysis executed with **R** program and Seurat package, Pallad expression was examined in Breast cancer data.\
 our lab found PALLD express in breast cancr, PALLD expression was examined between different cell type , different cluster groups, alsotop 10 mrker for each cluster was obtained
@@ -121,7 +121,7 @@ VlnPlot(BCdata, features = c("nFeature_RNA", "nCount_RNA","Percent_mito"), ncol 
 
 ![](index_files/figure-html/feature scatter-3.jpeg)
 
-## variable Feature-plot
+## Variable Feature-plot
 
 BCdata \<- NormalizeData(BCdata)
 
@@ -295,7 +295,7 @@ BCdata_cancer <-  readRDS('BCdata_subset_cancer.rds')
 Idents(BCdata_cancer) <- "celltype_minor"
 ```
 
-## umap & tsne cancer cells
+## Umap & Tsne Cancer Cells
 
 
 ```r
@@ -317,7 +317,7 @@ VlnPlot(BCdata_cancer, features = c("PALLD"), sort = TRUE) + NoLegend()
 
 ![](index_files/figure-html/violin cancer-1.jpeg)
 
-## find all marker by cancer idents
+## Find all markers by cancer idents
 
 
 ```r

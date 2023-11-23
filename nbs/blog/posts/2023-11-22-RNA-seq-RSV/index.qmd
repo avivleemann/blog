@@ -47,7 +47,8 @@ padj_cutoff = 0.05
 lfc2_cutoff = 2
 ```
 
-## assign significance function
+## Assign Significance Function
+Function created to create a new column of labels in pandas DataFrame, competibale with apply on pandas column.
 
 ```{python}
 #| vscode: {languageId: python}
@@ -72,6 +73,7 @@ def assign_sig(p_value : int, log2FoldChange: int, padj: float=padj_cutoff , lfc
       return 'non-sig'
 ```
 
+## Data Check
 ```{python}
 #| vscode: {languageId: python}
 data = pd.read_csv(data_path, index_col=0)
@@ -191,7 +193,7 @@ sigs = res[(abs(res.log2FC) > 2) & (res.p_adj < 0.05) ]
 sigs.to_csv(output / 'deseq2_results_sigs.csv', index=False)
 ```
 
-## processings and plots
+## Processings and Plots
 
 ```{python}
 #| vscode: {languageId: python}
@@ -204,7 +206,7 @@ pheat
 pheat.savefig(output/ "significant_genes_heatmap_seaborn.png", dpi=300)
 ```
 
-## Volcano plot - interactive
+## Volcano Plot - Interactive
 plotly used to create volcano plot.</br>
 The plot is interactive and can be used to zoom in and out and to hover over points to see the gene name and the log2 fold change and the p-value.
 
@@ -250,7 +252,7 @@ fig.write_html(output / "volcano_plot_plotly.html")
 fig.show()
 ```
 
-# Volcano plot - static
+# Volcano Plot - Static
 matplotlib package was used to plot the volcano plot as a static plot.
 
 ```{python}

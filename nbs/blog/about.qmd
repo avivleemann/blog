@@ -12,31 +12,28 @@ about:
       href: https://github.com
 cookie-consent: true
 ---
-```markdown
 
 My background is in bioinformatics and data science.
-The position I hold at Aummune Ltd. is that of a Bioinformatics researcher. 
-I completed my master's degree at Tel Aviv University Shomron Lab, and I work with both Python and R. 
+
+The position I hold at Aummune Ltd. is that of a Bioinformatics researcher.
+
+I completed my master's degree at Tel Aviv University Shomron Lab, and I work with both Python and R.
+
 My future plans include more public projects.
 
 My main areas of interest are bioinformatics and healthcare data science.
 
-Interests:
-  * Computational biology
-  * Artificial Intelligence
-  * Bioinformatics
-  * Data science
+#### Interests:
 
+-   Computational biology
+-   Artificial Intelligence
+-   Bioinformatics
+-   Data science
 
-Education:
+#### Education:
 
-M.Sc.  Medical Science & Bioinformatics
-Tel Aviv University, 2020 - 2022
+-   M.Sc. Medical Science & Bioinformatics, Tel Aviv University, 2020 - 2022.
 
-B.Sc. in Life Science
-Tel Aviv University, 2017 - 2020
+-   B.Sc. in Life Science , Tel Aviv University, 2017 - 2020.
 
-B.Sc. in Computer Science
-Israel Open Aviv University, 2022 - current
-
-```
+-   B.Sc. in Computer Science Israel Open Aviv University, 2022 - current

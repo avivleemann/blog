@@ -8,7 +8,7 @@ categories: ['Enrichment','miR-486-3p']
 projects: ['Enrichment','miR-486-3p']
 ---
 
-# Enrichmet analysis: hsa-miR-486-3p targets
+## Enrichmet analysis: hsa-miR-486-3p targets
 
 enrichment analysis purpose is to check if there are:
 pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target.
@@ -296,7 +296,7 @@ dotplot(meshes486) + labs(title ="hsa-miR-486-3p targets mesh gendoo Diseases")
 # dotplot(meshes486) + labs(title ="hsa-miR-486-3p targets mesh gene2pubmed Diseases")
 ```
 
-# session info
+# Session Info
 
 ```r
 sessionInfo()[6]
