@@ -1,8 +1,7 @@
 ---
-title:  glioblastoma
-author: 'aviv leemann'
+title:  'glioblastoma'
 date: '2023-03-06'
-slug: glioblastoma
+slug: 'glioblastoma'
 categories: ['single cell','glioblastoma']
 subtitle: ''
 summary: 'glioblastoma data was obtained from single cell portal. single cell analysis executed with **R** program and Seurat package, Pallad expression was examined in glioblastoma data.'

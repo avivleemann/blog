@@ -2,8 +2,8 @@ project:
   output-dir: _docs
 
 website:
-  title: "blog"
+  title: "Bioinformatics and Data Science"
   site-url: "https://avivleemann.github.io/blog"
-  description: "my blog"
+  description: "A blog about bioinformatics and data science"""
   repo-branch: main
   repo-url: "https://github.com/avivleemann/blog"
