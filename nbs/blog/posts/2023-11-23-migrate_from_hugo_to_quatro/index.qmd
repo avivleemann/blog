@@ -1,7 +1,7 @@
 ---
 title: Migrate Blog from Hugo to Quarto
 subtitle: ''
-date: '2023-23-11'
+date: '2023-11-23'
 summary: 'My steps in the procsses of migrate from hugo to quarto'
 jupyter: python3
 categories: ['Hugo','Quarto','gh-pages']
