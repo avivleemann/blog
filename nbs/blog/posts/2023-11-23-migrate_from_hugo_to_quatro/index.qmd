@@ -5,6 +5,7 @@ date: '2023-11-23'
 summary: 'My steps in the procsses of migrate from hugo to quarto'
 jupyter: python3
 categories: ['Hugo','Quarto','gh-pages']
+toc: true
 ---
 This blog was created using Hugo.</br>
 I decided to migrate to quarto as it is easier to use, and I can use Jupyter notebooks to create blog posts.</br>
@@ -92,7 +93,7 @@ I copied all my posts content from hugo to quarto.</br>
 Than i ran nbdev_migrate --path posts/</br>
 I changed manually files names from markdown to qmd.</br>
 In the markdown section i check that all variables are correct.</br>
-Than all images link's were changed from hugo format to qmd "![](path/to/image.png)". </br>
+Than all images link's were changed from hugo format to qmd ```![](path/to/image.png)```. </br>
 The final hceck for all altered been made is to run quarto preview and check that all posts are displayed correctly.</br>
 ```bash
 quarto preview

@@ -4,6 +4,7 @@ date: '2023-11-19'
 subtitle: ''
 summary: 'RSV or RS virus, short for respiratory syncytial virus, is a single-stranded RNA virus belonging to the pneumovirus genus of the virus family. Symptoms are usually mild, similar to a cold, but can cause very serious illness in infants. a total of 8 RNA-Seq data from acute and chronic phases in nasal samples of 4 infants.'
 categories: ['RNA-seq','RSV']
+toc: true
 jupyter: python3
 ---
 

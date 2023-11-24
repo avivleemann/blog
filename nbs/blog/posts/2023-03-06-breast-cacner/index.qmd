@@ -6,6 +6,7 @@ categories: ['SCRNA-seq','Breast-cancer']
 subtitle: ''
 summary:  'Breast cancer data was obtained from single cell portal, Pallad expression was examined in Breast cancer data'
 projects: ['SCRNA-seq','Breast cancer']
+toc: true
 ---
 
 ## SCRNA-seq Breast cancer -analysis

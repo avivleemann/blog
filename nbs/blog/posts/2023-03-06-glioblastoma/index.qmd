@@ -6,6 +6,7 @@ categories: ['SCRNA-seq','Glioblastoma','GBM']
 subtitle: ''
 summary: 'Glioblastoma data was obtained from single cell portal. single cell analysis executed with **R** program and Seurat package, Pallad expression was examined in glioblastoma data.'
 projects: ['SCRNA-seq','Glioblastoma','GBM']
+toc: true
 ---
 
 ## SCRNA-seq analysis - Glioblasotma

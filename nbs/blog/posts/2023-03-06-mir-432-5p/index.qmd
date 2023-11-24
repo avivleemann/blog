@@ -6,6 +6,7 @@ subtitle: ''
 summary: 'Enrichment analysis purpose is to check if there are pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target.'
 categories: ['Enrichment','miR-432-5p']
 projects: ['Enrichment','miR-432-5p']
+toc: true
 ---
 
 ## Enrichmet analysis: hsa-miR-432-5p targets

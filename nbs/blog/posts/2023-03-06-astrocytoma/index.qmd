@@ -6,6 +6,7 @@ categories: ['SCRNA-seq','Atrocytoma']
 subtitle: ''
 summary: 'Astrocytoma data was obtained from single cell portal. single cell analysis executed with **R** program and Seurat package, Pallad expression was examined in astrocytoma data.'
 projects: ['SCRNA-seq','atrocytoma']
+toc: true
 ---
 
 ## SCRNA-seq analysis - astrocytoma
