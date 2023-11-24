@@ -78,7 +78,7 @@ font-style: inherit;">quarto</span> publish gh-pages</span></code></pre></div>
 </section>
 <section id="convert-hugo-old-posts-to-quarto" class="level2">
 <h2 class="anchored" data-anchor-id="convert-hugo-old-posts-to-quarto">Convert Hugo old posts to quarto</h2>
-<p>I copied all my posts content from hugo to quarto.<br> Than i ran nbdev_migrate –path posts/<br> I changed manually files names from markdown to qmd.<br> In the markdown section i check that all variables are correct.<br> Than all images link’s were changed from hugo format to qmd “<img src="https://avivleemann.github.io/blog/blog/posts/2023-11-23-migrate_from_hugo_to_quatro/path/to/image.png" class="img-fluid">”. <br> The final hceck for all altered been made is to run quarto preview and check that all posts are displayed correctly.<br></p>
+<p>I copied all my posts content from hugo to quarto.<br> Than i ran nbdev_migrate –path posts/<br> I changed manually files names from markdown to qmd.<br> In the markdown section i check that all variables are correct.<br> Than all images link’s were changed from hugo format to qmd <code>![](path/to/image.png)</code>. <br> The final hceck for all altered been made is to run quarto preview and check that all posts are displayed correctly.<br></p>
 <div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">quarto</span> preview</span></code></pre></div>

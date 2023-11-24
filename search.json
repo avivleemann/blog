@@ -270,7 +270,7 @@
     "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#convert-hugo-old-posts-to-quarto",
     "title": "Migrate Blog from Hugo to Quarto",
     "section": "Convert Hugo old posts to quarto",
-    "text": "Convert Hugo old posts to quarto\nI copied all my posts content from hugo to quarto. Than i ran nbdev_migrate –path posts/ I changed manually files names from markdown to qmd. In the markdown section i check that all variables are correct. Than all images link’s were changed from hugo format to qmd “”.  The final hceck for all altered been made is to run quarto preview and check that all posts are displayed correctly.\nquarto preview"
+    "text": "Convert Hugo old posts to quarto\nI copied all my posts content from hugo to quarto. Than i ran nbdev_migrate –path posts/ I changed manually files names from markdown to qmd. In the markdown section i check that all variables are correct. Than all images link’s were changed from hugo format to qmd ![](path/to/image.png).  The final hceck for all altered been made is to run quarto preview and check that all posts are displayed correctly.\nquarto preview"
   },
   {
     "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#update-all-files-on-github",

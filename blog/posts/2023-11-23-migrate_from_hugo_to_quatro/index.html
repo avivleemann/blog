@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -155,7 +155,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#install-nbdev-and-quarto" id="toc-install-nbdev-and-quarto" class="nav-link active" data-scroll-target="#install-nbdev-and-quarto">Install nbdev and quarto</a></li>
+  <li><a href="#new-nbdev-project" id="toc-new-nbdev-project" class="nav-link" data-scroll-target="#new-nbdev-project">New nbdev Project</a></li>
+  <li><a href="#the-changes-for-blog-insted-of-package" id="toc-the-changes-for-blog-insted-of-package" class="nav-link" data-scroll-target="#the-changes-for-blog-insted-of-package">The changes for blog insted of package:</a></li>
+  <li><a href="#add-new-post" id="toc-add-new-post" class="nav-link" data-scroll-target="#add-new-post">Add New Post</a></li>
+  <li><a href="#convert-hugo-old-posts-to-quarto" id="toc-convert-hugo-old-posts-to-quarto" class="nav-link" data-scroll-target="#convert-hugo-old-posts-to-quarto">Convert Hugo old posts to quarto</a></li>
+  <li><a href="#update-all-files-on-github" id="toc-update-all-files-on-github" class="nav-link" data-scroll-target="#update-all-files-on-github">Update all files on Github</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources:</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/avivleemann/blog/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -233,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="convert-hugo-old-posts-to-quarto" class="level2">
 <h2 class="anchored" data-anchor-id="convert-hugo-old-posts-to-quarto">Convert Hugo old posts to quarto</h2>
-<p>I copied all my posts content from hugo to quarto.<br> Than i ran nbdev_migrate –path posts/<br> I changed manually files names from markdown to qmd.<br> In the markdown section i check that all variables are correct.<br> Than all images link’s were changed from hugo format to qmd “<img src="path/to/image.png" class="img-fluid">”. <br> The final hceck for all altered been made is to run quarto preview and check that all posts are displayed correctly.<br></p>
+<p>I copied all my posts content from hugo to quarto.<br> Than i ran nbdev_migrate –path posts/<br> I changed manually files names from markdown to qmd.<br> In the markdown section i check that all variables are correct.<br> Than all images link’s were changed from hugo format to qmd <code>![](path/to/image.png)</code>. <br> The final hceck for all altered been made is to run quarto preview and check that all posts are displayed correctly.<br></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="update-all-files-on-github" class="level2">
@@ -496,4 +510,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/avivleemann/blog/issues/new" class="toc-action">Report an issue</a></p></div></div></div></div></footer></body></html>
+</body></html>
