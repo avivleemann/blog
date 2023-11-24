@@ -112,4 +112,7 @@ git push
 - [https://quarto.org/docs/websites/website-blog.html](https://quarto.org/docs/websites/website-blog.html)
 - [https://www.andreashandel.com/posts/2022-10-01-hugo-to-quarto-migration/](hugo-to-quarto-migration)
 - [https://livefreeordichotomize.com/posts/2022-09-19-migrating-from-hugo-to-quarto/](Migrating from Hugo to Quarto by Lucy D’Agostino McGowan)
+- [https://ivelasq.quarto.pub/building-a-blog-with-quarto/](Building a blog with Quarto)
+- [https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/](quarto-tip-a-day)
+- [https://github.com/rstudio-conf-2022/get-started-quarto](get-started-quarto)
 
