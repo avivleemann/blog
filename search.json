@@ -241,43 +241,43 @@
     "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#install-nbdev-and-quarto",
     "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#install-nbdev-and-quarto",
     "title": "Migrate Blog from Hugo to Quarto",
-    "section": "install nbdev and quarto",
-    "text": "install nbdev and quarto\nThe first step is to install nbdev. I used the following guide: End-To-End Walkthrough.  i’m using micromamba to manage my conda environments. in my jupyter environment i ran the following commands:\nmicromamba install -c fastai -y nbdev\nnbdev_install_quarto"
+    "section": "Install nbdev and quarto",
+    "text": "Install nbdev and quarto\nThe first step is to install nbdev. I used the following guide: End-To-End Walkthrough.  i’m using micromamba to manage my conda environments. in my jupyter environment i ran the following commands:\nmicromamba install -c fastai -y nbdev\nnbdev_install_quarto"
   },
   {
-    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#create-a-new-nbdev-project",
-    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#create-a-new-nbdev-project",
+    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#new-nbdev-project",
+    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#new-nbdev-project",
     "title": "Migrate Blog from Hugo to Quarto",
-    "section": "create a new nbdev project",
-    "text": "create a new nbdev project\nI then created a new repository on github, activated gh-pages and cloned it to my local machine. the next step is to create a new nbdev project, and quarto docs.\nFolder structure\nBelow is an overview of the general folder structure for a blog within a nbdev site:\nnbs/blog\n├── index.qmd\n└── posts\n    ├── 2022-07-28-nbdev2\n    │   ├── cover.png\n    │   ├── index.qmd\n    │   ├── ...\n    └── 2022-08-25-jupyter-git\n        ├── friendly-conflict.png\n        ├── index.qmd\n        └── ...\n    ..."
+    "section": "New nbdev Project",
+    "text": "New nbdev Project\nI then created a new repository on github, activated gh-pages and cloned it to my local machine. The next step is to create a new nbdev project, and quarto docs.\nFolder structure\nBelow is an overview of the general folder structure for a blog within a nbdev site:\nnbs/blog\n├── index.qmd\n└── posts\n    ├── 2022-07-28-nbdev2\n    │   ├── cover.png\n    │   ├── index.qmd\n    │   ├── ...\n    └── 2022-08-25-jupyter-git\n        ├── friendly-conflict.png\n        ├── index.qmd\n        └── ...\n    ..."
   },
   {
-    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#changes-for-blog-insted-of-package",
-    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#changes-for-blog-insted-of-package",
+    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#the-changes-for-blog-insted-of-package",
+    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#the-changes-for-blog-insted-of-package",
     "title": "Migrate Blog from Hugo to Quarto",
-    "section": "Changes for blog insted of package:",
-    "text": "Changes for blog insted of package:\nIn MANIFEST.in i changed the following line:\ninclude README.md -&gt; exclude README.md\nTo exclude the README.md file from the blog.\nIn settings.ini i ichanged the following lines:\ndoc_path = _docs -&gt; doc_path = nbs/_docs lib_path = blog -&gt; lib_path = nbs/blog\nEvery blog post could be written in a notebook, or markdown file. When using a notebook, the notebook should be converted to qmd before committing to git, and publishing to the blog. Example:\nquarto convert blog/posts/2023-11-22-RNA-seq-RSV/RNA-seq.ipynb"
+    "section": "The changes for blog insted of package:",
+    "text": "The changes for blog insted of package:\nIn MANIFEST.in i changed the following line:\ninclude README.md -&gt; exclude README.md\nTo exclude the README.md file from the blog.\nIn settings.ini i ichanged the following lines:\ndoc_path = _docs -&gt; doc_path = nbs/_docs lib_path = blog -&gt; lib_path = nbs/blog\nEvery blog post could be written in a notebook, or markdown file. When using a notebook, the notebook should be converted to qmd before committing to git, and publishing to the blog. Example:\nquarto convert blog/posts/2023-11-22-RNA-seq-RSV/RNA-seq.ipynb"
   },
   {
-    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#create-a-new-blog-post",
-    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#create-a-new-blog-post",
+    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#add-new-post",
+    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#add-new-post",
     "title": "Migrate Blog from Hugo to Quarto",
-    "section": "create a new blog post",
-    "text": "create a new blog post\nquatro publsih gh-pages will create a new branch called gh-pages, and push the site to that branch. on github, i changed the settings to use gh-pages as the source for the site.\nincase i want to freeze the posts rendered in the site, i can use _metadata.yml file for each post folder.  changing the following line: “freeze: false -&gt; freeze: true.”\nto publish the site with gh-pages, i used the following command from nbs folder:\ncd nbs/\nquarto publish gh-pages"
+    "section": "Add New Post",
+    "text": "Add New Post\nQuatro publsih gh-pages will create a new branch called gh-pages, and push the site to that branch. On github, i changed the settings to use gh-pages as the source for the site.\nIncase i want to freeze the posts rendered in the site, i can use _metadata.yml file for each post folder.  Change the following line: “freeze: false -&gt; freeze: true.”\nTo publish the site with gh-pages, i used the following command from nbs folder:\ncd nbs/\nquarto publish gh-pages"
   },
   {
-    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#hugo-old-posts-to-quarto",
-    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#hugo-old-posts-to-quarto",
+    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#convert-hugo-old-posts-to-quarto",
+    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#convert-hugo-old-posts-to-quarto",
     "title": "Migrate Blog from Hugo to Quarto",
-    "section": "Hugo old posts to quarto",
-    "text": "Hugo old posts to quarto\nI copied all my posts content from hugo to quarto. Than i ran nbdev_migrate –path posts/ I changed manually files names from markdown to qmd. In the markdown section i check that all variables are correct. Than all images link’s were changed from hugo format to qmd “”.  The final hceck for all altered been made is to run quarto preview and check that all posts are displayed correctly.\nquarto preview"
+    "section": "Convert Hugo old posts to quarto",
+    "text": "Convert Hugo old posts to quarto\nI copied all my posts content from hugo to quarto. Than i ran nbdev_migrate –path posts/ I changed manually files names from markdown to qmd. In the markdown section i check that all variables are correct. Than all images link’s were changed from hugo format to qmd “”.  The final hceck for all altered been made is to run quarto preview and check that all posts are displayed correctly.\nquarto preview"
   },
   {
     "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#update-all-files-on-github",
     "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#update-all-files-on-github",
     "title": "Migrate Blog from Hugo to Quarto",
-    "section": "update all files on github",
-    "text": "update all files on github\nto update files on github still have to use git push main as the main branch is still the default branch and pointed to the remote main branch.\ngit add .\ngit commit -m \"update blog\"\ngit push"
+    "section": "Update all files on Github",
+    "text": "Update all files on Github\nTo update files on github still have to use git push main as the main branch is still the default branch and pointed to the remote main branch.\ngit add .\ngit commit -m \"update blog\"\ngit push"
   },
   {
     "objectID": "blog/posts/2023-11-22-RNA-seq-RSV/index.html",

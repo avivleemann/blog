@@ -190,14 +190,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This blog was created using Hugo.<br> I decided to migrate to quarto as it is easier to use, and I can use Jupyter notebooks to create blog posts.<br> As I found it easier to use notebooks to create blog posts, I decided to migrate to quarto.<br> In the process, I used nbdev and quarto to update my old blog posts and create new content.<br> nbdev and quarto can also be used to create and maintain a package.<br> Example: I created a small package called <a href="https://avivleemann.github.io/volcanoPlot/">volcanoPlot</a>.</p>
 <p><img src="thumbnail.jpg" class="img-fluid"></p>
 <section id="install-nbdev-and-quarto" class="level2">
-<h2 class="anchored" data-anchor-id="install-nbdev-and-quarto">install nbdev and quarto</h2>
+<h2 class="anchored" data-anchor-id="install-nbdev-and-quarto">Install nbdev and quarto</h2>
 <p>The first step is to install nbdev. I used the following guide: <a href="https://nbdev.fast.ai/tutorial.html">End-To-End Walkthrough</a>. <br> i’m using micromamba to manage my conda environments.<br> in my jupyter environment i ran the following commands:<br></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-c</span> fastai <span class="at">-y</span> nbdev</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_install_quarto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="create-a-new-nbdev-project" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-new-nbdev-project">create a new nbdev project</h2>
-<p>I then created a new repository on github, activated gh-pages and cloned it to my local machine.<br> the next step is to create a new nbdev project, and quarto docs.</p>
+<section id="new-nbdev-project" class="level2">
+<h2 class="anchored" data-anchor-id="new-nbdev-project">New nbdev Project</h2>
+<p>I then created a new repository on github, activated gh-pages and cloned it to my local machine.<br> The next step is to create a new nbdev project, and quarto docs.</p>
 <p><br>Folder structure<br></p>
 <p>Below is an overview of the general folder structure for a blog within a nbdev site:<br></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nbs/blog</span>
@@ -213,8 +213,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        └── ...</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="changes-for-blog-insted-of-package" class="level2">
-<h2 class="anchored" data-anchor-id="changes-for-blog-insted-of-package">Changes for blog insted of package:</h2>
+<section id="the-changes-for-blog-insted-of-package" class="level2">
+<h2 class="anchored" data-anchor-id="the-changes-for-blog-insted-of-package">The changes for blog insted of package:</h2>
 <p>In MANIFEST.in i changed the following line:<br></p>
 <p>include README.md -&gt; exclude README.md<br></p>
 <p>To exclude the README.md file from the blog.<br></p>
@@ -223,22 +223,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Every blog post could be written in a notebook, or markdown file.<br> When using a notebook, the notebook should be converted to qmd before committing to git, and publishing to the blog.<br> Example:<br></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert blog/posts/2023-11-22-RNA-seq-RSV/RNA-seq.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="create-a-new-blog-post" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-new-blog-post">create a new blog post</h2>
-<p>quatro publsih gh-pages will create a new branch called gh-pages, and push the site to that branch.<br> on github, i changed the settings to use gh-pages as the source for the site.<br></p>
-<p>incase i want to freeze the posts rendered in the site, i can use _metadata.yml file for each post folder. <br> changing the following line: “freeze: false -&gt; freeze: true.”<br></p>
-<p>to publish the site with gh-pages, i used the following command from nbs folder:<br></p>
+<section id="add-new-post" class="level2">
+<h2 class="anchored" data-anchor-id="add-new-post">Add New Post</h2>
+<p>Quatro publsih gh-pages will create a new branch called gh-pages, and push the site to that branch.<br> On github, i changed the settings to use gh-pages as the source for the site.<br></p>
+<p>Incase i want to freeze the posts rendered in the site, i can use _metadata.yml file for each post folder. <br> Change the following line: “freeze: false -&gt; freeze: true.”<br></p>
+<p>To publish the site with gh-pages, i used the following command from nbs folder:<br></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> nbs/</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="hugo-old-posts-to-quarto" class="level2">
-<h2 class="anchored" data-anchor-id="hugo-old-posts-to-quarto">Hugo old posts to quarto</h2>
+<section id="convert-hugo-old-posts-to-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="convert-hugo-old-posts-to-quarto">Convert Hugo old posts to quarto</h2>
 <p>I copied all my posts content from hugo to quarto.<br> Than i ran nbdev_migrate –path posts/<br> I changed manually files names from markdown to qmd.<br> In the markdown section i check that all variables are correct.<br> Than all images link’s were changed from hugo format to qmd “<img src="path/to/image.png" class="img-fluid">”. <br> The final hceck for all altered been made is to run quarto preview and check that all posts are displayed correctly.<br></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="update-all-files-on-github" class="level2">
-<h2 class="anchored" data-anchor-id="update-all-files-on-github">update all files on github</h2>
-<p>to update files on github still have to use git push main as the main branch is still the default branch and pointed to the remote main branch.</p>
+<h2 class="anchored" data-anchor-id="update-all-files-on-github">Update all files on Github</h2>
+<p>To update files on github still have to use git push main as the main branch is still the default branch and pointed to the remote main branch.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"update blog"</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -250,6 +250,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://quarto.org/docs/websites/website-blog.html">https://quarto.org/docs/websites/website-blog.html</a></li>
 <li><a href="hugo-to-quarto-migration">https://www.andreashandel.com/posts/2022-10-01-hugo-to-quarto-migration/</a></li>
 <li><a href="Migrating from Hugo to Quarto by Lucy D’Agostino McGowan">https://livefreeordichotomize.com/posts/2022-09-19-migrating-from-hugo-to-quarto/</a></li>
+<li><a href="Building a blog with Quarto">https://ivelasq.quarto.pub/building-a-blog-with-quarto/</a></li>
+<li><a href="quarto-tip-a-day">https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/</a></li>
+<li><a href="get-started-quarto">https://github.com/rstudio-conf-2022/get-started-quarto</a></li>
 </ul>
 
 
