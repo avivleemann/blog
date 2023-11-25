@@ -39,18 +39,22 @@ font-style: inherit;">nbdev_install_quarto</span></span></code></pre></div>
 <p>I then created a new repository on github, activated gh-pages and cloned it to my local machine.<br> The next step is to create a new nbdev project, and quarto docs.</p>
 <p><br>Folder structure<br></p>
 <p>Below is an overview of the general folder structure for a blog within a nbdev site:<br></p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1">nbs/blog</span>
-<span id="cb2-2">├── index.qmd</span>
-<span id="cb2-3">└── posts</span>
-<span id="cb2-4">    ├── 2022-07-28-nbdev2</span>
-<span id="cb2-5">    │   ├── cover.png</span>
-<span id="cb2-6">    │   ├── index.qmd</span>
-<span id="cb2-7">    │   ├── ...</span>
-<span id="cb2-8">    └── 2022-08-25-jupyter-git</span>
-<span id="cb2-9">        ├── friendly-conflict.png</span>
-<span id="cb2-10">        ├── index.qmd</span>
-<span id="cb2-11">        └── ...</span>
-<span id="cb2-12">    ...</span></code></pre></div>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1">nbs</span>
+<span id="cb2-2"> ├──_quarto.yml</span>
+<span id="cb2-3"> ├──_metadata.yml</span>
+<span id="cb2-4"> ├──styles.css</span>
+<span id="cb2-5"> └──blog</span>
+<span id="cb2-6">    ├── index.qmd</span>
+<span id="cb2-7">    └── posts</span>
+<span id="cb2-8">        ├── 2022-07-28-nbdev2</span>
+<span id="cb2-9">        │   ├── cover.png</span>
+<span id="cb2-10">        │   ├── index.qmd</span>
+<span id="cb2-11">        │   ├── ...</span>
+<span id="cb2-12">        └── 2022-08-25-jupyter-git</span>
+<span id="cb2-13">            ├── friendly-conflict.png</span>
+<span id="cb2-14">            ├── index.qmd</span>
+<span id="cb2-15">            └── ...</span>
+<span id="cb2-16">    ...</span></code></pre></div>
 </section>
 <section id="the-changes-for-blog-insted-of-package" class="level2">
 <h2 class="anchored" data-anchor-id="the-changes-for-blog-insted-of-package">The changes for blog insted of package:</h2>
@@ -2657,16 +2661,13 @@ font-style: inherit;">'log10p'</span>)</span></code></pre></div>
   <pubDate>Sat, 18 Nov 2023 22:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>miR-432-5p</title>
+  <title>Enrichmet analysis: hsa-miR-432-5p targets</title>
   <link>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index.html</link>
   <description><![CDATA[ 
 
 
 
-<section id="enrichmet-analysis-hsa-mir-432-5p-targets" class="level2">
-<h2 class="anchored" data-anchor-id="enrichmet-analysis-hsa-mir-432-5p-targets">Enrichmet analysis: hsa-miR-432-5p targets</h2>
 <p>enrichment analysis purpose is to check if there are: pathways, molecular function, biological process &amp; cellular components that is connected or related to this bio-marker target.</p>
-</section>
 <section id="libreris" class="level2">
 <h2 class="anchored" data-anchor-id="libreris">Libreris</h2>
 <p>pacman library purpose is to load multiple libraries from a vector</p>
@@ -3170,16 +3171,13 @@ font-style: inherit;">6</span>]</span></code></pre></div>
   <pubDate>Thu, 09 Mar 2023 22:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>miR-486-3p</title>
+  <title>Enrichmet analysis: hsa-miR-486-3p targets</title>
   <link>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-486-3p/index.html</link>
   <description><![CDATA[ 
 
 
 
-<section id="enrichmet-analysis-hsa-mir-486-3p-targets" class="level2">
-<h2 class="anchored" data-anchor-id="enrichmet-analysis-hsa-mir-486-3p-targets">Enrichmet analysis: hsa-miR-486-3p targets</h2>
 <p>enrichment analysis purpose is to check if there are: pathways, molecular function, biological process &amp; cellular components that is connected or related to this bio-marker target.</p>
-</section>
 <section id="libreris" class="level2">
 <h2 class="anchored" data-anchor-id="libreris">Libreris</h2>
 <p>pacman library purpose is to load multiple libraries from a vector</p>
