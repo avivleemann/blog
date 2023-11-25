@@ -37,17 +37,21 @@ The next step is to create a new nbdev project, and quarto docs.
 Below is an overview of the general folder structure for a blog within a nbdev site:</br>
 
 ```markdown
-nbs/blog
-├── index.qmd
-└── posts
-    ├── 2022-07-28-nbdev2
-    │   ├── cover.png
-    │   ├── index.qmd
-    │   ├── ...
-    └── 2022-08-25-jupyter-git
-        ├── friendly-conflict.png
-        ├── index.qmd
-        └── ...
+nbs
+ ├──_quarto.yml
+ ├──_metadata.yml
+ ├──styles.css
+ └──blog
+    ├── index.qmd
+    └── posts
+        ├── 2022-07-28-nbdev2
+        │   ├── cover.png
+        │   ├── index.qmd
+        │   ├── ...
+        └── 2022-08-25-jupyter-git
+            ├── friendly-conflict.png
+            ├── index.qmd
+            └── ...
     ...
 ```
 ## The changes for blog insted of package:

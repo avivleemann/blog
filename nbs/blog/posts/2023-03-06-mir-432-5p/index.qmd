@@ -1,5 +1,5 @@
 ---
-title: 'miR-432-5p'
+title: 'Enrichmet analysis: hsa-miR-432-5p targets'
 date: '2023-03-10'
 slug: 'miR-432-5p'
 subtitle: ''
@@ -9,7 +9,7 @@ projects: ['Enrichment','miR-432-5p']
 toc: true
 ---
 
-## Enrichmet analysis: hsa-miR-432-5p targets
+
 
 enrichment analysis purpose is to check if there are:
 pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target.
