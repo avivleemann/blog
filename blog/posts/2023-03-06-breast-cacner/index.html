@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2023-03-06">
 
-<title>Aviv Leemann’s Blog - Breast cancer</title>
+<title>blog - Breast cancer</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -97,11 +97,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Aviv Leemann’s Blog - Breast cancer">
+<meta property="og:title" content="blog - Breast cancer">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://avivleemann.github.io/blog/blog/posts/2023-03-06-breast-cacner/index_files/figure-html/feature scatter-1.jpeg">
-<meta property="og:site-name" content="Aviv Leemann's Blog">
-<meta name="twitter:title" content="Aviv Leemann’s Blog - Breast cancer">
+<meta property="og:site-name" content="blog">
+<meta name="twitter:title" content="blog - Breast cancer">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://avivleemann.github.io/blog/blog/posts/2023-03-06-breast-cacner/index_files/figure-html/feature scatter-1.jpeg">
 <meta name="twitter:card" content="summary_large_image">
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../../index.html">
-    <span class="navbar-title">Aviv Leemann’s Blog</span>
+    <span class="navbar-title">blog</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -176,6 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#cancer-subset" id="toc-cancer-subset" class="nav-link" data-scroll-target="#cancer-subset">cancer subset</a></li>
   <li><a href="#umap-tsne-cancer-cells" id="toc-umap-tsne-cancer-cells" class="nav-link" data-scroll-target="#umap-tsne-cancer-cells">Umap &amp; Tsne Cancer Cells</a></li>
   <li><a href="#find-all-markers-by-cancer-idents" id="toc-find-all-markers-by-cancer-idents" class="nav-link" data-scroll-target="#find-all-markers-by-cancer-idents">Find all markers by cancer idents</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References:</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/avivleemann/blog/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -416,6 +417,13 @@ our lab found PALLD express in breast cancr, PALLD expression was examined betwe
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">DoHeatmap</span>(BCdata, <span class="at">features =</span> top10<span class="sc">$</span>gene) <span class="sc">+</span> <span class="fu">NoLegend</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="index_files/figure-html/markers by cancer-1.jpeg" class="img-fluid"></p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#saveRDS(BCdata_markers_normal_cell_call, file = "BCdata_markers_normal_cell_call.rds")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References:</h2>
+<ol type="1">
+<li><p><a href="Breast Cancer SCRNA-seq data">https://singlecell.broadinstitute.org/single_cell/study/SCP1039/a-single-cell-and-spatially-resolved-atlas-of-human-breast-cancers#study-summary</a> from single cell portal</p></li>
+<li><p><a href="seurat R package">https://github.com/satijalab/seurat</a> used v4.</p></li>
+</ol>
 
 
 </section>

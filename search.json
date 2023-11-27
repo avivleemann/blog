@@ -77,6 +77,13 @@
     "text": "Save RDS\nto save rds run this command\nsaveRDS(glioblastoma_seurat, file = “C:/Users/user/Desktop/D/glioblastoma/glioblastoma_seurat.rds”)"
   },
   {
+    "objectID": "blog/posts/2023-03-06-glioblastoma/index.html#references",
+    "href": "blog/posts/2023-03-06-glioblastoma/index.html#references",
+    "title": "Glioblastoma - GBM",
+    "section": "References:",
+    "text": "References:\n\nhttps://singlecell.broadinstitute.org/single_cell/study/SCP393/single-cell-rna-seq-of-adult-and-pediatric-glioblastoma#study-summary Glioblastome(GBM) from single cell portal.\nhttps://github.com/satijalab/seurat used v4."
+  },
+  {
     "objectID": "blog/posts/2023-03-06-astrocytoma/index.html",
     "href": "blog/posts/2023-03-06-astrocytoma/index.html",
     "title": "Atrocytoma",
@@ -145,6 +152,13 @@
     "title": "Atrocytoma",
     "section": "Violin Plot",
     "text": "Violin Plot\nexpression of palld in malignant cell is significant\nmy_comp_astro &lt;-  list(c(\"Malignant\",\"Microglia/Macrophage\"),c(\"Oligodendrocytes\",\"Malignant\"),c(\"T-cells\",\"Malignant\"),\n                 c(\"T-cells\",\"Oligodendrocytes\"),c(\"T-cells\",\"Microglia/Macrophage\"),c(\"Microglia/Macrophage\",\"Oligodendrocytes\"))\n\nVlnPlot(astrocytoma_seurat_2, features = \"PALLD\", group.by = \"CLUSTER\", sort = FALSE,pt.size = 0) + \n  stat_compare_means(method = 'kruskal.test',label.y =13)+ ylim(0,13)+xlab(\"Cell Type\")+\n  stat_summary(fun.data = \"mean_sdl\",  fun.args = list(mult = 1), geom = \"pointrange\", color = \"red\",size=0.1)+\n  geom_signif(comparisons = my_comp_astro,map_signif_level = TRUE, y_position=c(9,7,8,9,10,11,12))+NoLegend()+\n  theme(axis.text.x = element_text(angle = 25))"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-astrocytoma/index.html#references",
+    "href": "blog/posts/2023-03-06-astrocytoma/index.html#references",
+    "title": "Atrocytoma",
+    "section": "References:",
+    "text": "References:\n\nhttps://singlecell.broadinstitute.org/single_cell/study/SCP50/single-cell-rna-seq-analysis-of-astrocytoma#study-summary Astrocytma from single cell portal.\nhttps://github.com/satijalab/seurat used v4."
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html",
@@ -439,6 +453,13 @@
     "title": "Breast cancer",
     "section": "Find all markers by cancer idents",
     "text": "Find all markers by cancer idents\nIdents(BCdata) &lt;- 'normal_cell_call'\n# BCdata_markers_normal_cell_call &lt;- FindAllMarkers(BCdata, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)\nBCdata_markers_normal_cell_call &lt;- readRDS('BCdata_markers_normal_cell_call.rds')\nBCdata_markers_normal_cell_call %&gt;%\n    group_by(cluster) %&gt;%\n    top_n(n = 10, wt = avg_log2FC) -&gt; top10\nDoHeatmap(BCdata, features = top10$gene) + NoLegend()\n\n#saveRDS(BCdata_markers_normal_cell_call, file = \"BCdata_markers_normal_cell_call.rds\")"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#references",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#references",
+    "title": "Breast cancer",
+    "section": "References:",
+    "text": "References:\n\nhttps://singlecell.broadinstitute.org/single_cell/study/SCP1039/a-single-cell-and-spatially-resolved-atlas-of-human-breast-cancers#study-summary from single cell portal\nhttps://github.com/satijalab/seurat used v4."
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html",
