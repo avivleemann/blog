@@ -34,7 +34,7 @@ The next step is to create a new nbdev project, and quarto docs.
 
 <br>Folder structure</br>
 
-Below is an overview of the general folder structure for a blog within a nbdev site:</br>
+Below is an overview of the general folder structure for a blog within a nbdev site 📁:</br>
 
 ```markdown
 nbs
@@ -116,7 +116,7 @@ git commit -m "update blog"
 git push
 ```
 
-# Resources:
+## Resources
 - [nbdev.fast.ai/tutorials/tutorial](https://nbdev.fast.ai/tutorials/tutorial.html)
 - [quarto.org/docs/websites/website-blog](https://quarto.org/docs/websites/website-blog.html)
 - [hugo-to-quarto-migration](https://www.andreashandel.com/posts/2022-10-01-hugo-to-quarto-migration/)
