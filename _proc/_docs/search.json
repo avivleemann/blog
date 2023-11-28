@@ -1,0 +1,534 @@
+[
+  {
+    "objectID": "blog/posts/2023-03-06-glioblastoma/index.html",
+    "href": "blog/posts/2023-03-06-glioblastoma/index.html",
+    "title": "Glioblastoma - GBM",
+    "section": "",
+    "text": "glioblastoma data was obtained from single cell portal. single cell analysis executed with R program and Seurat package, Pallad expression was examined in glioblastoma data."
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-glioblastoma/index.html#scrna-seq-analysis---glioblasotma",
+    "href": "blog/posts/2023-03-06-glioblastoma/index.html#scrna-seq-analysis---glioblasotma",
+    "title": "Glioblastoma - GBM",
+    "section": "",
+    "text": "glioblastoma data was obtained from single cell portal. single cell analysis executed with R program and Seurat package, Pallad expression was examined in glioblastoma data."
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-glioblastoma/index.html#libreries",
+    "href": "blog/posts/2023-03-06-glioblastoma/index.html#libreries",
+    "title": "Glioblastoma - GBM",
+    "section": "Libreries",
+    "text": "Libreries\npacman library purpose is to load multiple libraries from a vector\nlabrvec &lt;- c(\"tidyverse\",\"ggplot2\",\"Seurat\", \"future\",\"stringr\",\n             \"readxl\",\"stats\",\"ggsignif\",\"reshape2\",\"ggpubr\")\n#stat_compare_means(test=\"kruskal.test\")\npacman::p_load(labrvec,install = TRUE,character.only = TRUE)\nlibrary(ggpubr)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-glioblastoma/index.html#files",
+    "href": "blog/posts/2023-03-06-glioblastoma/index.html#files",
+    "title": "Glioblastoma - GBM",
+    "section": "Files",
+    "text": "Files\nLoading relevant files, because i have already prepared the rds for plot i will load the rds file\nglioblastoma_seurat &lt;- readRDS(\"glioblastoma_seurat.rds\")\n\n# original files\n# glioblastoma_metadata &lt;- read.csv(file = \"IDHwt.GBM.Metadata.SS2.txt\",sep =\"\\t\",stringsAsFactors = FALSE)\n# \n# glioblastoma_expressed_matrix  &lt;- read.csv(\"IDHwtGBM.processed.SS2.logTPM.txt\" ,sep = \"\\t\")"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-glioblastoma/index.html#processing-data",
+    "href": "blog/posts/2023-03-06-glioblastoma/index.html#processing-data",
+    "title": "Glioblastoma - GBM",
+    "section": "Processing data",
+    "text": "Processing data\nediting features to work with Seurat package\nreading metadata looking & processing\nhead(glioblastoma_metadata)\n## data looking\n# glioblastoma_seurat &lt;- StashIdent(object = glioblastoma_seurat, save.name = \"old.ident\")\nIdents(glioblastoma_seurat)  &lt;-  \"CellAssignment\"\n# drop NA from the seurat object metadata\n# glioblastoma_seurat[[\"percent.mt\"]] &lt;- PercentageFeatureSet(object = glioblastoma_seurat, pattern = \"^MT-\")\n# reading metadata & processing metada:\n# \n# glioblastoma_metadata &lt;- glioblastoma_metadata[-1,]\n# row.names(glioblastoma_metadata) &lt;- pull(glioblastoma_metadata,\"NAME\" )\n# glioblastoma_metadata &lt;- glioblastoma_metadata[,-1]\n# glioblastoma_metadata$GBMType %&gt;% unique()\n# glioblastoma_metadata$CellAssignment %&gt;% unique()\n# \n# colnames(glioblastoma_metadata)\n\n# reading expression matrix processed\n# processing expression matrix\n# row.names(glioblastoma_expressed_matrix) &lt;- pull(glioblastoma_expressed_matrix,\"GENE\")\n# glioblastoma_expressed_matrix &lt;- glioblastoma_expressed_matrix[,-1]\n# \n# colnames(glioblastoma_expressed_matrix) &lt;-str_replace_all(colnames(glioblastoma_expressed_matrix),\"\\\\.\",\"-\")\n\n# creating seurat object :\n# glioblastoma_seurat &lt;- CreateSeuratObject(\n# glioblastoma_expressed_matrix,\n# project = \"glioblastoma\",\n# assay = \"RNA\",\n# min.cells = 0,\n# min.features = 0,\n# names.field = 1,\n# names.delim = \"_\",\n# meta.data = glioblastoma_metadata,\n# )\n\n#SubsetBCmatrix &lt;- GetAssayData(object = BCdata, assay.type = \"RNA\", slot = \"counts\") \nplot1 &lt;- FeatureScatter(glioblastoma_seurat, feature1 = \"nCount_RNA\", feature2 = \"percent.mt\")\nplot2 &lt;- FeatureScatter(glioblastoma_seurat, feature1 = \"nCount_RNA\", feature2 = \"nFeature_RNA\")\nplot2\n\nplot1\n\nVlnPlot(glioblastoma_seurat, features = c(\"nFeature_RNA\", \"nCount_RNA\",\"percent.mt\"), ncol = 3,pt.size = 0)\n\n### FeatureScatter(object = seurat, feature1 = ?, feature2 = ?)  ## could be genes or meta data columns"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-glioblastoma/index.html#variable-features-plot",
+    "href": "blog/posts/2023-03-06-glioblastoma/index.html#variable-features-plot",
+    "title": "Glioblastoma - GBM",
+    "section": "Variable Features plot",
+    "text": "Variable Features plot\nnormalize data will be for new data\nglioblastoma_seurat &lt;- NormalizeData(glioblastoma_seurat)\nVariable gene selection\nglioblastoma_seurat &lt;- FindVariableFeatures(glioblastoma_seurat, selection.method = “vst”, nfeatures = 2000)\nscale data:\nglioblastoma_seurat &lt;- ScaleData(glioblastoma_seurat)\nglioblastoma_seurat &lt;- RunPCA(glioblastoma_seurat, features = VariableFeatures(object = glioblastoma_seurat))\n## what are our variable genes ?\ntop10 &lt;- head(VariableFeatures(glioblastoma_seurat), 5)\ntop10\n## [1] \"RGS1\"    \"VIM\"     \"HLA-DRA\" \"CD74\"    \"CCL4\"\n# plot variable features with and without labels\nplot1 &lt;- VariableFeaturePlot(glioblastoma_seurat)\nplot2 &lt;- LabelPoints(plot = plot1, points = top10, repel = TRUE)\nplot1 + plot2"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-glioblastoma/index.html#dim-pca-plot-dim-heatmap",
+    "href": "blog/posts/2023-03-06-glioblastoma/index.html#dim-pca-plot-dim-heatmap",
+    "title": "Glioblastoma - GBM",
+    "section": "Dim-PCA plot, Dim-Heatmap",
+    "text": "Dim-PCA plot, Dim-Heatmap\nprerform PCA on the scaled data. By default, only the previously determined variable features are used as input, but can be defined using features argument if you wish to choose a different subset.\nglioblastoma_seurat &lt;- RunPCA(glioblastoma_seurat, features = VariableFeatures(object = glioblastoma_seurat))\nVizDimLoadings(glioblastoma_seurat, dims = 1:2, reduction = \"pca\")\n\nDimPlot(glioblastoma_seurat, reduction = \"pca\")\n\nDimHeatmap(glioblastoma_seurat, dims = 1, cells = 500, balanced = TRUE)\n\nDimHeatmap(glioblastoma_seurat, dims = 1:9, cells = 500, balanced = TRUE)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-glioblastoma/index.html#jackstraw-plot-elbowplot",
+    "href": "blog/posts/2023-03-06-glioblastoma/index.html#jackstraw-plot-elbowplot",
+    "title": "Glioblastoma - GBM",
+    "section": "JackStraw Plot & ElbowPlot",
+    "text": "JackStraw Plot & ElbowPlot\napproximate techniques such as those implemented in ElbowPlot() can be used to reducecomputation time\nglioblastoma_seurat &lt;- JackStraw(glioblastoma_seurat, num.replicate = 100)\nglioblastoma_seurat &lt;- ScoreJackStraw(glioblastoma_seurat, dims = 1:20)\nJackStrawPlot(glioblastoma_seurat, dims = 1:15)\n\nElbowPlot(glioblastoma_seurat)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-glioblastoma/index.html#dimplot-tsne-umap",
+    "href": "blog/posts/2023-03-06-glioblastoma/index.html#dimplot-tsne-umap",
+    "title": "Glioblastoma - GBM",
+    "section": "DimPlot tsne & Umap",
+    "text": "DimPlot tsne & Umap\nglioblastoma_seurat &lt;- FindNeighbors(glioblastoma_seurat, dims = 1:10)\nglioblastoma_seurat &lt;- FindClusters(glioblastoma_seurat, resolution = 0.5\nglioblastoma_seurat &lt;- RunUMAP(glioblastoma_seurat, dims = 1:10)\nglioblastoma_seurat &lt;- RunTSNE(glioblastoma_seurat, dims = 1:10)\n# umap\nDimPlot(glioblastoma_seurat, reduction = \"umap\",group.by = \"CellAssignment\", label = TRUE)\n\n#tsne\nDimPlot(glioblastoma_seurat, reduction = \"tsne\",group.by = \"CellAssignment\", label = TRUE)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-glioblastoma/index.html#vlnplot",
+    "href": "blog/posts/2023-03-06-glioblastoma/index.html#vlnplot",
+    "title": "Glioblastoma - GBM",
+    "section": "vlnPlot",
+    "text": "vlnPlot\nviolin plot expression Palld between cell types\n# violin plot\n# comprasion\nmy_comp &lt;-  list(c(\"Malignant\",\"Macrophage\"),c(\"Oligodendrocyte\",\"Malignant\"),c(\"T-cell\",\"Malignant\"),\n                 c(\"T-cell\",\"Oligodendrocyte\"),c(\"T-cell\",\"Macrophage\"),c(\"Macrophage\",\"Oligodendrocyte\"))\n\nVlnPlot(glioblastoma_seurat, features = \"PALLD\", sort = FALSE,group.by = \"CellAssignment\", pt.size = 0) +\n           theme(title = element_text(size=10),axis.title = element_text(size=8),axis.text.x=element_text(size=6),axis.text.y=element_text(size=8))+\n           NoLegend()+ ylim(0,6.5)\n\n# violint plot\nVlnPlot(glioblastoma_seurat, features = \"PALLD\", sort = FALSE,group.by = \"CellAssignment\", pt.size = 0) +\n           theme(title = element_text(size=10),axis.title = element_text(size=8),axis.text.x=element_text(size=6),axis.text.y=element_text(size=8))+\n           NoLegend()\n\n# violin plot multiple se\nVlnPlot(glioblastoma_seurat, features = \"PALLD\", group.by = \"CellAssignment\", sort = FALSE,pt.size = 0) + \n  stat_compare_means(method = 'kruskal.test',label.y =6)+ ylim(0,6.5)+xlab(\"Cell Type\")+\n  stat_summary(fun.data = \"mean_sdl\",  fun.args = list(mult = 1), geom = \"pointrange\", color = \"red\",size=0.1)+\n  geom_signif(comparisons = my_comp,map_signif_level = TRUE, y_position=c(2.5,3,3.5,4,4.5,5))+NoLegend()+\n  theme(axis.text.x = element_text(angle = 25))"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-glioblastoma/index.html#save-rds",
+    "href": "blog/posts/2023-03-06-glioblastoma/index.html#save-rds",
+    "title": "Glioblastoma - GBM",
+    "section": "Save RDS",
+    "text": "Save RDS\nto save rds run this command\nsaveRDS(glioblastoma_seurat, file = “C:/Users/user/Desktop/D/glioblastoma/glioblastoma_seurat.rds”)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-glioblastoma/index.html#references",
+    "href": "blog/posts/2023-03-06-glioblastoma/index.html#references",
+    "title": "Glioblastoma - GBM",
+    "section": "References:",
+    "text": "References:\n\nSCRNA-seq data Glioblastome(GBM) from single cell portal.\nseurat R package used v4."
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-astrocytoma/index.html",
+    "href": "blog/posts/2023-03-06-astrocytoma/index.html",
+    "title": "Atrocytoma",
+    "section": "",
+    "text": "astrocytoma data was obtained from single cell portal. single cell analysis executed with R program and Seurat package, Pallad expression was examined in astrocytoma data."
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-astrocytoma/index.html#scrna-seq-analysis---astrocytoma",
+    "href": "blog/posts/2023-03-06-astrocytoma/index.html#scrna-seq-analysis---astrocytoma",
+    "title": "Atrocytoma",
+    "section": "",
+    "text": "astrocytoma data was obtained from single cell portal. single cell analysis executed with R program and Seurat package, Pallad expression was examined in astrocytoma data."
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-astrocytoma/index.html#libreries",
+    "href": "blog/posts/2023-03-06-astrocytoma/index.html#libreries",
+    "title": "Atrocytoma",
+    "section": "Libreries",
+    "text": "Libreries\npacman library purpose is to load multiple libraries from a vector\nlibrary(pacman)\nlabrvec &lt;- c(\"tidyverse\",\"ggplot2\",\"ggpubr\",\n             \"Seurat\",\"future\",\"fsthet\",\"patchwork\",\"stringr\",\"readxl\",\"stats\")\n\npacman::p_load(labrvec,install = TRUE,character.only = TRUE)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-astrocytoma/index.html#files",
+    "href": "blog/posts/2023-03-06-astrocytoma/index.html#files",
+    "title": "Atrocytoma",
+    "section": "Files",
+    "text": "Files\nloading RDS file after analysis, instead of building the file\n# load RDS file\nastrocytoma_seurat &lt;- readRDS(\"astrocytomaWmetadata.rds\")\n\n# seg genes palld astrocytoma \n#seg.genes.csv &lt;- read.delim2(\"hsa_seek_palld_astro_exp.txt\",  sep=\"\\t\",header = F,  stringsAsFactors = F,check.names = FALSE)\n# # reading metada file\n# astrocytoma.metadata&lt;-read.csv(file = \"IDH_A_cell_type_assignment_portal_v2.txt\",sep =\"\\t\" )\n# # reading count matrix file\n# astrocytoma.matrix &lt;- read.csv(file = \"IDH_A_processed_data_portal.txt\",sep =\"\\t\",check.names = FALSE)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-astrocytoma/index.html#processing-data",
+    "href": "blog/posts/2023-03-06-astrocytoma/index.html#processing-data",
+    "title": "Atrocytoma",
+    "section": "Processing Data",
+    "text": "Processing Data\nediting features to work with Seurat package\nreading metadata looking & processing\nhead(astrocytoma_metadata)\n# seg.genes.csv &lt;- seg.genes.csv[5:nrow(seg.genes.csv),]\n# #head(seg.genes.csv)\n# colnames(seg.genes.csv) &lt;-  seg.genes.csv[1,]\n# rownames(seg.genes.csv) &lt;- seg.genes.csv$Rank\n# seg.genes.csv &lt;- seg.genes.csv[-1,-1]\n# # adding padj\n# seg.genes.csv$Padj &lt;- p.adjust(seg.genes.csv$`P-Value`,method = \"fdr\")\n# seg.padj.genes &lt;- filter(seg.genes.csv,Padj &lt; 0.05)\n# rownames(seg.genes.csv) &lt;- seg.genes.csv[,2]\n# colnames(seg.genes.csv) &lt;- seg.genes.csv[2,]\n# # changing the row names to genes and deliting the column\n# rownames(astrocytoma.matrix) &lt;-  astrocytoma.matrix$Gene\n# astrocytoma.matrix &lt;-  astrocytoma.matrix[,-1]\n# \n# ## cleaning duplicate names of cells\n# astrocytoma.metadata[which(duplicated(astrocytoma.metadata$NAME)),]\n# astrocytoma.metadata &lt;-  astrocytoma.metadata[-1106,]\n# # removing the first row in the meta data dont relevent\n# astrocytoma.metadata &lt;- astrocytoma.metadata[-1,]\n# # changing metadata row names to cells names\n# rownames(astrocytoma.metadata) &lt;- astrocytoma.metadata$NAME\n# # removing the column of name from the metadata\n# astrocytoma.metadata &lt;- astrocytoma.metadata[,-1]\n# # looking at the edited metadata\n# dim(astrocytoma.metadata)\n# dim(astrocytoma.matrix)\n# \n# row.names(astrocytoma.metadata) &lt;-  remove.spaces(row.names(astrocytoma.metadata) ) \n# row.names(astrocytoma.metadata) &lt;- str_replace_all(row.names(astrocytoma.metadata) ,\"[\\\\.-]\" , \"_\")\n# colnames(astrocytoma.matrix)&lt;- str_replace_all(colnames(astrocytoma.matrix), \"[\\\\.-]\", \"_\")\n# # setdiff(x = row.names(astrocytoma.metadata),y = colnames(astrocytoma.matrix))\n# # setdiff(x =colnames(astrocytoma.matrix),y = row.names(astrocytoma.metadata) )\n# # creating saeurat object without metadata for the workflow and avoiding unspesified cells \n# # thos cells will apear in the metadata as NA\n# astrocytoma_seurat &lt;- CreateSeuratObject(\n#   astrocytoma.matrix,\n#   project = \"astrocytomaProject\",\n#   assay = \"RNA\",\n#   min.cells = 0,\n#   min.features = 0,\n#   names.field = 1,\n#   names.delim = \"_\",\n#   meta.data = astrocytoma.metadata ,\n# )\n# # row.names(astrocytoma_seurat)\n# # table(astrocytoma_seurat@meta.data$CLUSTER)\n# #sammury seurat object\n# #astrocytoma_seurat\n# Idents(astrocytoma_seurat) &lt;- \"astrocytoma\"\nIdents(astrocytoma_seurat) &lt;- \"CLUSTER\"\n# looking for mitochondrial DNA\n# astrocytoma_seurat[[\"percent.mt\"]] &lt;- PercentageFeatureSet(object = astrocytoma_seurat, pattern = \"^MT-\")\n#plotting the available data of Ncount RNA mitochondrial dna and nfeature rna\nplot1 &lt;- FeatureScatter(astrocytoma_seurat, feature1 = \"nCount_RNA\", feature2 = \"percent.mt\")\nplot2 &lt;- FeatureScatter(astrocytoma_seurat, feature1 = \"nCount_RNA\", feature2 = \"nFeature_RNA\")\nplot2 \n\nplot1\n\n# violin plot for each\nVlnPlot(astrocytoma_seurat, features = c(\"nFeature_RNA\", \"nCount_RNA\",\"percent.mt\"), ncol = 3,pt.size = 0)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-astrocytoma/index.html#feature-plot",
+    "href": "blog/posts/2023-03-06-astrocytoma/index.html#feature-plot",
+    "title": "Atrocytoma",
+    "section": "Feature-plot",
+    "text": "Feature-plot\nmost significant genes\n# # theshold where chosen by the violin plot above and its seems there isnt mitochondrial in data \n# astrocytoma_seurat &lt;- subset(astrocytoma_seurat, subset = nFeature_RNA &gt; 2500 & nFeature_RNA &lt; 10000) \n# # normalize data\n# #astrocytoma_seurat &lt;- NormalizeData(astrocytoma_seurat)\n# ## Variable gene selection ----\n# astrocytoma_seurat &lt;- FindVariableFeatures(astrocytoma_seurat, selection.method = \"vst\", nfeatures = 2000)\n\ntop10 &lt;- head(VariableFeatures(astrocytoma_seurat), 10)\n# top10\n# plot variable features with and without labels\nplot1 &lt;- VariableFeaturePlot(astrocytoma_seurat)\nplot2 &lt;- LabelPoints(plot = plot1, points = top10, repel = TRUE)\nplot1 + plot2"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-astrocytoma/index.html#dimplot-heatmap",
+    "href": "blog/posts/2023-03-06-astrocytoma/index.html#dimplot-heatmap",
+    "title": "Atrocytoma",
+    "section": "Dimplot & heatmap",
+    "text": "Dimplot & heatmap\nastrocytoma_seurat &lt;- ScaleData(astrocytoma_seurat)\nastrocytoma_seurat &lt;- RunPCA(astrocytoma_seurat, features = VariableFeatures(object = astrocytoma_seurat))\nVizDimLoadings(astrocytoma_seurat, dims = 1:2, reduction = \"pca\")\n\nDimPlot(astrocytoma_seurat, reduction = \"pca\")\n\nDimHeatmap(astrocytoma_seurat, dims = 1, cells = 500, balanced = TRUE)\n\nDimHeatmap(astrocytoma_seurat, dims = 1:9, cells = 500, balanced = TRUE)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-astrocytoma/index.html#elbowplot-jackstraw-plot",
+    "href": "blog/posts/2023-03-06-astrocytoma/index.html#elbowplot-jackstraw-plot",
+    "title": "Atrocytoma",
+    "section": "Elbowplot & Jackstraw plot",
+    "text": "Elbowplot & Jackstraw plot\nastrocytoma_seurat &lt;- JackStraw(astrocytoma_seurat, num.replicate = 100)\nastrocytoma_seurat &lt;- ScoreJackStraw(astrocytoma_seurat, dims = 1:20)\nJackStrawPlot(astrocytoma_seurat,dims = 1:20)\n\nElbowPlot(astrocytoma_seurat)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-astrocytoma/index.html#umap-tsne-plot",
+    "href": "blog/posts/2023-03-06-astrocytoma/index.html#umap-tsne-plot",
+    "title": "Atrocytoma",
+    "section": "Umap & Tsne plot",
+    "text": "Umap & Tsne plot\nunspecified in this case was ignored\n# astrocytoma_seurat &lt;- FindNeighbors(astrocytoma_seurat, dims = 1:10)\n# astrocytoma_seurat &lt;- FindClusters(astrocytoma_seurat, resolution = 0.5)\n# Look at cluster IDs of the first 5 cells\n# head(Idents(astrocytoma_seurat), 15)\n# astrocytoma_seurat &lt;- RunUMAP(astrocytoma_seurat, dims = 1:10)\nastrocytoma_seurat_2 &lt;- subset(astrocytoma_seurat,subset = CLUSTER !=\"unspecified\" )\nmy_levels &lt;- c(\"T-cells\",\"Oligodendrocytes\" ,\"Malignant\",\"Microglia/Macrophage\")\nIdents(astrocytoma_seurat_2) &lt;- factor(Idents(astrocytoma_seurat_2), levels= )\n\nastrocytoma_seurat_2@meta.data$CLUSTER &lt;- factor(x = astrocytoma_seurat_2@meta.data$CLUSTER, levels = c(\"Microglia/Macrophage\",\"Malignant\",\"Oligodendrocytes\" ,\"T-cells\"))\nDimPlot(astrocytoma_seurat_2, reduction = \"umap\", label = TRUE,group.by = \"CLUSTER\") +ggtitle(\"CellAssignment\")\n\nDimPlot(astrocytoma_seurat_2, reduction = \"tsne\", label = TRUE,group.by = \"CLUSTER\") +ggtitle(\"CellAssignment\")\n\n# table(astrocytoma_seurat@meta.data$CLUSTER)\n# note that you can set `label = TRUE` or use the LabelClusters function to help label\n# individual clusters"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-astrocytoma/index.html#violin-plot",
+    "href": "blog/posts/2023-03-06-astrocytoma/index.html#violin-plot",
+    "title": "Atrocytoma",
+    "section": "Violin Plot",
+    "text": "Violin Plot\nexpression of palld in malignant cell is significant\nmy_comp_astro &lt;-  list(c(\"Malignant\",\"Microglia/Macrophage\"),c(\"Oligodendrocytes\",\"Malignant\"),c(\"T-cells\",\"Malignant\"),\n                 c(\"T-cells\",\"Oligodendrocytes\"),c(\"T-cells\",\"Microglia/Macrophage\"),c(\"Microglia/Macrophage\",\"Oligodendrocytes\"))\n\nVlnPlot(astrocytoma_seurat_2, features = \"PALLD\", group.by = \"CLUSTER\", sort = FALSE,pt.size = 0) + \n  stat_compare_means(method = 'kruskal.test',label.y =13)+ ylim(0,13)+xlab(\"Cell Type\")+\n  stat_summary(fun.data = \"mean_sdl\",  fun.args = list(mult = 1), geom = \"pointrange\", color = \"red\",size=0.1)+\n  geom_signif(comparisons = my_comp_astro,map_signif_level = TRUE, y_position=c(9,7,8,9,10,11,12))+NoLegend()+\n  theme(axis.text.x = element_text(angle = 25))"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-astrocytoma/index.html#references",
+    "href": "blog/posts/2023-03-06-astrocytoma/index.html#references",
+    "title": "Atrocytoma",
+    "section": "References:",
+    "text": "References:\n\nSCRNA-seq data Astrocytma from single cell portal.\nseurat R package used v4."
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html",
+    "href": "blog/posts/2023-03-06-mir-432-5p/index.html",
+    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "section": "",
+    "text": "enrichment analysis purpose is to check if there are: pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target."
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#libreris",
+    "href": "blog/posts/2023-03-06-mir-432-5p/index.html#libreris",
+    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "section": "Libreris",
+    "text": "Libreris\npacman library purpose is to load multiple libraries from a vector\nlibrary(pacman)\nlab &lt;-  c(\"GO.db\",\"GOstats\",\"cRegulome\",\"readxl\",\"ggplot2\",\"tidyverse\",\"R.utils\",\"MeSHDbi\",\"AnnotationHub\",\"KEGGREST\",\"AnnotationDbi\",\"org.Hs.eg.db\",\"clusterProfiler\",\"meshr\",\"pathview\",\"ReactomePA\",\"meshes\")\npacman::p_load(lab,install = FALSE,character.only = TRUE)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#files",
+    "href": "blog/posts/2023-03-06-mir-432-5p/index.html#files",
+    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "section": "Files",
+    "text": "Files\nloading miR targets files acquired from mirWalk\nmir432_5p_targets &lt;-read.csv(\"miRWalk_miRNA_Targets_432_5p_3UTR.csv\")\n# annotations_ahb &lt;- read.csv(\"annotations_ahb.csv\")"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#head",
+    "href": "blog/posts/2023-03-06-mir-432-5p/index.html#head",
+    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "section": "Head",
+    "text": "Head\nmir432_5p_targets %&gt;% head()\n##          mirnaid     refseqid genesymbol\n## 1 hsa-miR-432-5p NM_001353214        DYM\n## 2 hsa-miR-432-5p NM_001374442        DYM\n## 3 hsa-miR-432-5p NM_001291932    SEC14L2\n## 4 hsa-miR-432-5p NM_001301068       ARL1\n## 5 hsa-miR-432-5p    NM_003387      WIPF1\n## 6 hsa-miR-432-5p    NM_012215        OGA\n##                                                                                    duplex\n## 1 TCTTGGAGTAGGTCATTGGGTGG#CCACCCGGACCCCTCCAGC#..((((((..((((..(((((((#))))))))))).)))))).\n## 2 TCTTGGAGTAGGTCATTGGGTGG#CCACCCGGACCCCTCCAGC#..((((((..((((..(((((((#))))))))))).)))))).\n## 3 TCTTGGAGTAGGTCATTGGGTGG#ACCCAGGATTGTCTCCAAC#..((((((..((((.((((((..#))))))))))..)))))).\n## 4 TCTTGGAGTAGGTCATTGGGTGG#CACCCATTCCTACTTTAGT#..((((((((((....((((((.#))))))..)))))))))).\n## 5 TCTTGGAGTAGGTCATTGGGTGG#GCCTAATGACCCATTTCAC#...((((((.(((((((((((..#))))))))))).)))))).\n## 6   TCTTGGAGTAGGTCATTGGGTGG#TACCTAGTGACTTCCAAC#..(((((...((((((((((((.#))))))))))))))))).\n##   start  end  bindingp energy seed accessibility    au phylopstem phylopflank\n## 1  2491 2510 0.9500000  -24.3    1   0.005542395 0.441  0.0000000   0.0000000\n## 2  1756 1775 0.9500000  -24.3    1   0.005542395 0.441  0.0000000   0.0000000\n## 3  3555 3574 0.9529915  -21.4    1   0.002860247 0.456  0.0000000   0.0000000\n## 4  2116 2135 0.9538462  -22.2    1   0.232450300 0.603  1.2249763   0.8797262\n## 5  3702 3721 0.9538462  -22.9    0   0.053886420 0.647  2.1715973   2.1847662\n## 6  4641 4659 0.9538462  -21.3    0   0.048461950 0.588  0.9082432   1.0060216\n##          me number_of_pairings binding_region_length\n## 1 -8.224395                 17                    19\n## 2 -8.224395                 17                    19\n## 3 -7.991346                 16                    19\n## 4 -8.071470                 16                    19\n## 5 -7.757047                 17                    19\n## 6 -9.569532                 17                    18\n##   longest_consecutive_pairings position validated TargetScan miRDB\n## 1                           11     3UTR                    0     0\n## 2                           11     3UTR                    0     0\n## 3                           10     3UTR                    0     0\n## 4                           10     3UTR                    0     0\n## 5                           11     3UTR                    0     0\n## 6                           17     3UTR                    0     0\nmir432_5p_targets %&gt;% colnames()\n##  [1] \"mirnaid\"                      \"refseqid\"                    \n##  [3] \"genesymbol\"                   \"duplex\"                      \n##  [5] \"start\"                        \"end\"                         \n##  [7] \"bindingp\"                     \"energy\"                      \n##  [9] \"seed\"                         \"accessibility\"               \n## [11] \"au\"                           \"phylopstem\"                  \n## [13] \"phylopflank\"                  \"me\"                          \n## [15] \"number_of_pairings\"           \"binding_region_length\"       \n## [17] \"longest_consecutive_pairings\" \"position\"                    \n## [19] \"validated\"                    \"TargetScan\"                  \n## [21] \"miRDB\""
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#pre-processing",
+    "href": "blog/posts/2023-03-06-mir-432-5p/index.html#pre-processing",
+    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "section": "Pre-processing",
+    "text": "Pre-processing\ncolnames(mir432_5p_targets)[3] &lt;- \"SYMBOL\"\ncolnames(mir432_5p_targets)[1] &lt;- \"miR\"\ncolnames(mir432_5p_targets)[7] &lt;- \"score\"\nmaps the gene to ENTREZID\nmir432_5p_targets$ENTREZ = mapIds(org.Hs.eg.db,\n                                  key = mir432_5p_targets$SYMBOL,  # data to use for retrieval\n                                  column =  \"ENTREZID\", # information to retreive for given data\n                                  keytype = \"SYMBOL\",multiVals =  \"first\" )\n# mir_532_5_mapIDs &lt;- bitr( mir432_5p_targets$SYMBOL,  \"SYMBOL\",\"ENTREZID\", OrgDb = org.Hs.eg.db)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#kegg",
+    "href": "blog/posts/2023-03-06-mir-432-5p/index.html#kegg",
+    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "section": "KEGG",
+    "text": "KEGG\nrun KEGG enrichment via cluster Profiler package\nclusterProfiler_KEGG_432_5p &lt;- enrichKEGG(mir432_5p_targets$ENTREZ)\nhead(summary(clusterProfiler_KEGG_432_5p)[, -8])\n##                ID              Description GeneRatio  BgRatio       pvalue\n## hsa05032 hsa05032       Morphine addiction   35/1487  91/8292 2.819029e-06\n## hsa04727 hsa04727        GABAergic synapse   31/1487  89/8292 9.720160e-05\n## hsa04728 hsa04728     Dopaminergic synapse   41/1487 132/8292 1.570806e-04\n## hsa04713 hsa04713    Circadian entrainment   32/1487  97/8292 2.406306e-04\n## hsa04014 hsa04014    Ras signaling pathway   64/1487 236/8292 2.570959e-04\n## hsa04371 hsa04371 Apelin signaling pathway   42/1487 139/8292 2.572457e-04\n##              p.adjust       qvalue Count\n## hsa05032 0.0009387366 0.0007744911    35\n## hsa04727 0.0142771350 0.0117791441    31\n## hsa04728 0.0142771350 0.0117791441    41\n## hsa04713 0.0142771350 0.0117791441    32\n## hsa04014 0.0142771350 0.0117791441    64\n## hsa04371 0.0142771350 0.0117791441    42\ndotplot(clusterProfiler_KEGG_432_5p, showCategory=10) + labs(title =\"hsa-miR-432-5p targets KEGG pathways\")"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#go-analysis",
+    "href": "blog/posts/2023-03-06-mir-432-5p/index.html#go-analysis",
+    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "section": "GO analysis",
+    "text": "GO analysis\n\nBP analysis\nno results\nclusterProfiler_bp_432_5p &lt;- enrichGO(mir432_5p_targets$ENTREZ, ont=\"BP\",OrgDb =org.Hs.eg.db)\n#summary(clusterProfiler_bp_432_5p) %&gt;% head()\n#dotplot(clusterProfiler_bp_432_5p, showCategory=20)\nno results\n\n\nCC analysis\nclusterProfiler_cc_432_5p &lt;- enrichGO(mir432_5p_targets$ENTREZ, ont=\"CC\",OrgDb =org.Hs.eg.db)\nhead(summary(clusterProfiler_cc_432_5p)[,-8])\n##                    ID                           Description GeneRatio   BgRatio\n## GO:0005769 GO:0005769                        early endosome  104/3317 414/19869\n## GO:0031965 GO:0031965                      nuclear membrane   79/3317 305/19869\n## GO:0005635 GO:0005635                      nuclear envelope  116/3317 488/19869\n## GO:0031228 GO:0031228 intrinsic component of Golgi membrane   25/3317  69/19869\n## GO:0000151 GO:0000151              ubiquitin ligase complex   78/3317 309/19869\n## GO:0043197 GO:0043197                       dendritic spine   49/3317 175/19869\n##                  pvalue    p.adjust      qvalue Count\n## GO:0005769 6.841258e-06 0.005199356 0.004500828   104\n## GO:0031965 2.694279e-05 0.007917530 0.006853817    79\n## GO:0005635 3.125341e-05 0.007917530 0.006853817   116\n## GO:0031228 7.110974e-05 0.011447826 0.009909821    25\n## GO:0000151 7.705279e-05 0.011447826 0.009909821    78\n## GO:0043197 1.164215e-04 0.011447826 0.009909821    49\ndotplot(clusterProfiler_cc_432_5p, showCategory=10) + labs(title =\"hsa-miR-432-5p targets CC GO\")\n\ngoplot(clusterProfiler_cc_432_5p )\n\n\n\nMF analysis\nclusterProfiler_mf_432_5p &lt;- enrichGO(mir432_5p_targets$ENTREZ, ont=\"MF\",OrgDb =org.Hs.eg.db)\nhead(summary(clusterProfiler_mf_432_5p)[,-8] )\n##                    ID                   Description GeneRatio   BgRatio\n## GO:0019001 GO:0019001     guanyl nucleotide binding  111/3240 401/18432\n## GO:0032561 GO:0032561 guanyl ribonucleotide binding  111/3240 401/18432\n## GO:0003924 GO:0003924               GTPase activity   94/3240 331/18432\n## GO:0005525 GO:0005525                   GTP binding  104/3240 379/18432\n## GO:0019003 GO:0019003                   GDP binding   30/3240  73/18432\n## GO:0003925 GO:0003925            G protein activity   18/3240  41/18432\n##                  pvalue     p.adjust       qvalue Count\n## GO:0019001 2.696462e-07 0.0001620574 0.0001558271   111\n## GO:0032561 2.696462e-07 0.0001620574 0.0001558271   111\n## GO:0003924 6.380072e-07 0.0002556282 0.0002458007    94\n## GO:0005525 9.916314e-07 0.0002979852 0.0002865293   104\n## GO:0019003 2.039762e-06 0.0004903587 0.0004715070    30\n## GO:0003925 7.950900e-05 0.0159283036 0.0153159448    18\ndotplot(clusterProfiler_mf_432_5p, showCategory=10) + labs(title =\"hsa-miR-432-5p targets MF GO\")\n\ngoplot(clusterProfiler_mf_432_5p )"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#reactome-pathways",
+    "href": "blog/posts/2023-03-06-mir-432-5p/index.html#reactome-pathways",
+    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "section": "Reactome Pathways",
+    "text": "Reactome Pathways\nreactome_432_5&lt;- enrichPathway(gene=mir432_5p_targets$ENTREZ, pvalueCutoff = 0.05, readable=TRUE)\ndotplot(reactome_432_5,showCategory=10) + labs(title =\"hsa-miR-432-5p targets reactome pathways\")"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#mesh",
+    "href": "blog/posts/2023-03-06-mir-432-5p/index.html#mesh",
+    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "section": "MESH",
+    "text": "MESH\n# already created \n# creating meshDBi\n# ah &lt;- AnnotationHub(localHub=TRUE)\n# hsa &lt;- query(ah, c(\"MeSHDb\", \"Homo sapiens\"))\n# file_hsa &lt;- hsa[[1]]\n# db &lt;- MeSHDbi::MeSHDb(file_hsa)\n# saved & read the mehses \n# meshes432 &lt;- enrichMeSH(mir432_5p_targets$ENTREZ, MeSHDb = db, database='gendoo', category = 'C')\n# saveRDS(meshes432,'meshes432.rds')\nmeshes432 &lt;- readRDS('meshes432.rds')\ndotplot(meshes432) + labs(title =\"hsa-miR-432-5p targets mesh gendoo Diseases\")\n\n# meshes432_pubmed &lt;- enrichMeSH(mir432_5p_targets$ENTREZ, MeSHDb = db, database='gene2pubmed', category = 'C')\n# dotplot(meshes432_pubmed) + labs(title =\"hsa-miR-432-5p targets mesh gene2pubmed Diseases\")"
+  },
+  {
+    "objectID": "blog/about.html",
+    "href": "blog/about.html",
+    "title": "About",
+    "section": "",
+    "text": "My background is in bioinformatics and data science.\nThe position I hold at Aummune Ltd. is that of a Bioinformatics researcher.\nI completed my master’s degree at Tel Aviv University Shomron Lab, and I work with both Python and R.\nMy future plans include more public projects.\nMy main areas of interest are bioinformatics and healthcare data science.\n\nEducation:\nM.Sc. Medical Science & Bioinformatics, Tel Aviv University, 2020 - 2022.\nB.Sc. in Life Science , Tel Aviv University, 2017 - 2020.\nB.Sc. in Computer Science Israel Open Aviv University, 2022 - current\n\n\nInterests:\nComputational biology, Artificial Intelligence, Bioinformatics, Data science"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Migrate Blog from Hugo to Quarto\n\n\n\n\n\n\n\nHugo\n\n\nQuarto\n\n\ngh-pages\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2023\n\n\n\n\n\n\n  \n\n\n\n\nRS Virus RNA-Seq\n\n\n\n\n\n\n\nRNA-seq\n\n\nRSV\n\n\n\n\n\n\n\n\n\n\n\nNov 19, 2023\n\n\n\n\n\n\n  \n\n\n\n\nEnrichmet analysis: hsa-miR-432-5p targets\n\n\n\n\n\n\n\nEnrichment\n\n\nmiR-432-5p\n\n\n\n\n\n\n\n\n\n\n\nMar 10, 2023\n\n\n\n\n\n\n  \n\n\n\n\nEnrichmet analysis: hsa-miR-486-3p targets\n\n\n\n\n\n\n\nEnrichment\n\n\nmiR-486-3p\n\n\n\n\n\n\n\n\n\n\n\nMar 10, 2023\n\n\n\n\n\n\n  \n\n\n\n\nAtrocytoma\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nAtrocytoma\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n  \n\n\n\n\nBreast cancer\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nBreast-cancer\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGlioblastoma - GBM\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nGlioblastoma\n\n\nGBM\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html",
+    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html",
+    "title": "Migrate Blog from Hugo to Quarto",
+    "section": "",
+    "text": "This blog was created using Hugo. I decided to migrate to quarto as it is easier to use, and I can use Jupyter notebooks to create blog posts. As I found it easier to use notebooks to create blog posts, I decided to migrate to quarto. In the process, I used nbdev and quarto to update my old blog posts and create new content. nbdev and quarto can also be used to create and maintain a package. Example: I created a small package called volcanoPlot."
+  },
+  {
+    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#install-nbdev-and-quarto",
+    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#install-nbdev-and-quarto",
+    "title": "Migrate Blog from Hugo to Quarto",
+    "section": "Install nbdev and quarto",
+    "text": "Install nbdev and quarto\nThe first step is to install nbdev. I used the following guide: End-To-End Walkthrough.  i’m using micromamba to manage my conda environments. in my jupyter environment i ran the following commands:\nmicromamba install -c fastai -y nbdev\nnbdev_install_quarto"
+  },
+  {
+    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#new-nbdev-project",
+    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#new-nbdev-project",
+    "title": "Migrate Blog from Hugo to Quarto",
+    "section": "New nbdev Project",
+    "text": "New nbdev Project\nI then created a new repository on github, activated gh-pages and cloned it to my local machine. The next step is to create a new nbdev project, and quarto docs.\nFolder structure\nBelow is an overview of the general folder structure for a blog within a nbdev site:\nnbs\n ├──_quarto.yml\n ├──_metadata.yml\n ├──styles.css\n └──blog\n    ├── index.qmd\n    └── posts\n        ├── 2022-07-28-nbdev2\n        │   ├── cover.png\n        │   ├── index.qmd\n        │   ├── ...\n        └── 2022-08-25-jupyter-git\n            ├── friendly-conflict.png\n            ├── index.qmd\n            └── ...\n    ..."
+  },
+  {
+    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#the-changes-for-blog-insted-of-package",
+    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#the-changes-for-blog-insted-of-package",
+    "title": "Migrate Blog from Hugo to Quarto",
+    "section": "The changes for blog insted of package:",
+    "text": "The changes for blog insted of package:\nIn MANIFEST.in i changed the following line:\ninclude README.md -&gt; exclude README.md\nTo exclude the README.md file from the blog.\nIn settings.ini i ichanged the following lines:\nlib_path = blog -&gt; lib_path = nbs/blog\nEvery blog post could be written in a notebook, or markdown file. When using a notebook, the notebook should be converted to qmd before committing to git, and publishing to the blog. Example:\nquarto convert blog/posts/2023-11-22-RNA-seq-RSV/RNA-seq.ipynb"
+  },
+  {
+    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#publish-with-gh-pages",
+    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#publish-with-gh-pages",
+    "title": "Migrate Blog from Hugo to Quarto",
+    "section": "Publish with gh-pages",
+    "text": "Publish with gh-pages\nQuatro publsih gh-pages will create a new branch called gh-pages, and push the site to that branch. On github, i changed the settings to use gh-pages as the source for the site.\nIncase i want to freeze the posts rendered in the site, i can use _metadata.yml file for each post folder.  Change the following line: “freeze: false -&gt; freeze: true.”\nTo publish the site with gh-pages, i used the following command from nbs folder:\ncd nbs/\nquarto publish gh-pages\nto publish with nbdev\nnbdev_proc_nbs && cd _proc && quarto publish gh-pages"
+  },
+  {
+    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#convert-hugo-old-posts-to-quarto",
+    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#convert-hugo-old-posts-to-quarto",
+    "title": "Migrate Blog from Hugo to Quarto",
+    "section": "Convert Hugo old posts to quarto",
+    "text": "Convert Hugo old posts to quarto\nI copied all my posts content from hugo to quarto. Than i ran nbdev_migrate –path posts/ I changed manually files names from markdown to qmd. In the markdown section i check that all variables are correct. Than all images link’s were changed from hugo format to qmd ![](path/to/image.png).  The final hceck for all altered been made is to run quarto preview and check that all posts are displayed correctly.\nquarto preview"
+  },
+  {
+    "objectID": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#update-all-files-on-github",
+    "href": "blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html#update-all-files-on-github",
+    "title": "Migrate Blog from Hugo to Quarto",
+    "section": "Update all files on Github",
+    "text": "Update all files on Github\nTo update files on github still have to use git push main as the main branch is still the default branch and pointed to the remote main branch.\ngit add .\ngit commit -m \"update blog\"\ngit push"
+  },
+  {
+    "objectID": "blog/posts/2023-11-22-RNA-seq-RSV/index.html",
+    "href": "blog/posts/2023-11-22-RNA-seq-RSV/index.html",
+    "title": "RS Virus RNA-Seq",
+    "section": "",
+    "text": "RSV or RS virus, short for respiratory syncytial virus, is a single-stranded RNA virus belonging to the pneumovirus genus of the virus family. Symptoms are usually mild, similar to a cold, but can cause very serious illness in infants. a total of 8 RNA-Seq data from acute and chronic phases in nasal samples of 4 infants.\nimport pandas as pd\nimport numpy as np\nimport re\nimport seaborn as sns\nfrom pathlib import Path\nfrom pydeseq2.dds import DeseqDataSet\nfrom pydeseq2.ds import DeseqStats\nimport pickle as pkl\nimport matplotlib.pyplot as plt"
+  },
+  {
+    "objectID": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#variables",
+    "href": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#variables",
+    "title": "RS Virus RNA-Seq",
+    "section": "Variables",
+    "text": "Variables\n\n\n\nvariable\ndescription\n\n\n\n\n@data_path\nPath to the data csv file.\n\n\n@out_path\nPath to the output folder.\n\n\n@data\nDataframe containing the data.\n\n\n@n_cpus_use\nNumber of cpus to use.\n\n\n@padj_cutoff\nAdjusted p-values cutoff.\n\n\n@lfc2_cutoff\nLog2 fold change cutoff.\n\n\n\n\ncount_file_path = list(Path().cwd().glob('*count*.csv'))[0]\n\n\ndata_path = Path().cwd() / 'RSV_count.csv'\noutput = Path().cwd()\nn_cpus_use = 2\npadj_cutoff = 0.05\nlfc2_cutoff = 2"
+  },
+  {
+    "objectID": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#assign-significance-function",
+    "href": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#assign-significance-function",
+    "title": "RS Virus RNA-Seq",
+    "section": "Assign Significance Function",
+    "text": "Assign Significance Function\nFunction created to create a new column of labels in pandas DataFrame, competibale with apply on pandas column.\n\ndef assign_sig(p_value : int, log2FoldChange: int, padj: float=padj_cutoff , lfc2: int=lfc2_cutoff ) -&gt; str:\n   '''\n   assigns a gene to a category based on the p_value and log2FoldChange, p_value and lfc2, p_value, lfc2 or non-sig.\n   p_value and lfc2: abs(log2FoldChange) &gt; 2 and p_value &lt; 0.05.\n   p_value: abs(log2FoldChange) &lt;= 2 and p_value &lt; 0.05.\n   lfc2: abs(log2FoldChange) &gt; 2 and p_value &gt;= 0.05.\n   @param p_value: p_value.\n   @param log2FoldChange: log2foldchange.\n   @param padj: p_value cutoff.\n   @param lfc2: log2foldchange cutoff.\n   '''\n   if p_value &lt; padj and abs(log2FoldChange) &gt; lfc2 :\n      return 'lfc2 and p_value'\n   elif p_value &lt; padj and   abs(log2FoldChange)  &lt;= lfc2: \n      return 'p_value'\n   elif p_value &gt;= padj and  abs(log2FoldChange)  &gt; lfc2:\n      return 'lfc2'\n   else:\n      return 'non-sig'"
+  },
+  {
+    "objectID": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#data-check",
+    "href": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#data-check",
+    "title": "RS Virus RNA-Seq",
+    "section": "Data Check",
+    "text": "Data Check\n\ndata = pd.read_csv(data_path, index_col=0)\ndata.shape\n\n(28278, 13)\n\n\n\ndata.head()\n\n\n\n\n\n\n\n\nChr\nStart\nEnd\nStrand\nLength\nSRR7011737\nSRR7011738\nSRR7011742\nSRR7011743\nSRR7011755\nSRR7011756\nSRR7011757\nSRR7011758\n\n\nGeneid\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDDX11L1\nchr1;chr1;chr1\n11874;12613;13221\n12227;12721;14409\n+;+;+\n1652\n0\n0\n0\n0\n0\n0\n0\n0\n\n\nWASH7P\nchr1;chr1;chr1;chr1;chr1;chr1;chr1;chr1;chr1;c...\n14362;14970;15796;16607;16858;17233;17606;1791...\n14829;15038;15947;16765;17055;17368;17742;1806...\n-;-;-;-;-;-;-;-;-;-;-\n1769\n2\n8\n0\n17\n2\n1\n2\n5\n\n\nMIR6859-1\nchr1;chr1;chr16;chr15\n17369;187891;17052;101973524\n17436;187958;17119;101973591\n-;-;-;+\n272\n0\n0\n0\n0\n0\n0\n0\n0\n\n\nMIR6859-2\nchr1;chr1;chr16;chr15\n17369;187891;17052;101973524\n17436;187958;17119;101973591\n-;-;-;+\n272\n0\n0\n0\n0\n0\n0\n0\n0\n\n\nMIR6859-3\nchr1;chr1;chr16;chr15\n17369;187891;17052;101973524\n17436;187958;17119;101973591\n-;-;-;+\n272\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n\n\n\n\n\n\ndata.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nIndex: 28278 entries, DDX11L1 to TMEM181\nData columns (total 13 columns):\n #   Column      Non-Null Count  Dtype \n---  ------      --------------  ----- \n 0   Chr         28278 non-null  object\n 1   Start       28278 non-null  object\n 2   End         28278 non-null  object\n 3   Strand      28278 non-null  object\n 4   Length      28278 non-null  int64 \n 5   SRR7011737  28278 non-null  int64 \n 6   SRR7011738  28278 non-null  int64 \n 7   SRR7011742  28278 non-null  int64 \n 8   SRR7011743  28278 non-null  int64 \n 9   SRR7011755  28278 non-null  int64 \n 10  SRR7011756  28278 non-null  int64 \n 11  SRR7011757  28278 non-null  int64 \n 12  SRR7011758  28278 non-null  int64 \ndtypes: int64(9), object(4)\nmemory usage: 3.0+ MB\n\n\n\ndf_counts = data[data.columns[data.columns.str.contains('SRR.*')]].T\n# Convert the count matrix to numeric values and replace NaN with zeros\ndf_counts = df_counts.apply(pd.to_numeric, errors='coerce').fillna(0)\ndf_counts = df_counts[df_counts.columns[df_counts.sum(axis=0) &gt;= 10]]\ndf_counts = df_counts.rename_axis(None, axis=0).rename_axis(None, axis=1)\ndf_counts\n\n\n\n\n\n\n\n\nWASH7P\nLOC729737\nTGIF1\nPRDX6\nCIC\nLOC100133331\nFAM87B\nLINC00115\nLINC01128\nFAM41C\n...\nEXOC1L\nTTC31\nPDE8B\nCHD1\nGLA\nPAK1\nPRKD3\nMLC1\nZBTB41\nTMEM181\n\n\n\n\nSRR7011737\n2\n126\n1547\n6278\n1620\n24\n2\n9\n212\n1\n...\n7\n713\n882\n1368\n317\n2791\n500\n10\n387\n1870\n\n\nSRR7011738\n8\n177\n1337\n5318\n1547\n36\n1\n6\n227\n1\n...\n33\n547\n401\n1230\n370\n2520\n508\n23\n326\n1418\n\n\nSRR7011742\n0\n14\n1297\n4455\n1220\n16\n1\n9\n122\n0\n...\n0\n668\n1289\n1049\n439\n3038\n576\n4\n549\n1619\n\n\nSRR7011743\n17\n34\n1227\n5442\n1421\n42\n4\n11\n175\n3\n...\n17\n409\n199\n1518\n411\n2582\n864\n5\n555\n1201\n\n\nSRR7011755\n2\n75\n1645\n4468\n1856\n29\n5\n3\n135\n4\n...\n5\n676\n713\n1696\n463\n3558\n956\n14\n877\n1748\n\n\nSRR7011756\n1\n142\n1297\n4418\n1646\n34\n3\n6\n144\n1\n...\n7\n541\n101\n1369\n842\n2156\n921\n4\n517\n1466\n\n\nSRR7011757\n2\n77\n1561\n4776\n1815\n26\n4\n7\n180\n1\n...\n22\n699\n500\n1382\n557\n2908\n824\n24\n728\n1894\n\n\nSRR7011758\n5\n309\n1389\n3599\n1640\n16\n4\n10\n104\n0\n...\n2\n468\n22\n1601\n1069\n2013\n686\n4\n229\n1009\n\n\n\n\n8 rows × 19207 columns\n\n\n\n\nmetadata_d = {'patient1' : {'acute' : 'SRR7011737', 'chronic' : 'SRR7011738', 'Age' : '0.31-0.54yr'},\n            'patient2' : {'acute' : 'SRR7011742', 'chronic' : 'SRR7011743', 'Age' : '0.24-0.35yr'},\n            'patient3' : {'acute' : 'SRR7011755', 'chronic' : 'SRR7011756', 'Age' :  '0.23-0.36yr'},\n            'patient4' : {'acute' : 'SRR7011757', 'chronic' : 'SRR7011758', 'Age' : '0.84-0.96yr'}}\nmetadata = (pd.DataFrame().from_dict(metadata_d, orient='index').reset_index().rename(columns={'index' : 'patient'})\n            .melt(id_vars=['patient'], value_vars=['acute', 'chronic'], var_name='condition', value_name='sample')\n            .drop('patient', axis=1)[['sample', 'condition']])\nmetadata.set_index('sample', inplace=True)\nmetadata.rename_axis(None, inplace=True)"
+  },
+  {
+    "objectID": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#deffrential-expression-analysis",
+    "href": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#deffrential-expression-analysis",
+    "title": "RS Virus RNA-Seq",
+    "section": "Deffrential expression analysis",
+    "text": "Deffrential expression analysis\nRun DEseq2. pydeseq2 is Used to perform differential expression analysis.\nCheck if all samples in metadata are in df_counts:\ndf_counts.index.isin(metadata.index).all()\nCheck if all samples in df_counts are in metadata:\nmetadata.index.isin(df_counts.index).all()\n\nprint(df_counts.index.isin(metadata.index).all(),metadata.index.isin(df_counts.index).all(), sep='\\n')   \n\nTrue\nTrue\n\n\n\nConvert index to string type and ensure indices match:\n\n    df_counts.index = df_counts.index.astype(str)\n\nConvert sample column to string type# Ensure indices match:\n\n    metadata.index = metadata.index.astype(str)\n\nReorder df_counts and metadata to have the same index order:\n\n    df_counts = df_counts.reindex(metadata.index)\n\ndf_counts.index = df_counts.index.astype(str)  \nmetadata.index = metadata.index.astype(str)  \ndf_counts = df_counts.reindex(metadata.index)\n\n\ndds = DeseqDataSet(\n    counts=df_counts,\n    metadata=metadata,\n    design_factors=\"condition\",\n    refit_cooks=True,\n    n_cpus=n_cpus_use,\n)\ndds.deseq2( )\n\nFitting size factors...\n... done in 0.00 seconds.\n\nFitting dispersions...\n... done in 8.94 seconds.\n\nFitting dispersion trend curve...\n... done in 4.03 seconds.\n\nFitting MAP dispersions...\n... done in 12.05 seconds.\n\nFitting LFCs...\n... done in 5.70 seconds.\n\nRefitting 0 outliers.\n\n\n\nsave DEseq2 Object to pickle file:\n\nwith open( output / \"dds.pkl\", \"wb\") as f:\n    pkl.dump(dds, f)"
+  },
+  {
+    "objectID": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#statistical-analysis",
+    "href": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#statistical-analysis",
+    "title": "RS Virus RNA-Seq",
+    "section": "Statistical analysis",
+    "text": "Statistical analysis\nRun statistical analysis.\n\nstat_res = DeseqStats(dds, n_cpus = n_cpus_use)\nstat_res.summary()\n\nRunning Wald tests...\n... done in 1.85 seconds.\n\n\n\nLog2 fold change & Wald test p-value: condition chronic vs acute\n\n\n\n\n\n\n\n\n\nbaseMean\nlog2FoldChange\nlfcSE\nstat\npvalue\npadj\n\n\n\n\nWASH7P\n4.587857\n2.458706\n1.116766\n2.201630\n0.027691\n0.202064\n\n\nLOC729737\n122.155762\n1.342039\n0.716822\n1.872207\n0.061178\n0.309724\n\n\nTGIF1\n1400.037490\n-0.099168\n0.142399\n-0.696411\n0.486171\n0.796121\n\n\nPRDX6\n4794.111981\n-0.008120\n0.200802\n-0.040440\n0.967742\n0.991057\n\n\nCIC\n1581.916300\n0.053769\n0.177791\n0.302430\n0.762324\n0.925608\n\n\n...\n...\n...\n...\n...\n...\n...\n\n\nPAK1\n2658.104961\n-0.314881\n0.129934\n-2.423387\n0.015377\n0.143495\n\n\nPRKD3\n722.336078\n0.175513\n0.290260\n0.604675\n0.545395\n0.827693\n\n\nMLC1\n10.608723\n-0.444787\n0.810487\n-0.548790\n0.583150\n0.846594\n\n\nZBTB41\n508.407691\n-0.547094\n0.350267\n-1.561933\n0.118304\n0.427640\n\n\nTMEM181\n1506.912048\n-0.395167\n0.160578\n-2.460906\n0.013859\n0.135332\n\n\n\n\n19207 rows × 6 columns\n\n\n\n\nres = stat_res.results_df.reset_index().rename(columns={'index':'gene_id','log2FoldChange':'log2FC','pvalue':'p_value','padj':'p_adj'})\nres.to_csv(output / 'deseq2_results.csv', index=False)\n\n\nsigs = res[(abs(res.log2FC) &gt; 2) & (res.p_adj &lt; 0.05) ]\nsigs.to_csv(output / 'deseq2_results_sigs.csv', index=False)"
+  },
+  {
+    "objectID": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#processings-and-plots",
+    "href": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#processings-and-plots",
+    "title": "RS Virus RNA-Seq",
+    "section": "Processings and Plots",
+    "text": "Processings and Plots\n\ndds.layers['log1p'] = np.log1p(dds.layers['normed_counts']) # log1p transform the normalized counts\ndds_sigs = dds[:, sigs.index]\n\ngrapher = pd.DataFrame(dds_sigs.layers['log1p'].T,index=dds_sigs.var_names, columns=dds_sigs.obs_names)\npheat = sns.clustermap(grapher, z_score=0, cmap = 'RdBu_r')\npheat\npheat.savefig(output/ \"significant_genes_heatmap_seaborn.png\", dpi=300)"
+  },
+  {
+    "objectID": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#volcano-plot---interactive",
+    "href": "blog/posts/2023-11-22-RNA-seq-RSV/index.html#volcano-plot---interactive",
+    "title": "RS Virus RNA-Seq",
+    "section": "Volcano Plot - Interactive",
+    "text": "Volcano Plot - Interactive\nplotly used to create volcano plot. The plot is interactive and can be used to zoom in and out and to hover over points to see the gene name and the log2 fold change and the p-value.\n\nres = res.assign(log10pvalue = -np.log10(res.p_value),\n                sig = (res.p_value &lt; 0.05) & (abs(res.log2FC) &gt; 2),\n                regulated = res[['p_value','log2FC']].apply( lambda x: assign_sig(x.p_value, x.log2FC ), axis=1))\nres.head()\n\n\n\n\n\n\n\n\ngene_id\nbaseMean\nlog2FC\nlfcSE\nstat\np_value\np_adj\nlog10pvalue\nsig\nregulated\n\n\n\n\n0\nWASH7P\n4.587857\n2.458706\n1.116766\n2.201630\n0.027691\n0.202064\n1.557654\nTrue\nlfc2 and p_value\n\n\n1\nLOC729737\n122.155762\n1.342039\n0.716822\n1.872207\n0.061178\n0.309724\n1.213405\nFalse\nnon-sig\n\n\n2\nTGIF1\n1400.037490\n-0.099168\n0.142399\n-0.696411\n0.486171\n0.796121\n0.313211\nFalse\nnon-sig\n\n\n3\nPRDX6\n4794.111981\n-0.008120\n0.200802\n-0.040440\n0.967742\n0.991057\n0.014240\nFalse\nnon-sig\n\n\n4\nCIC\n1581.916300\n0.053769\n0.177791\n0.302430\n0.762324\n0.925608\n0.117860\nFalse\nnon-sig\n\n\n\n\n\n\n\n\nimport plotly.express as px\nplot_title = \"Volcano plot control vs treatment\" #@param {type:\"string\"}\nx_axis_title = \"log2 fold change\" #@param {type:\"string\"}\ny_axis_title = \"-log10(pvalue)\" #@param {type:\"string\"}\npoint_radius = 7 #@param {type:\"slider\", min:1, max:30, step:1}\nchoices = {'lfc2 and p_value': 'red', 'p_value': 'blue', 'non-sig': 'grey','lfc2':'green'}\ncolors = res.regulated.transform(lambda x: choices.get(x))\n\nfig = px.scatter(data_frame=res,\n    x='log2FC',\n    y='log10pvalue',\n    title=plot_title,\n    hover_data=['gene_id', 'regulated'],\n    labels={\n        \"x\": x_axis_title,\n        \"y\": y_axis_title\n    },\n    width=900,\n    height=700\n)\nfig.update_layout({\n'paper_bgcolor': 'white',\n})\nfig.update_traces(marker=dict(size=point_radius, color=colors))\nfig.add_hline(y=-np.log10(0.05), line_dash=\"dash\", line_color=\"grey\")\nfig.add_vline(x=2, line_dash=\"dash\", line_color=\"grey\")\nfig.add_vline(x=-2, line_dash=\"dash\", line_color=\"grey\")\n# Export the figure to HTML\nfig.write_html(output / \"volcano_plot_plotly.html\")\nfig.show()"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html",
+    "title": "Breast cancer",
+    "section": "",
+    "text": "Breast cancer data was obtained from single cell portal. single cell analysis executed with R program and Seurat package, Pallad expression was examined in Breast cancer data.\nour lab found PALLD express in breast cancr, PALLD expression was examined between different cell type , different cluster groups, alsotop 10 mrker for each cluster was obtained"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#scrna-seq-breast-cancer--analysis",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#scrna-seq-breast-cancer--analysis",
+    "title": "Breast cancer",
+    "section": "",
+    "text": "Breast cancer data was obtained from single cell portal. single cell analysis executed with R program and Seurat package, Pallad expression was examined in Breast cancer data.\nour lab found PALLD express in breast cancr, PALLD expression was examined between different cell type , different cluster groups, alsotop 10 mrker for each cluster was obtained"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#libreries",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#libreries",
+    "title": "Breast cancer",
+    "section": "Libreries",
+    "text": "Libreries\nlibrary(pacman)\nlibrary(Seurat)\nlabrvec &lt;- c(\"tidyverse\",\"ggplot2\",\"Matrix\",\"AnnotationDbi\",\"readxl\",\n             \"Seurat\",\"future\",\"patchwork\",\"stringr\")\npacman::p_load(labrvec,install = TRUE,character.only = TRUE)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#files",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#files",
+    "title": "Breast cancer",
+    "section": "Files",
+    "text": "Files\n# reading RDS\nBCdata &lt;- readRDS(\"BCdatageneral.rds\")"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#pre-processing",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#pre-processing",
+    "title": "Breast cancer",
+    "section": "Pre-Processing",
+    "text": "Pre-Processing\nWon’t be used at the creation of this files because already created and RDS will be use.\n# define nultiprocess for seurat\n# \n# Breast.cancer.SCdata&lt;-Read10X(\n#   data.dir = indir ,\n#   gene.column = 1,\n#   unique.features = TRUE,\n#   strip.suffix = FALSE\n# ) \n# #class(Breast.cancer.SCdata)\n# print(object.size(Breast.cancer.SCdata), units=\"Gb\")\n# # head(Breast.cancer.SCdata)\n# mini.atlas &lt;- read.csv('C:/Users/user/Desktop/BCsinglecelldata/Whole_miniatlas_meta.csv')\n# gene_targets &lt;- read_excel(\"C:/Users/user/Desktop/BCsinglecelldata/spikesearchtargetgenes.xlsx\",)\n# # summary(mini.atlas)\n# gene_targets &lt;- pull(gene_targets,\"Gene name\")\n# gene_targets &lt;- gene_targets[!is.na(gene_targets)]\n# gene_targets &lt;- gene_targets[1:128]\n# gene_targets &lt;- gene_targets[!duplicated(gene_targets)]\n# #gene_targets\n# colnames(mini.atlas)[1] &lt;- \"NAMES\"\n# #mini.atlas\n# rownames(mini.atlas) &lt;- pull(mini.atlas,\"NAMES\") \n# #mini.atlas.C &lt;- mini.atlas %&gt;% filter(normal_cell_call == \"cancer\")\n# cancer.cell.types &lt;- pull(mini.atlas,\"normal_cell_call\") %&gt;%  unique()\n# #cancer.cell.types\n# mini.atlas &lt;- mini.atlas[-1,-1]\n# # head(mini.atlas)\n# BCdata &lt;- CreateSeuratObject(\n#   Breast.cancer.SCdata,\n#   project = \"BC\",\n#   assay = \"RNA\",\n#   min.cells = 0,\n#   min.features = 0,\n#   names.field = 1,\n#   names.delim = \"_\",\n#   meta.data = mini.atlas\n# )\n\n# looking at the idents in seurat object\n# head(BCdata[[]])\n# #BCdata\n# BCdata@meta.data$project &lt;- \"BC\"\n# BCdata &lt;- StashIdent(object = BCdata, save.name = \"old.ident\")\n# Idents(object = BCdata) &lt;- \"project\"\n# Idents(object = BCdata)\n#BCdata &lt;- subset(x = BCdata, idents = \"cancer\")\n# row.names(BCdata)\n# # BCdata[[]]\n# # extract the mitochondrial DNA\n# BCdata[[\"Percent_mito\"]] &lt;-unlist(BCdata[[\"Percent_mito\"]]) %&gt;% as.numeric()\n# BCdata[[\"nCount_RNA\"]] &lt;-unlist(BCdata[[\"nCount_RNA\"]]) %&gt;% as.numeric()\n# BCdata[[\"nFeature_RNA\"]] &lt;-unlist(BCdata[[\"nFeature_RNA\"]]) %&gt;% as.numeric()\n# BCdata[[\"percent.mt\"]] &lt;- PercentageFeatureSet(object = BCdata, pattern = \"^MT-\")\n# #Idents(object = BCdata) &lt;- \"celltype_subset\"\n# BCdata[[\"normal_cell_call\"]] %&gt;%  unique()\n# fixing to column Percent_mito as numeric"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#feature-scatter-violin",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#feature-scatter-violin",
+    "title": "Breast cancer",
+    "section": "Feature-scatter & violin",
+    "text": "Feature-scatter & violin\nIdents(BCdata) &lt;- \"Breast cancer\"\n\nplot1 &lt;- FeatureScatter(BCdata, feature1 = \"nCount_RNA\", feature2 = \"Percent_mito\",raster=FALSE)\nplot2 &lt;- FeatureScatter(BCdata, feature1 = \"nCount_RNA\", feature2 = \"nFeature_RNA\",raster=FALSE)\nplot2 + plot1\n\nVlnPlot(BCdata, features = c(\"nFeature_RNA\", \"nCount_RNA\",\"Percent_mito\"), ncol = 3,pt.size  = 0)\n\nVlnPlot(BCdata, features = c(\"nFeature_RNA\", \"nCount_RNA\",\"Percent_mito\"), ncol = 3)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#variable-feature-plot",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#variable-feature-plot",
+    "title": "Breast cancer",
+    "section": "Variable Feature-plot",
+    "text": "Variable Feature-plot\nBCdata &lt;- NormalizeData(BCdata)\nBCdata &lt;- FindVariableFeatures(BCdata, selection.method = “vst”, nfeatures = 2000)\n## what are our variable genes ?\ntop10 &lt;- head(VariableFeatures(BCdata), 10)\ntop10\n##  [1] \"SCGB2A2\"   \"IGHV1-69\"  \"SCGB1B2P\"  \"IGFBP7\"    \"IGHG1\"     \"CCL4\"     \n##  [7] \"IGLV2-28\"  \"IGKV2D-28\" \"IGKV2D-29\" \"CD74\"\n# plot variable features with and without labels\nplot1 &lt;- VariableFeaturePlot(BCdata)\nplot2 &lt;- LabelPoints(plot = plot1, points = top10, repel = TRUE)\nplot1 + plot2"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#pca-plot",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#pca-plot",
+    "title": "Breast cancer",
+    "section": "PCA-plot",
+    "text": "PCA-plot\n# all_genes &lt;- rownames(BCdata)\n# # all_genes\n# BCdata &lt;- ScaleData(BCdata)\n# BCdata &lt;- RunPCA(BCdata, features = VariableFeatures(object = BCdata))\nVizDimLoadings(BCdata, dims = 1:2, reduction = \"pca\")\n\nDimPlot(BCdata, reduction = \"pca\")"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#heat-map",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#heat-map",
+    "title": "Breast cancer",
+    "section": "Heat-map",
+    "text": "Heat-map\n# Examine and visualize PCA results a few different ways\n#(BCdata[[\"pca\"]], dims = 1:5, nfeatures = 5)\nDimHeatmap(BCdata, dims = 1, cells = 500, balanced = TRUE)\n\nDimHeatmap(BCdata, dims = 1:9, cells = 500, balanced = TRUE)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#jackstrawplot-elbowplot",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#jackstrawplot-elbowplot",
+    "title": "Breast cancer",
+    "section": "JackStrawPlot & ElbowPlot",
+    "text": "JackStrawPlot & ElbowPlot\n# BCdata &lt;- JackStraw(BCdata, num.replicate = 100)\n# BCdata &lt;- ScoreJackStraw(BCdata, dims = 1:20)\nJackStrawPlot(BCdata, dims = 1:15)\n\nElbowPlot(BCdata)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#umap-tsne",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#umap-tsne",
+    "title": "Breast cancer",
+    "section": "Umap & tsne",
+    "text": "Umap & tsne\n# BCdata &lt;- FindNeighbors(BCdata, dims = 1:10)\n# BCdata &lt;- FindClusters(BCdata, resolution = 0.4)\n# BCdata &lt;- RunUMAP(BCdata, dims = 1:10)\n# BCdata &lt;- RunTSNE(BCdata, dims = 1:10)\n# Look at cluster IDs of the first 5 cells\nhead(Idents(BCdata), 5)                     \n## CID3586_AAGACCTCAGCATGAG CID3586_AAGGTTCGTAGTACCT CID3586_ACCAGTAGTTGTGGCC \n##            Breast cancer            Breast cancer            Breast cancer \n## CID3586_ACCCACTAGATGTCGG CID3586_ACTTGTTAGGGAAACA \n##            Breast cancer            Breast cancer \n## Levels: Breast cancer\nDimPlot(BCdata, reduction = \"umap\",group.by = \"celltype_major\" ,label = TRUE)\n\nDimPlot(BCdata, reduction = \"tsne\",group.by = \"celltype_major\" ,label = TRUE)\n\n#saveRDS(BCdata, file = \"C:/Users/user/Desktop/BCsinglecelldata/BCdata.rds\")"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#heat-map-markers-for-each-cell-types-major",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#heat-map-markers-for-each-cell-types-major",
+    "title": "Breast cancer",
+    "section": "heat map markers for each cell types major",
+    "text": "heat map markers for each cell types major\nDimPlot(BCdata, reduction = \"umap\",group.by =\"celltype_major\" , label = TRUE, pt.size = 0.5)\n\nBCdata.markers &lt;- readRDS('BCdata.markers.rds')\n\n# Idents(BCdata) &lt;- \"celltype_major\"\n# BCdata.markers &lt;- FindAllMarkers(BCdata, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)\nBCdata.markers %&gt;%\n    group_by(cluster) %&gt;%\n    top_n(n = 10, wt = avg_log2FC) -&gt; top10\nDoHeatmap(BCdata, features = top10$gene) + NoLegend()\n\n# saveRDS(BCdata.markers, file = \"BCdata.markers.rds\")"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#violin-plot-palld",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#violin-plot-palld",
+    "title": "Breast cancer",
+    "section": "violin plot PALLD",
+    "text": "violin plot PALLD"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#idnets-normal_cell_call",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#idnets-normal_cell_call",
+    "title": "Breast cancer",
+    "section": "Idnets normal_cell_call",
+    "text": "Idnets normal_cell_call\nIdents(BCdata) &lt;- 'normal_cell_call'\nDimPlot(BCdata, reduction = \"umap\" ,label = TRUE)\n\nDimPlot(BCdata, reduction = \"tsne\" ,label = TRUE)\n\nVlnPlot(BCdata, features = c(\"PALLD\"), sort = TRUE) + NoLegend()"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#cancer-subset",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#cancer-subset",
+    "title": "Breast cancer",
+    "section": "cancer subset",
+    "text": "cancer subset\nBCdata_cancer &lt;-  readRDS('BCdata_subset_cancer.rds')\nIdents(BCdata_cancer) &lt;- \"celltype_minor\""
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#umap-tsne-cancer-cells",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#umap-tsne-cancer-cells",
+    "title": "Breast cancer",
+    "section": "Umap & Tsne Cancer Cells",
+    "text": "Umap & Tsne Cancer Cells\nDimPlot(BCdata_cancer, reduction = \"umap\",label = TRUE)\n\nDimPlot(BCdata_cancer, reduction = \"tsne\" ,label = TRUE)\n\nVlnPlot(BCdata_cancer, features = c(\"PALLD\"), sort = TRUE) + NoLegend()"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#find-all-markers-by-cancer-idents",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#find-all-markers-by-cancer-idents",
+    "title": "Breast cancer",
+    "section": "Find all markers by cancer idents",
+    "text": "Find all markers by cancer idents\nIdents(BCdata) &lt;- 'normal_cell_call'\n# BCdata_markers_normal_cell_call &lt;- FindAllMarkers(BCdata, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)\nBCdata_markers_normal_cell_call &lt;- readRDS('BCdata_markers_normal_cell_call.rds')\nBCdata_markers_normal_cell_call %&gt;%\n    group_by(cluster) %&gt;%\n    top_n(n = 10, wt = avg_log2FC) -&gt; top10\nDoHeatmap(BCdata, features = top10$gene) + NoLegend()\n\n#saveRDS(BCdata_markers_normal_cell_call, file = \"BCdata_markers_normal_cell_call.rds\")"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#references",
+    "href": "blog/posts/2023-03-06-breast-cacner/index.html#references",
+    "title": "Breast cancer",
+    "section": "References:",
+    "text": "References:\n\nBreast Cancer SCRNA-seq data from single cell portal\nseurat R package used v4."
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html",
+    "href": "blog/posts/2023-03-06-mir-486-3p/index.html",
+    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "section": "",
+    "text": "enrichment analysis purpose is to check if there are: pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target."
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#libreris",
+    "href": "blog/posts/2023-03-06-mir-486-3p/index.html#libreris",
+    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "section": "Libreris",
+    "text": "Libreris\npacman library purpose is to load multiple libraries from a vector\nlibrary(pacman)\nlab &lt;-  c(\"GO.db\",\"GOstats\",\"cRegulome\",\"readxl\",\"ggplot2\",\"tidyverse\",\"R.utils\",\"MeSHDbi\",\"AnnotationHub\",\n          \"AnnotationDbi\",\"org.Hs.eg.db\",\"clusterProfiler\",\"meshr\",\"pathview\",\"ReactomePA\",\"meshes\",\"tidyverse\")\npacman::p_load(lab,install = FALSE,character.only = TRUE)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#files",
+    "href": "blog/posts/2023-03-06-mir-486-3p/index.html#files",
+    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "section": "Files",
+    "text": "Files\nloading miR targets files acquired from mirWalk\nmir486_3p_targets &lt;-read.csv(\"miRWalk_miRNA_Targets_486_3p_3UTR.csv\")\n# annotations_ahb &lt;- read.csv(\"annotations_ahb.csv\")"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#head",
+    "href": "blog/posts/2023-03-06-mir-486-3p/index.html#head",
+    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "section": "Head",
+    "text": "Head\nmir486_3p_targets %&gt;%  head()\n##          mirnaid     refseqid genesymbol\n## 1 hsa-miR-486-3p    NM_145725      TRAF3\n## 2 hsa-miR-486-3p    NM_198217       ING1\n## 3 hsa-miR-486-3p    NM_024295      DERL1\n## 4 hsa-miR-486-3p    NM_004308    ARHGAP1\n## 5 hsa-miR-486-3p    NM_006390       IPO8\n## 6 hsa-miR-486-3p NM_001042669   ARHGAP24\n##                                                                                          duplex\n## 1           CGGGGCAGCTCAGTACAGGAT#CCTGTGCCCTGAGCTCCCG#..(((.(((((((((((((..#)))))))..))))))))).\n## 2             CGGGGCAGCTCAGTACAGGAT#TGCTGTATGTGAGCTGTA#....((((((((((((((.(.#).)))))).)))))))).\n## 3         CGGGGCAGCTCAGTACAGGAT#GTCCCTGCTCTGCTGTCTCT#.((((((((..((((..((((#)))).))))..)))))))).\n## 4 CGGGGCAGCTCAGTACAGGAT#TCCCTATCTGGTAGGCTGCCCTGC#(((((((((((((....(((.#)))....)))...)))))))))).\n## 5         CGGGGCAGCTCAGTACAGGAT#CCTGCTGCTGGGGGGCTTTT#.(((((..(((((((((((..#)))).)))))))..))))).\n## 6               CGGGGCAGCTCAGTACAGGAT#CTGTGCTGTTTGTGCCA#.((.((((..((((((((...#)))))))).)))).)).\n##   start  end  bindingp energy seed accessibility    au phylopstem phylopflank\n## 1  4050 4069 0.9538462  -25.8    0  1.931234e-03 0.250  0.0000000   0.0000000\n## 2  1841 1859 0.9538462  -20.6    0  1.342227e-03 0.632  2.0375295   1.0278025\n## 3  3060 3080 0.9538462  -20.5    1  6.949161e-02 0.618  0.4188013   1.3100478\n## 4  1886 1910 0.9538462  -24.1    1  3.465340e-06 0.397  0.6887471   0.3595709\n## 5  3892 3912 0.9538462  -20.8    0  8.965582e-05 0.485  3.9497398   4.8023135\n## 6  2656 2673 0.9538462  -20.5    0  3.894453e-04 0.632  2.1409307   1.7314363\n##          me number_of_pairings binding_region_length\n## 1 -6.857959                 16                    19\n## 2 -9.546562                 15                    18\n## 3 -8.093655                 16                    20\n## 4 -5.762913                 16                    24\n## 5 -7.650646                 16                    20\n## 6 -9.124243                 14                    17\n##   longest_consecutive_pairings position validated TargetScan miRDB\n## 1                            9     3UTR                    0     1\n## 2                            8     3UTR                    0     0\n## 3                            8     3UTR                    0     0\n## 4                           10     3UTR                    0     1\n## 5                            7     3UTR                    0     0\n## 6                            8     3UTR                    0     0\nmir486_3p_targets %&gt;% colnames()\n##  [1] \"mirnaid\"                      \"refseqid\"                    \n##  [3] \"genesymbol\"                   \"duplex\"                      \n##  [5] \"start\"                        \"end\"                         \n##  [7] \"bindingp\"                     \"energy\"                      \n##  [9] \"seed\"                         \"accessibility\"               \n## [11] \"au\"                           \"phylopstem\"                  \n## [13] \"phylopflank\"                  \"me\"                          \n## [15] \"number_of_pairings\"           \"binding_region_length\"       \n## [17] \"longest_consecutive_pairings\" \"position\"                    \n## [19] \"validated\"                    \"TargetScan\"                  \n## [21] \"miRDB\""
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#pre-processing",
+    "href": "blog/posts/2023-03-06-mir-486-3p/index.html#pre-processing",
+    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "section": "Pre-Processing",
+    "text": "Pre-Processing\ncolnames(mir486_3p_targets)[3] &lt;- \"SYMBOL\"\ncolnames(mir486_3p_targets)[1] &lt;- \"miR\"\ncolnames(mir486_3p_targets)[7] &lt;- \"score\"\nmaps the gene to ENTREZID\nmir486_3p_targets$ENTREZ = mapIds(org.Hs.eg.db,\n                                  key = mir486_3p_targets$SYMBOL,  # data to use for retrieval\n                                  column =  \"ENTREZID\", # information to retreive for given data\n                                  keytype = \"SYMBOL\",multiVals =  \"first\" )"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#kegg",
+    "href": "blog/posts/2023-03-06-mir-486-3p/index.html#kegg",
+    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "section": "KEGG",
+    "text": "KEGG\nclusterProfiler_KEGG_486_3p &lt;- enrichKEGG(mir486_3p_targets$ENTREZ)\nhead(summary(clusterProfiler_KEGG_486_3p)[, -8])\n##                ID                     Description GeneRatio  BgRatio\n## hsa04144 hsa04144                     Endocytosis   80/1683 251/8292\n## hsa04713 hsa04713           Circadian entrainment   38/1683  97/8292\n## hsa04725 hsa04725             Cholinergic synapse   39/1683 113/8292\n## hsa04728 hsa04728            Dopaminergic synapse   44/1683 132/8292\n## hsa05163 hsa05163 Human cytomegalovirus infection   67/1683 225/8292\n## hsa04010 hsa04010          MAPK signaling pathway   83/1683 294/8292\n##                pvalue    p.adjust      qvalue Count\n## hsa04144 7.764621e-06 0.002311347 0.001768124    80\n## hsa04713 1.388196e-05 0.002311347 0.001768124    38\n## hsa04725 2.763010e-04 0.023492414 0.017971121    39\n## hsa04728 2.821912e-04 0.023492414 0.017971121    44\n## hsa05163 3.949912e-04 0.026306414 0.020123762    67\n## hsa04010 5.727129e-04 0.027849950 0.021304529    83\ndotplot(clusterProfiler_KEGG_486_3p, showCategory=10) + labs(title =\"hsa-miR-486-3p targets KEGG pathways\")"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#go-analysis",
+    "href": "blog/posts/2023-03-06-mir-486-3p/index.html#go-analysis",
+    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "section": "GO analysis",
+    "text": "GO analysis\n\nBP analysis\nclusterProfiler_bp_486_3p &lt;- enrichGO(mir486_3p_targets$ENTREZ, ont=\"BP\",OrgDb =org.Hs.eg.db)\nsummary(clusterProfiler_bp_486_3p)[,-8] %&gt;% head()\n##                    ID\n## GO:0010975 GO:0010975\n## GO:0007265 GO:0007265\n## GO:0031345 GO:0031345\n## GO:0032535 GO:0032535\n## GO:0043161 GO:0043161\n## GO:1901888 GO:1901888\n##                                                                  Description\n## GO:0010975                       regulation of neuron projection development\n## GO:0007265                                   Ras protein signal transduction\n## GO:0031345               negative regulation of cell projection organization\n## GO:0032535                             regulation of cellular component size\n## GO:0043161 proteasome-mediated ubiquitin-dependent protein catabolic process\n## GO:1901888                              regulation of cell junction assembly\n##            GeneRatio   BgRatio       pvalue    p.adjust      qvalue Count\n## GO:0010975  128/3603 446/18903 4.050520e-07 0.002583827 0.002304107   128\n## GO:0007265  103/3603 353/18903 2.375428e-06 0.003794737 0.003383925   103\n## GO:0031345   64/3603 194/18903 2.590133e-06 0.003794737 0.003383925    64\n## GO:0032535  106/3603 367/18903 2.847823e-06 0.003794737 0.003383925   106\n## GO:0043161  125/3603 450/18903 3.450878e-06 0.003794737 0.003383925   125\n## GO:1901888   66/3603 204/18903 3.861954e-06 0.003794737 0.003383925    66\ndotplot(clusterProfiler_bp_486_3p, showCategory=10)+ labs(title =\"hsa-miR-486-3p targets BP GO\")\n\ngoplot(clusterProfiler_bp_486_3p)\n\n\n\nCC analysis\nclusterProfiler_cc_486_3p &lt;- enrichGO(mir486_3p_targets$ENTREZ, ont=\"CC\",OrgDb =org.Hs.eg.db)\nsummary(clusterProfiler_cc_486_3p)[,-8] %&gt;% head()\n##                    ID          Description GeneRatio   BgRatio       pvalue\n## GO:0070382 GO:0070382     exocytic vesicle   79/3786 226/19869 1.093423e-08\n## GO:0008021 GO:0008021     synaptic vesicle   74/3786 208/19869 1.346856e-08\n## GO:0097060 GO:0097060    synaptic membrane  116/3786 378/19869 2.969717e-08\n## GO:0031252 GO:0031252    cell leading edge  124/3786 421/19869 1.321625e-07\n## GO:0030133 GO:0030133    transport vesicle  124/3786 423/19869 1.758511e-07\n## GO:0042734 GO:0042734 presynaptic membrane   52/3786 148/19869 2.792795e-06\n##                p.adjust       qvalue Count\n## GO:0070382 5.205599e-06 4.175254e-06    79\n## GO:0008021 5.205599e-06 4.175254e-06    74\n## GO:0097060 7.651971e-06 6.137415e-06   116\n## GO:0031252 2.554041e-05 2.048519e-05   124\n## GO:0030133 2.718658e-05 2.180554e-05   124\n## GO:0042734 3.598051e-04 2.885888e-04    52\ndotplot(clusterProfiler_cc_486_3p, showCategory=10) + labs(title =\"hsa-miR-486-3p targets CC GO\")\n\ngoplot(clusterProfiler_cc_486_3p)\n\n\n\nMF analysis\nclusterProfiler_mf_486_3p &lt;- enrichGO(mir486_3p_targets$ENTREZ, ont=\"MF\",OrgDb =org.Hs.eg.db)\nsummary(clusterProfiler_mf_486_3p)[,-8] %&gt;% head()\n##                    ID                                    Description GeneRatio\n## GO:0060090 GO:0060090                     molecular adaptor activity  140/3717\n## GO:0030674 GO:0030674         protein-macromolecule adaptor activity  103/3717\n## GO:0004879 GO:0004879                      nuclear receptor activity   23/3717\n## GO:0098531 GO:0098531 ligand-activated transcription factor activity   23/3717\n## GO:0008013 GO:0008013                           beta-catenin binding   33/3717\n## GO:0003779 GO:0003779                                  actin binding  121/3717\n##              BgRatio       pvalue    p.adjust      qvalue Count\n## GO:0060090 492/18432 5.209521e-06 0.006324359 0.005999175   140\n## GO:0030674 347/18432 1.334855e-05 0.008102569 0.007685954   103\n## GO:0004879  52/18432 7.225950e-05 0.020539875 0.019483763    23\n## GO:0098531  52/18432 7.225950e-05 0.020539875 0.019483763    23\n## GO:0008013  87/18432 9.768138e-05 0.020539875 0.019483763    33\n## GO:0003779 439/18432 1.015150e-04 0.020539875 0.019483763   121\ndotplot(clusterProfiler_mf_486_3p, showCategory=20) + labs(title =\"hsa-miR-486-3p targets MF GO\")\n\ngoplot(clusterProfiler_mf_486_3p)"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#reactome-pathways",
+    "href": "blog/posts/2023-03-06-mir-486-3p/index.html#reactome-pathways",
+    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "section": "Reactome Pathways",
+    "text": "Reactome Pathways\nreactome_486_3 &lt;- enrichPathway(gene=mir486_3p_targets$ENTREZ, pvalueCutoff = 0.05, readable=TRUE)\ndotplot(reactome_486_3,showCategory=10) + labs(title =\"hsa-miR-486-3p targets reactome pathways\")"
+  },
+  {
+    "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#mesh",
+    "href": "blog/posts/2023-03-06-mir-486-3p/index.html#mesh",
+    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "section": "MESH",
+    "text": "MESH\n# already created \n# creating meshDBi\n# ah &lt;- AnnotationHub(localHub=TRUE)\n# hsa &lt;- query(ah, c(\"MeSHDb\", \"Homo sapiens\"))\n# file_hsa &lt;- hsa[[1]]\n# db &lt;- MeSHDbi::MeSHDb(file_hsa)\n# meshes486 &lt;- enrichMeSH(mir486_3p_targets$ENTREZ, MeSHDb = db, database='gendoo', category = 'C')\n# saveRDS(meshes486,'meshes486.rds')\nmeshes486 &lt;- readRDS('meshes486.rds')\ndotplot(meshes486) + labs(title =\"hsa-miR-486-3p targets mesh gendoo Diseases\")\n\n# saveRDS(meshes486,'meshes486.rds')\n# meshes486_pubmed &lt;- enrichMeSH(mir486_3p_targets$ENTREZ, MeSHDb = db, database='gene2pubmed', category = 'C')\n# dotplot(meshes486) + labs(title =\"hsa-miR-486-3p targets mesh gene2pubmed Diseases\")"
+  }
+]

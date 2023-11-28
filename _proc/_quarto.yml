@@ -1,0 +1,29 @@
+project:
+  type: website
+
+website:
+  twitter-card: true
+  open-graph: true
+  repo-actions: [issue]
+  navbar:
+    left:
+      - text: About
+        href: blog/about.qmd  
+      - text: Posts
+        href: index.qmd
+    right: 
+      - icon: github
+        href: https://github.com/avivleemann
+      - icon: linkedin
+        href: https://LinkedIn.com/in/avivleemann
+
+    background: primary
+    search: true
+
+metadata-files: [nbdev.yml]
+
+
+format:
+  html:
+    theme: lumen
+    css: styles.css
