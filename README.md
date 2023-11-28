@@ -15,7 +15,7 @@ the next step is to create a new nbdev project, and quarto docs.
 
 Folder structure
 
-Below is an overview of the general folder structure for a blog within a nbdev site:
+Below is an overview of the general folder structure for a blog within a nbdev site 📁:
 
 nbs/blog
 ├── index.qmd
@@ -42,11 +42,13 @@ for example:
 
 important to note that in the settings.ini file, ichanged the following lines:
 
-doc_path = _docs  -> doc_path = nbs/_docs
+doc_path = _docs  -> doc_path = _proc/_docs
 lib_path = blog -> lib_path = nbs/blog
 
 to publish the site with gh-pages, i used the following command from nbs folder:
-
+`nbdev_proc_nbs && cd _proc/ && quarto publish gh-pages --no-browser`
+ 
+ the following command can be used to publish the site from nbs folder:
 `cd nbs/`
 `quarto publish gh-pages`
 
@@ -56,4 +58,7 @@ on github, i changed the settings to use gh-pages as the source for the site.
 to update files on github still have to use git push main as the main branch is still the default branch and pointed to the remote main branch.
 `git push`
 
+# Links:
+- 🌐 blog website is hosted at [https://avivleemann.github.io/blog/](https://avivleemann.github.io/blog/)
+- 📘 package volcanoPlot website is hosted at [https://avivleemann.github.io/volcanoPlot/](https://avivleemann.github.io/volcanoPlot/)
 ```

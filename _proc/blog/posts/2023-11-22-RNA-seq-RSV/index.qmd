@@ -407,7 +407,9 @@ sigs
 ```
 
 # packages:
-1. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10152802.svg)](https://doi.org/10.5281/zenodo.10152802)
-2. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10107975.svg)](https://doi.org/10.5281/zenodo.10107975)
-3. [![DOI](https://zenodo.org/badge/DOI/10.25080/majora-1b6fd038-026.svg)](https://doi.org/10.25080/majora-1b6fd038-026)
+1. [matplotlib](https://pypi.org/project/matplotlib/)  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10152802.svg)](https://doi.org/10.5281/zenodo.10152802)
+2. [Pandas](https://pypi.org/project/pandas/)  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10107975.svg)](https://doi.org/10.5281/zenodo.10107975)
+3. [NumPy](https://pypi.org/project/numpy/)  [![DOI](https://zenodo.org/badge/DOI/10.25080/majora-1b6fd038-026.svg)](https://doi.org/10.25080/majora-1b6fd038-026)
+4. [PyDESeq2](https://pydeseq2.readthedocs.io/en/latest/auto_examples/index.html)
 
+functions compiled to volcanoPlot package, url: https://avivleemann.github.io/volcanoPlot/
