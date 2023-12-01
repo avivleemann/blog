@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2023-03-06">
 
-<title>blog - Breast cancer</title>
+<title>blog - SCRNA-seq Breast cancer -analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -97,11 +97,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="blog - Breast cancer">
+<meta property="og:title" content="blog - SCRNA-seq Breast cancer -analysis">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://avivleemann.github.io/blog/blog/posts/2023-03-06-breast-cacner/index_files/figure-html/feature scatter-1.jpeg">
 <meta property="og:site-name" content="blog">
-<meta name="twitter:title" content="blog - Breast cancer">
+<meta name="twitter:title" content="blog - SCRNA-seq Breast cancer -analysis">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://avivleemann.github.io/blog/blog/posts/2023-03-06-breast-cacner/index_files/figure-html/feature scatter-1.jpeg">
 <meta name="twitter:card" content="summary_large_image">
@@ -160,8 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#scrna-seq-breast-cancer--analysis" id="toc-scrna-seq-breast-cancer--analysis" class="nav-link active" data-scroll-target="#scrna-seq-breast-cancer--analysis">SCRNA-seq Breast cancer -analysis</a></li>
-  <li><a href="#libreries" id="toc-libreries" class="nav-link" data-scroll-target="#libreries">Libreries</a></li>
+  <li><a href="#libreries" id="toc-libreries" class="nav-link active" data-scroll-target="#libreries">Libreries</a></li>
   <li><a href="#files" id="toc-files" class="nav-link" data-scroll-target="#files">Files</a></li>
   <li><a href="#pre-processing" id="toc-pre-processing" class="nav-link" data-scroll-target="#pre-processing">Pre-Processing</a></li>
   <li><a href="#feature-scatter-violin" id="toc-feature-scatter-violin" class="nav-link" data-scroll-target="#feature-scatter-violin">Feature-scatter &amp; violin</a></li>
@@ -185,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Breast cancer</h1>
+<h1 class="title">SCRNA-seq Breast cancer -analysis</h1>
   <div class="quarto-categories">
     <div class="quarto-category">SCRNA-seq</div>
     <div class="quarto-category">Breast-cancer</div>
@@ -210,11 +209,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="scrna-seq-breast-cancer--analysis" class="level2">
-<h2 class="anchored" data-anchor-id="scrna-seq-breast-cancer--analysis">SCRNA-seq Breast cancer -analysis</h2>
-<p>Breast cancer data was obtained from single cell portal. single cell analysis executed with <strong>R</strong> program and Seurat package, Pallad expression was examined in Breast cancer data.<br>
-our lab found PALLD express in breast cancr, PALLD expression was examined between different cell type , different cluster groups, alsotop 10 mrker for each cluster was obtained</p>
-</section>
+<p>Breast cancer data was obtained from single cell portal.</p>
+<p>single cell analysis executed with <strong>R</strong> program and Seurat package, Pallad expression was examined in Breast cancer data.</p>
+<p>our lab found PALLD express in breast cancr, PALLD expression was examined between different cell type , different cluster groups, alsotop 10 mrker for each cluster was obtained</p>
+<p><img src="../../../home/avivl/projects/blog/nbs/blog/posts/2023-03-06-breast-cacner/index_files/figure-html/unnamed-chunk-1-1.jpeg" class="img-fluid" style="width:40.0%"></p>
 <section id="libreries" class="level2">
 <h2 class="anchored" data-anchor-id="libreries">Libreries</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
