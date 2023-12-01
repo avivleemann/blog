@@ -4,7 +4,7 @@
     "href": "blog/posts/2023-03-06-glioblastoma/index.html",
     "title": "SCRNA-seq analysis - Glioblasotma",
     "section": "",
-    "text": "glioblastoma data was obtained from single cell portal.\nsingle cell analysis executed with R program and Seurat package, Pallad expression was examined in glioblastoma data."
+    "text": "glioblastoma data was obtained from single cell portal. single cell analysis executed with R program and Seurat package, Pallad expression was examined in glioblastoma data."
   },
   {
     "objectID": "blog/posts/2023-03-06-glioblastoma/index.html#libreries",
@@ -382,7 +382,7 @@
     "href": "blog/posts/2023-03-06-astrocytoma/index.html",
     "title": "SCRNA-seq analysis - Astrocytoma",
     "section": "",
-    "text": "astrocytoma data was obtained from single cell portal.\nsingle cell analysis executed with R program and Seurat package, Pallad expression was examined in astrocytoma data."
+    "text": "astrocytoma data was obtained from single cell portal. single cell analysis executed with R program and Seurat package, Pallad expression was examined in astrocytoma data."
   },
   {
     "objectID": "blog/posts/2023-03-06-astrocytoma/index.html#libreries",
@@ -452,7 +452,7 @@
     "href": "blog/posts/2023-03-06-breast-cacner/index.html",
     "title": "SCRNA-seq Breast cancer -analysis",
     "section": "",
-    "text": "Breast cancer data was obtained from single cell portal.\nsingle cell analysis executed with R program and Seurat package, Pallad expression was examined in Breast cancer data.\nour lab found PALLD express in breast cancr, PALLD expression was examined between different cell type , different cluster groups, alsotop 10 mrker for each cluster was obtained"
+    "text": "Breast cancer data was obtained from single cell portal. single cell analysis executed with R program and Seurat package, Pallad expression was examined in Breast cancer data. our lab found PALLD express in breast cancr, PALLD expression was examined between different cell type , different cluster groups, alsotop 10 mrker for each cluster was obtained"
   },
   {
     "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#libreries",
