@@ -81,7 +81,7 @@
     "href": "blog/posts/2023-11-28-SCRNA-seq/SCRNA-seq-BC.html",
     "title": "Breast Cancer Cell Lines Dataset",
     "section": "",
-    "text": "Breast cancer SCRNA-seq cell line datasets used to examine scanpy package and PALLD expression in breast cancer cell lines.\ndataset was downloaded from kaggle kaggle dataset.\ndataset is also available in the folllowing location GSE173634.\nUMAP - Cell Types:"
+    "text": "Breast cancer SCRNA-seq cell line datasets used to examine scanpy package and PALLD expression in breast cancer cell lines.\ndataset was downloaded from kaggle kaggle dataset.\ndataset is also available in the folllowing location GSE173634."
   },
   {
     "objectID": "blog/posts/2023-11-28-SCRNA-seq/SCRNA-seq-BC.html#packages",
