@@ -316,7 +316,7 @@ WARNING: saving figure to file figures/scatter_QC_total_n_genes.png</code></pre>
 </div>
 </div>
 <p>Identify highly-variable genes.</p>
-<div class="cell" data-execution_count="11">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>adata.raw <span class="op">=</span> adata</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> adata[:, adata.var.highly_variable]</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sc.pp.regress_out(adata, [<span class="st">'total_counts'</span>, <span class="st">'pct_counts_mt'</span>])</span>
