@@ -319,7 +319,7 @@
     "href": "blog/posts/2023-03-06-mir-432-5p/index.html",
     "title": "Enrichmet analysis: hsa-miR-432-5p targets",
     "section": "",
-    "text": "enrichment analysis purpose is to check if there are:\npathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target."
+    "text": "enrichment analysis purpose is to check if there are: pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target."
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#libreris",
@@ -452,7 +452,7 @@
     "href": "blog/posts/2023-03-06-breast-cacner/index.html",
     "title": "SCRNA-seq Breast cancer -analysis",
     "section": "",
-    "text": "Breast cancer data was obtained from single cell portal. single cell analysis executed with R program and Seurat package, Pallad expression was examined in Breast cancer data. our lab found PALLD express in breast cancr, PALLD expression was examined between different cell type , different cluster groups, alsotop 10 mrker for each cluster was obtained"
+    "text": "Breast cancer data was obtained from single cell portal. single cell analysis executed with R program and Seurat package, Pallad expression was examined in Breast cancer data. our lab found PALLD express in breast cancr, PALLD expression was examined between different cell type , different cluster groups, alsotop 10 mrker for each cluster was ."
   },
   {
     "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#libreries",
@@ -571,7 +571,7 @@
     "href": "blog/posts/2023-03-06-mir-486-3p/index.html",
     "title": "Enrichmet analysis: hsa-miR-486-3p targets",
     "section": "",
-    "text": "enrichment analysis purpose is to check if there are:\npathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target."
+    "text": "enrichment analysis purpose is to check if there are: pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target."
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#libreris",
