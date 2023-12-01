@@ -2,38 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-glioblastoma/index.html</loc>
-    <lastmod>2023-11-28T07:33:49.541Z</lastmod>
+    <lastmod>2023-12-01T03:54:35.735Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-astrocytoma/index.html</loc>
-    <lastmod>2023-11-28T07:33:48.447Z</lastmod>
+    <lastmod>2023-12-01T03:54:34.727Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-432-5p/index.html</loc>
-    <lastmod>2023-11-28T07:32:56.403Z</lastmod>
+    <lastmod>2023-12-01T03:53:37.885Z</lastmod>
   </url>
   <url>
-    <loc>https://avivleemann.github.io/blog/blog/about.html</loc>
-    <lastmod>2023-11-28T07:32:52.428Z</lastmod>
+    <loc>https://avivleemann.github.io/blog/blog/posts/2023-11-28-single_cell/scrna-seq-bc.html</loc>
+    <lastmod>2023-12-01T03:53:32.609Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/index.html</loc>
-    <lastmod>2023-11-28T07:32:52.168Z</lastmod>
+    <lastmod>2023-12-01T03:53:31.211Z</lastmod>
+  </url>
+  <url>
+    <loc>https://avivleemann.github.io/blog/blog/about.html</loc>
+    <lastmod>2023-12-01T03:53:31.569Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-11-23-migrate_from_hugo_to_quatro/index.html</loc>
-    <lastmod>2023-11-28T07:32:55.948Z</lastmod>
+    <lastmod>2023-12-01T03:53:37.408Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-11-22-RNA-seq-RSV/index.html</loc>
-    <lastmod>2023-11-28T07:33:47.938Z</lastmod>
+    <lastmod>2023-12-01T03:54:34.251Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-breast-cacner/index.html</loc>
-    <lastmod>2023-11-28T07:33:48.978Z</lastmod>
+    <lastmod>2023-12-01T03:54:35.226Z</lastmod>
   </url>
   <url>
     <loc>https://avivleemann.github.io/blog/blog/posts/2023-03-06-mir-486-3p/index.html</loc>
-    <lastmod>2023-11-28T07:33:50.018Z</lastmod>
+    <lastmod>2023-12-01T03:54:36.201Z</lastmod>
   </url>
 </urlset>
