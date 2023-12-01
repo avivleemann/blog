@@ -339,14 +339,17 @@ WARNING: saving figure to file figures/scatter_QC_total_n_genes.png</code></pre>
 <p>As we set the .raw attribute of adata, the previous plots showed the “raw” (normalized, logarithmized, but uncorrected) gene expression.</p>
 <p>You can also plot the scaled and corrected gene expression by explicitly stating that you don’t want to use .raw.</p>
 <p>umap plot by clusters leiden and cell type.</p>
-<div class="cell" data-execution_count="57">
+<div class="cell" data-execution_count="105">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sc.pl.umap(adata, color<span class="op">=</span><span class="st">'Cell Type'</span>, use_raw<span class="op">=</span><span class="va">False</span>,save<span class="op">=</span><span class="st">'_UMAP_cell_type.png'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>WARNING: saving figure to file figures/umap_UMAP_cell_type.png</code></pre>
+</div>
 <div class="cell-output cell-output-display">
-<p><img src="SCRNA-seq-BC_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+<p><img src="SCRNA-seq-BC_files/figure-html/cell-18-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>adata.obs[<span class="st">'Cell Type'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>adata.obs[<span class="st">'Cell Type'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>['AU565', 'HCC1937', 'HCC38', 'MDAMB468', 'EFM19', ..., 'HCC1954', 'KPL1', 'ZR751', 'MX1', 'MDAMB453']
 Length: 32
@@ -355,16 +358,22 @@ Categories (32, object): ['AU565', 'BT20', 'BT474', 'BT483', ..., 'MDAMB468', 'M
 </div>
 <p>there is 32 cell types in the dataset, leiden clusters is 36 clusters.</p>
 <p>found more leiden clusters than cell types.</p>
-<div class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sc.pl.umap(adata, color<span class="op">=</span>[<span class="st">'leiden'</span>], use_raw<span class="op">=</span><span class="va">False</span>,save<span class="op">=</span><span class="st">'_UMAP_leiden.png'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="106">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sc.pl.umap(adata, color<span class="op">=</span>[<span class="st">'leiden'</span>], use_raw<span class="op">=</span><span class="va">False</span>,save<span class="op">=</span><span class="st">'_UMAP_leiden.png'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>WARNING: saving figure to file figures/umap_UMAP_leiden.png</code></pre>
+</div>
 <div class="cell-output cell-output-display">
-<p><img src="SCRNA-seq-BC_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+<p><img src="SCRNA-seq-BC_files/figure-html/cell-20-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sc.pl.umap(adata, color<span class="op">=</span>[<span class="st">'leiden'</span>, <span class="st">'Cell Type'</span>, <span class="st">'PALLD'</span>],save<span class="op">=</span><span class="st">'_UMAP_leiden_cell_type_PALLD.png'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="107">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sc.pl.umap(adata, color<span class="op">=</span>[<span class="st">'leiden'</span>, <span class="st">'Cell Type'</span>, <span class="st">'PALLD'</span>],save<span class="op">=</span><span class="st">'_UMAP_leiden_cell_type_PALLD.png'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>WARNING: saving figure to file figures/umap_UMAP_leiden_cell_type_PALLD.png</code></pre>
+</div>
 <div class="cell-output cell-output-display">
-<p><img src="SCRNA-seq-BC_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+<p><img src="SCRNA-seq-BC_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Finding marker genes.</p>
@@ -372,19 +381,19 @@ Categories (32, object): ['AU565', 'BT20', 'BT474', 'BT483', ..., 'MDAMB468', 'M
 <p>For this, by default, the .raw attribute of AnnData is used in case it has been initialized before.</p>
 <p>The simplest and fastest method to do so is the t-test.</p>
 <div class="cell" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sc.tl.rank_genes_groups(adata, 'leiden', method='t-test')</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sc.pl.rank_genes_groups(adata, n_genes=25, sharey=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sc.tl.rank_genes_groups(adata, 'leiden', method='t-test')</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sc.pl.rank_genes_groups(adata, n_genes=25, sharey=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The result of a Wilcoxon rank-sum (Mann-Whitney-U) test is very similar.</p>
 <p>We recommend using the latter in publications, see e.g., Sonison &amp; Robinson (2018).</p>
 <p>You might also consider much more powerful differential testing packages like MAST, limma, DESeq2 and, for python, the recent diffxpy.</p>
 <div class="cell" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sc.tl.rank_genes_groups(adata, 'leiden', method='wilcoxon')</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sc.pl.rank_genes_groups(adata, n_genes=25, sharey=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sc.tl.rank_genes_groups(adata, 'leiden', method='wilcoxon')</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sc.pl.rank_genes_groups(adata, n_genes=25, sharey=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Show the 10 top ranked genes per cluster</p>
 <div class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(adata.uns[<span class="st">'rank_genes_groups'</span>][<span class="st">'names'</span>]).head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(adata.uns[<span class="st">'rank_genes_groups'</span>][<span class="st">'names'</span>]).head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
 <div>
 
@@ -666,11 +675,11 @@ Categories (32, object): ['AU565', 'BT20', 'BT474', 'BT483', ..., 'MDAMB468', 'M
 </div>
 <p>Get a table with the scores and groups.</p>
 <div class="cell" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> adata.uns[<span class="st">'rank_genes_groups'</span>]</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> result[<span class="st">'names'</span>].dtype.names</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    {group <span class="op">+</span> <span class="st">'_'</span> <span class="op">+</span> key[:<span class="dv">1</span>]: result[key][group]</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> group <span class="kw">in</span> groups <span class="cf">for</span> key <span class="kw">in</span> [<span class="st">'names'</span>, <span class="st">'pvals'</span>]}).head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> adata.uns[<span class="st">'rank_genes_groups'</span>]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> result[<span class="st">'names'</span>].dtype.names</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    {group <span class="op">+</span> <span class="st">'_'</span> <span class="op">+</span> key[:<span class="dv">1</span>]: result[key][group]</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> group <span class="kw">in</span> groups <span class="cf">for</span> key <span class="kw">in</span> [<span class="st">'names'</span>, <span class="st">'pvals'</span>]}).head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <div>
 
@@ -834,8 +843,8 @@ Categories (32, object): ['AU565', 'BT20', 'BT474', 'BT483', ..., 'MDAMB468', 'M
 <section id="violine-plot-of-marker-genes" class="level2">
 <h2 class="anchored" data-anchor-id="violine-plot-of-marker-genes">Violine plot of marker genes</h2>
 <p>If we want a more detailed view for a certain group, use sc.pl.rank_genes_groups_violin.</p>
-<div class="cell" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sc.pl.rank_genes_groups_violin(adata, groups<span class="op">=</span><span class="st">'0'</span>, n_genes<span class="op">=</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="108">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sc.pl.rank_genes_groups_violin(adata, groups<span class="op">=</span><span class="st">'0'</span>, n_genes<span class="op">=</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="SCRNA-seq-BC_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
 </div>
@@ -844,34 +853,42 @@ Categories (32, object): ['AU565', 'BT20', 'BT474', 'BT483', ..., 'MDAMB468', 'M
 <section id="dotplot-of-marker-genes" class="level2">
 <h2 class="anchored" data-anchor-id="dotplot-of-marker-genes">Dotplot of marker genes</h2>
 <p>plot specific gene in dotplot by cell type.</p>
-<div class="cell" data-execution_count="86">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>sc.pl.dotplot(adata, [<span class="st">'PALLD'</span>,<span class="st">'VIM'</span>, <span class="st">'CAV1'</span>, <span class="st">'LDHB'</span>, <span class="st">'RPS6'</span>, <span class="st">'HACD1'</span>, <span class="st">'CTSB'</span>,], groupby<span class="op">=</span><span class="st">'Cell Type'</span>,save<span class="op">=</span><span class="st">'_dotplot.png'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="109">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sc.pl.dotplot(adata, [<span class="st">'PALLD'</span>,<span class="st">'VIM'</span>, <span class="st">'CAV1'</span>, <span class="st">'LDHB'</span>, <span class="st">'RPS6'</span>, <span class="st">'HACD1'</span>, <span class="st">'CTSB'</span>,], groupby<span class="op">=</span><span class="st">'Cell Type'</span>,save<span class="op">=</span><span class="st">'_dotplot.png'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>WARNING: saving figure to file figures/dotplot__dotplot.png</code></pre>
+</div>
 <div class="cell-output cell-output-display">
-<p><img src="SCRNA-seq-BC_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
+<p><img src="SCRNA-seq-BC_files/figure-html/cell-27-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
 <section id="heatmap-of-clusters-cell-type-and-leiden" class="level2">
 <h2 class="anchored" data-anchor-id="heatmap-of-clusters-cell-type-and-leiden">heatmap of clusters cell type and leiden</h2>
-<div class="cell" data-execution_count="92">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>sc.tl.rank_genes_groups(adata, <span class="st">"Cell Type"</span>, method<span class="op">=</span><span class="st">"t-test"</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>sc.pl.rank_genes_groups_heatmap(adata, n_genes<span class="op">=</span><span class="dv">10</span>, groupby<span class="op">=</span><span class="st">"Cell Type"</span>,save<span class="op">=</span><span class="st">'_heatmap_cell_type.png'</span>,)</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>sc.tl.rank_genes_groups(adata, <span class="st">"leiden"</span>, method<span class="op">=</span><span class="st">"t-test"</span>)</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>sc.pl.rank_genes_groups_heatmap(adata, n_genes<span class="op">=</span><span class="dv">10</span>, groupby<span class="op">=</span><span class="st">"leiden"</span>,save<span class="op">=</span><span class="st">'_heatmap_leiden.png'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sc.tl.rank_genes_groups(adata, <span class="st">"Cell Type"</span>, method<span class="op">=</span><span class="st">"t-test"</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>sc.pl.rank_genes_groups_heatmap(adata, n_genes<span class="op">=</span><span class="dv">10</span>, groupby<span class="op">=</span><span class="st">"Cell Type"</span>,save<span class="op">=</span><span class="st">'_heatmap_cell_type.png'</span>,)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>sc.tl.rank_genes_groups(adata, <span class="st">"leiden"</span>, method<span class="op">=</span><span class="st">"t-test"</span>)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>sc.pl.rank_genes_groups_heatmap(adata, n_genes<span class="op">=</span><span class="dv">10</span>, groupby<span class="op">=</span><span class="st">"leiden"</span>,save<span class="op">=</span><span class="st">'_heatmap_leiden.png'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>WARNING: dendrogram data not found (using key=dendrogram_Cell Type). Running `sc.tl.dendrogram` with default parameters. For fine tuning it is recommended to run `sc.tl.dendrogram` independently.
-WARNING: Gene labels are not shown when more than 50 genes are visualized. To show gene labels set `show_gene_labels=True`</code></pre>
+<pre><code>WARNING: Gene labels are not shown when more than 50 genes are visualized. To show gene labels set `show_gene_labels=True`
+WARNING: saving figure to file figures/heatmap_heatmap_cell_type.png
+WARNING: Gene labels are not shown when more than 50 genes are visualized. To show gene labels set `show_gene_labels=True`
+WARNING: saving figure to file figures/heatmap_heatmap_leiden.png</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="SCRNA-seq-BC_files/figure-html/cell-28-output-2.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="SCRNA-seq-BC_files/figure-html/cell-28-output-3.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
 <section id="save-data-file" class="level2">
 <h2 class="anchored" data-anchor-id="save-data-file">Save data file</h2>
 <div class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>results_file <span class="op">=</span> <span class="st">'GSE173634_Human_BreastCancer_32CellLines_Y2021_35276Cells_Figshare_Counts_Gambardella_diBernardo_RES.h5ad'</span>  </span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>adata.write(results_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>results_file <span class="op">=</span> <span class="st">'GSE173634_Human_BreastCancer_32CellLines_Y2021_35276Cells_Figshare_Counts_Gambardella_diBernardo_RES.h5ad'</span>  </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>adata.write(results_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="conclusion" class="level2">
@@ -883,8 +900,8 @@ WARNING: Gene labels are not shown when more than 50 genes are visualized. To sh
 <p>umap plot by clusters cell type gave us a good separation between the clusters.</p>
 <p>PALLD is a gene found to be envolved in the cell migration process and breast cancer metastasis.</p>
 <p>in this dataset PALLD has diffrent levels of expression in all the cell types.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>sc.pl.umap(adata, color<span class="op">=</span>[ <span class="st">'PALLD'</span>],save<span class="op">=</span><span class="st">'_UMAP_PALLD.png'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="111">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>sc.pl.umap(adata, color<span class="op">=</span>[ <span class="st">'PALLD'</span>],save<span class="op">=</span><span class="st">'_UMAP_PALLD.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>WARNING: saving figure to file figures/umap_UMAP_PALLD.png</code></pre>
 </div>
