@@ -291,7 +291,7 @@
     "href": "index.html",
     "title": "Posts",
     "section": "",
-    "text": "Breast Cancer Cell Lines Dataset\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nBreast-cancer\n\n\nscanpy\n\n\n\n\n\n\n\n\n\n\n\nNov 28, 2023\n\n\n\n\n\n\n  \n\n\n\n\nMigrate Blog from Hugo to Quarto\n\n\n\n\n\n\n\nHugo\n\n\nQuarto\n\n\ngh-pages\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2023\n\n\n\n\n\n\n  \n\n\n\n\nRS Virus RNA-Seq\n\n\n\n\n\n\n\nRNA-seq\n\n\nRSV\n\n\npydeseq2\n\n\n\n\n\n\n\n\n\n\n\nNov 19, 2023\n\n\n\n\n\n\n  \n\n\n\n\nEnrichmet analysis: hsa-miR-432-5p targets\n\n\n\n\n\n\n\nEnrichment\n\n\nmiR-432-5p\n\n\n\n\n\n\n\n\n\n\n\nMar 10, 2023\n\n\n\n\n\n\n  \n\n\n\n\nEnrichmet analysis: hsa-miR-486-3p targets\n\n\n\n\n\n\n\nEnrichment\n\n\nmiR-486-3p\n\n\n\n\n\n\n\n\n\n\n\nMar 10, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSCRNA-seq analysis - Astrocytoma\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nAtrocytoma\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSCRNA-seq Breast cancer -analysis\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nBreast-cancer\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSCRNA-seq analysis - Glioblasotma\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nGlioblastoma\n\n\nGBM\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Breast Cancer Cell Lines Dataset\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nBreast-cancer\n\n\nscanpy\n\n\n\n\n\n\n\n\n\n\n\nNov 28, 2023\n\n\n\n\n\n\n  \n\n\n\n\nMigrate Blog from Hugo to Quarto\n\n\n\n\n\n\n\nHugo\n\n\nQuarto\n\n\ngh-pages\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2023\n\n\n\n\n\n\n  \n\n\n\n\nRS Virus RNA-Seq\n\n\n\n\n\n\n\nRNA-seq\n\n\nRSV\n\n\npydeseq2\n\n\n\n\n\n\n\n\n\n\n\nNov 19, 2023\n\n\n\n\n\n\n  \n\n\n\n\nEnrichmet analysis - hsa-miR-432-5p targets\n\n\n\n\n\n\n\nEnrichment\n\n\nmiR-432-5p\n\n\n\n\n\n\n\n\n\n\n\nMar 10, 2023\n\n\n\n\n\n\n  \n\n\n\n\nEnrichmet analysis - hsa-miR-486-3p targets\n\n\n\n\n\n\n\nEnrichment\n\n\nmiR-486-3p\n\n\n\n\n\n\n\n\n\n\n\nMar 10, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSCRNA-seq analysis - Astrocytoma\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nAtrocytoma\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSCRNA-seq Breast cancer -analysis\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nBreast-cancer\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSCRNA-seq analysis - Glioblasotma\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nGlioblastoma\n\n\nGBM\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/about.html",
@@ -317,63 +317,63 @@
   {
     "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html",
     "href": "blog/posts/2023-03-06-mir-432-5p/index.html",
-    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "title": "Enrichmet analysis - hsa-miR-432-5p targets",
     "section": "",
     "text": "enrichment analysis purpose is to check if there are: pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target."
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#libreris",
     "href": "blog/posts/2023-03-06-mir-432-5p/index.html#libreris",
-    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "title": "Enrichmet analysis - hsa-miR-432-5p targets",
     "section": "Libreris",
     "text": "Libreris\npacman library purpose is to load multiple libraries from a vector\nlibrary(pacman)\nlab &lt;-  c(\"GO.db\",\"GOstats\",\"cRegulome\",\"readxl\",\"ggplot2\",\"tidyverse\",\"R.utils\",\"MeSHDbi\",\"AnnotationHub\",\"KEGGREST\",\"AnnotationDbi\",\"org.Hs.eg.db\",\"clusterProfiler\",\"meshr\",\"pathview\",\"ReactomePA\",\"meshes\")\npacman::p_load(lab,install = FALSE,character.only = TRUE)"
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#files",
     "href": "blog/posts/2023-03-06-mir-432-5p/index.html#files",
-    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "title": "Enrichmet analysis - hsa-miR-432-5p targets",
     "section": "Files",
     "text": "Files\nloading miR targets files acquired from mirWalk\nmir432_5p_targets &lt;-read.csv(\"miRWalk_miRNA_Targets_432_5p_3UTR.csv\")\n# annotations_ahb &lt;- read.csv(\"annotations_ahb.csv\")"
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#head",
     "href": "blog/posts/2023-03-06-mir-432-5p/index.html#head",
-    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "title": "Enrichmet analysis - hsa-miR-432-5p targets",
     "section": "Head",
     "text": "Head\nmir432_5p_targets %&gt;% head()\n##          mirnaid     refseqid genesymbol\n## 1 hsa-miR-432-5p NM_001353214        DYM\n## 2 hsa-miR-432-5p NM_001374442        DYM\n## 3 hsa-miR-432-5p NM_001291932    SEC14L2\n## 4 hsa-miR-432-5p NM_001301068       ARL1\n## 5 hsa-miR-432-5p    NM_003387      WIPF1\n## 6 hsa-miR-432-5p    NM_012215        OGA\n##                                                                                    duplex\n## 1 TCTTGGAGTAGGTCATTGGGTGG#CCACCCGGACCCCTCCAGC#..((((((..((((..(((((((#))))))))))).)))))).\n## 2 TCTTGGAGTAGGTCATTGGGTGG#CCACCCGGACCCCTCCAGC#..((((((..((((..(((((((#))))))))))).)))))).\n## 3 TCTTGGAGTAGGTCATTGGGTGG#ACCCAGGATTGTCTCCAAC#..((((((..((((.((((((..#))))))))))..)))))).\n## 4 TCTTGGAGTAGGTCATTGGGTGG#CACCCATTCCTACTTTAGT#..((((((((((....((((((.#))))))..)))))))))).\n## 5 TCTTGGAGTAGGTCATTGGGTGG#GCCTAATGACCCATTTCAC#...((((((.(((((((((((..#))))))))))).)))))).\n## 6   TCTTGGAGTAGGTCATTGGGTGG#TACCTAGTGACTTCCAAC#..(((((...((((((((((((.#))))))))))))))))).\n##   start  end  bindingp energy seed accessibility    au phylopstem phylopflank\n## 1  2491 2510 0.9500000  -24.3    1   0.005542395 0.441  0.0000000   0.0000000\n## 2  1756 1775 0.9500000  -24.3    1   0.005542395 0.441  0.0000000   0.0000000\n## 3  3555 3574 0.9529915  -21.4    1   0.002860247 0.456  0.0000000   0.0000000\n## 4  2116 2135 0.9538462  -22.2    1   0.232450300 0.603  1.2249763   0.8797262\n## 5  3702 3721 0.9538462  -22.9    0   0.053886420 0.647  2.1715973   2.1847662\n## 6  4641 4659 0.9538462  -21.3    0   0.048461950 0.588  0.9082432   1.0060216\n##          me number_of_pairings binding_region_length\n## 1 -8.224395                 17                    19\n## 2 -8.224395                 17                    19\n## 3 -7.991346                 16                    19\n## 4 -8.071470                 16                    19\n## 5 -7.757047                 17                    19\n## 6 -9.569532                 17                    18\n##   longest_consecutive_pairings position validated TargetScan miRDB\n## 1                           11     3UTR                    0     0\n## 2                           11     3UTR                    0     0\n## 3                           10     3UTR                    0     0\n## 4                           10     3UTR                    0     0\n## 5                           11     3UTR                    0     0\n## 6                           17     3UTR                    0     0\nmir432_5p_targets %&gt;% colnames()\n##  [1] \"mirnaid\"                      \"refseqid\"                    \n##  [3] \"genesymbol\"                   \"duplex\"                      \n##  [5] \"start\"                        \"end\"                         \n##  [7] \"bindingp\"                     \"energy\"                      \n##  [9] \"seed\"                         \"accessibility\"               \n## [11] \"au\"                           \"phylopstem\"                  \n## [13] \"phylopflank\"                  \"me\"                          \n## [15] \"number_of_pairings\"           \"binding_region_length\"       \n## [17] \"longest_consecutive_pairings\" \"position\"                    \n## [19] \"validated\"                    \"TargetScan\"                  \n## [21] \"miRDB\""
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#pre-processing",
     "href": "blog/posts/2023-03-06-mir-432-5p/index.html#pre-processing",
-    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "title": "Enrichmet analysis - hsa-miR-432-5p targets",
     "section": "Pre-processing",
     "text": "Pre-processing\ncolnames(mir432_5p_targets)[3] &lt;- \"SYMBOL\"\ncolnames(mir432_5p_targets)[1] &lt;- \"miR\"\ncolnames(mir432_5p_targets)[7] &lt;- \"score\"\nmaps the gene to ENTREZID\nmir432_5p_targets$ENTREZ = mapIds(org.Hs.eg.db,\n                                  key = mir432_5p_targets$SYMBOL,  # data to use for retrieval\n                                  column =  \"ENTREZID\", # information to retreive for given data\n                                  keytype = \"SYMBOL\",multiVals =  \"first\" )\n# mir_532_5_mapIDs &lt;- bitr( mir432_5p_targets$SYMBOL,  \"SYMBOL\",\"ENTREZID\", OrgDb = org.Hs.eg.db)"
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#kegg",
     "href": "blog/posts/2023-03-06-mir-432-5p/index.html#kegg",
-    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "title": "Enrichmet analysis - hsa-miR-432-5p targets",
     "section": "KEGG",
     "text": "KEGG\nrun KEGG enrichment via cluster Profiler package\nclusterProfiler_KEGG_432_5p &lt;- enrichKEGG(mir432_5p_targets$ENTREZ)\nhead(summary(clusterProfiler_KEGG_432_5p)[, -8])\n##                ID              Description GeneRatio  BgRatio       pvalue\n## hsa05032 hsa05032       Morphine addiction   35/1487  91/8292 2.819029e-06\n## hsa04727 hsa04727        GABAergic synapse   31/1487  89/8292 9.720160e-05\n## hsa04728 hsa04728     Dopaminergic synapse   41/1487 132/8292 1.570806e-04\n## hsa04713 hsa04713    Circadian entrainment   32/1487  97/8292 2.406306e-04\n## hsa04014 hsa04014    Ras signaling pathway   64/1487 236/8292 2.570959e-04\n## hsa04371 hsa04371 Apelin signaling pathway   42/1487 139/8292 2.572457e-04\n##              p.adjust       qvalue Count\n## hsa05032 0.0009387366 0.0007744911    35\n## hsa04727 0.0142771350 0.0117791441    31\n## hsa04728 0.0142771350 0.0117791441    41\n## hsa04713 0.0142771350 0.0117791441    32\n## hsa04014 0.0142771350 0.0117791441    64\n## hsa04371 0.0142771350 0.0117791441    42\ndotplot(clusterProfiler_KEGG_432_5p, showCategory=10) + labs(title =\"hsa-miR-432-5p targets KEGG pathways\")"
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#go-analysis",
     "href": "blog/posts/2023-03-06-mir-432-5p/index.html#go-analysis",
-    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "title": "Enrichmet analysis - hsa-miR-432-5p targets",
     "section": "GO analysis",
     "text": "GO analysis\n\nBP analysis\nno results\nclusterProfiler_bp_432_5p &lt;- enrichGO(mir432_5p_targets$ENTREZ, ont=\"BP\",OrgDb =org.Hs.eg.db)\n#summary(clusterProfiler_bp_432_5p) %&gt;% head()\n#dotplot(clusterProfiler_bp_432_5p, showCategory=20)\nno results\n\n\nCC analysis\nclusterProfiler_cc_432_5p &lt;- enrichGO(mir432_5p_targets$ENTREZ, ont=\"CC\",OrgDb =org.Hs.eg.db)\nhead(summary(clusterProfiler_cc_432_5p)[,-8])\n##                    ID                           Description GeneRatio   BgRatio\n## GO:0005769 GO:0005769                        early endosome  104/3317 414/19869\n## GO:0031965 GO:0031965                      nuclear membrane   79/3317 305/19869\n## GO:0005635 GO:0005635                      nuclear envelope  116/3317 488/19869\n## GO:0031228 GO:0031228 intrinsic component of Golgi membrane   25/3317  69/19869\n## GO:0000151 GO:0000151              ubiquitin ligase complex   78/3317 309/19869\n## GO:0043197 GO:0043197                       dendritic spine   49/3317 175/19869\n##                  pvalue    p.adjust      qvalue Count\n## GO:0005769 6.841258e-06 0.005199356 0.004500828   104\n## GO:0031965 2.694279e-05 0.007917530 0.006853817    79\n## GO:0005635 3.125341e-05 0.007917530 0.006853817   116\n## GO:0031228 7.110974e-05 0.011447826 0.009909821    25\n## GO:0000151 7.705279e-05 0.011447826 0.009909821    78\n## GO:0043197 1.164215e-04 0.011447826 0.009909821    49\ndotplot(clusterProfiler_cc_432_5p, showCategory=10) + labs(title =\"hsa-miR-432-5p targets CC GO\")\n\ngoplot(clusterProfiler_cc_432_5p )\n\n\n\nMF analysis\nclusterProfiler_mf_432_5p &lt;- enrichGO(mir432_5p_targets$ENTREZ, ont=\"MF\",OrgDb =org.Hs.eg.db)\nhead(summary(clusterProfiler_mf_432_5p)[,-8] )\n##                    ID                   Description GeneRatio   BgRatio\n## GO:0019001 GO:0019001     guanyl nucleotide binding  111/3240 401/18432\n## GO:0032561 GO:0032561 guanyl ribonucleotide binding  111/3240 401/18432\n## GO:0003924 GO:0003924               GTPase activity   94/3240 331/18432\n## GO:0005525 GO:0005525                   GTP binding  104/3240 379/18432\n## GO:0019003 GO:0019003                   GDP binding   30/3240  73/18432\n## GO:0003925 GO:0003925            G protein activity   18/3240  41/18432\n##                  pvalue     p.adjust       qvalue Count\n## GO:0019001 2.696462e-07 0.0001620574 0.0001558271   111\n## GO:0032561 2.696462e-07 0.0001620574 0.0001558271   111\n## GO:0003924 6.380072e-07 0.0002556282 0.0002458007    94\n## GO:0005525 9.916314e-07 0.0002979852 0.0002865293   104\n## GO:0019003 2.039762e-06 0.0004903587 0.0004715070    30\n## GO:0003925 7.950900e-05 0.0159283036 0.0153159448    18\ndotplot(clusterProfiler_mf_432_5p, showCategory=10) + labs(title =\"hsa-miR-432-5p targets MF GO\")\n\ngoplot(clusterProfiler_mf_432_5p )"
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#reactome-pathways",
     "href": "blog/posts/2023-03-06-mir-432-5p/index.html#reactome-pathways",
-    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "title": "Enrichmet analysis - hsa-miR-432-5p targets",
     "section": "Reactome Pathways",
     "text": "Reactome Pathways\nreactome_432_5&lt;- enrichPathway(gene=mir432_5p_targets$ENTREZ, pvalueCutoff = 0.05, readable=TRUE)\ndotplot(reactome_432_5,showCategory=10) + labs(title =\"hsa-miR-432-5p targets reactome pathways\")"
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#mesh",
     "href": "blog/posts/2023-03-06-mir-432-5p/index.html#mesh",
-    "title": "Enrichmet analysis: hsa-miR-432-5p targets",
+    "title": "Enrichmet analysis - hsa-miR-432-5p targets",
     "section": "MESH",
     "text": "MESH\n# already created \n# creating meshDBi\n# ah &lt;- AnnotationHub(localHub=TRUE)\n# hsa &lt;- query(ah, c(\"MeSHDb\", \"Homo sapiens\"))\n# file_hsa &lt;- hsa[[1]]\n# db &lt;- MeSHDbi::MeSHDb(file_hsa)\n# saved & read the mehses \n# meshes432 &lt;- enrichMeSH(mir432_5p_targets$ENTREZ, MeSHDb = db, database='gendoo', category = 'C')\n# saveRDS(meshes432,'meshes432.rds')\nmeshes432 &lt;- readRDS('meshes432.rds')\ndotplot(meshes432) + labs(title =\"hsa-miR-432-5p targets mesh gendoo Diseases\")\n\n# meshes432_pubmed &lt;- enrichMeSH(mir432_5p_targets$ENTREZ, MeSHDb = db, database='gene2pubmed', category = 'C')\n# dotplot(meshes432_pubmed) + labs(title =\"hsa-miR-432-5p targets mesh gene2pubmed Diseases\")"
   },
@@ -569,63 +569,63 @@
   {
     "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html",
     "href": "blog/posts/2023-03-06-mir-486-3p/index.html",
-    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "title": "Enrichmet analysis - hsa-miR-486-3p targets",
     "section": "",
     "text": "enrichment analysis purpose is to check if there are: pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target."
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#libreris",
     "href": "blog/posts/2023-03-06-mir-486-3p/index.html#libreris",
-    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "title": "Enrichmet analysis - hsa-miR-486-3p targets",
     "section": "Libreris",
     "text": "Libreris\npacman library purpose is to load multiple libraries from a vector\nlibrary(pacman)\nlab &lt;-  c(\"GO.db\",\"GOstats\",\"cRegulome\",\"readxl\",\"ggplot2\",\"tidyverse\",\"R.utils\",\"MeSHDbi\",\"AnnotationHub\",\n          \"AnnotationDbi\",\"org.Hs.eg.db\",\"clusterProfiler\",\"meshr\",\"pathview\",\"ReactomePA\",\"meshes\",\"tidyverse\")\npacman::p_load(lab,install = FALSE,character.only = TRUE)"
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#files",
     "href": "blog/posts/2023-03-06-mir-486-3p/index.html#files",
-    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "title": "Enrichmet analysis - hsa-miR-486-3p targets",
     "section": "Files",
     "text": "Files\nloading miR targets files acquired from mirWalk\nmir486_3p_targets &lt;-read.csv(\"miRWalk_miRNA_Targets_486_3p_3UTR.csv\")\n# annotations_ahb &lt;- read.csv(\"annotations_ahb.csv\")"
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#head",
     "href": "blog/posts/2023-03-06-mir-486-3p/index.html#head",
-    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "title": "Enrichmet analysis - hsa-miR-486-3p targets",
     "section": "Head",
     "text": "Head\nmir486_3p_targets %&gt;%  head()\n##          mirnaid     refseqid genesymbol\n## 1 hsa-miR-486-3p    NM_145725      TRAF3\n## 2 hsa-miR-486-3p    NM_198217       ING1\n## 3 hsa-miR-486-3p    NM_024295      DERL1\n## 4 hsa-miR-486-3p    NM_004308    ARHGAP1\n## 5 hsa-miR-486-3p    NM_006390       IPO8\n## 6 hsa-miR-486-3p NM_001042669   ARHGAP24\n##                                                                                          duplex\n## 1           CGGGGCAGCTCAGTACAGGAT#CCTGTGCCCTGAGCTCCCG#..(((.(((((((((((((..#)))))))..))))))))).\n## 2             CGGGGCAGCTCAGTACAGGAT#TGCTGTATGTGAGCTGTA#....((((((((((((((.(.#).)))))).)))))))).\n## 3         CGGGGCAGCTCAGTACAGGAT#GTCCCTGCTCTGCTGTCTCT#.((((((((..((((..((((#)))).))))..)))))))).\n## 4 CGGGGCAGCTCAGTACAGGAT#TCCCTATCTGGTAGGCTGCCCTGC#(((((((((((((....(((.#)))....)))...)))))))))).\n## 5         CGGGGCAGCTCAGTACAGGAT#CCTGCTGCTGGGGGGCTTTT#.(((((..(((((((((((..#)))).)))))))..))))).\n## 6               CGGGGCAGCTCAGTACAGGAT#CTGTGCTGTTTGTGCCA#.((.((((..((((((((...#)))))))).)))).)).\n##   start  end  bindingp energy seed accessibility    au phylopstem phylopflank\n## 1  4050 4069 0.9538462  -25.8    0  1.931234e-03 0.250  0.0000000   0.0000000\n## 2  1841 1859 0.9538462  -20.6    0  1.342227e-03 0.632  2.0375295   1.0278025\n## 3  3060 3080 0.9538462  -20.5    1  6.949161e-02 0.618  0.4188013   1.3100478\n## 4  1886 1910 0.9538462  -24.1    1  3.465340e-06 0.397  0.6887471   0.3595709\n## 5  3892 3912 0.9538462  -20.8    0  8.965582e-05 0.485  3.9497398   4.8023135\n## 6  2656 2673 0.9538462  -20.5    0  3.894453e-04 0.632  2.1409307   1.7314363\n##          me number_of_pairings binding_region_length\n## 1 -6.857959                 16                    19\n## 2 -9.546562                 15                    18\n## 3 -8.093655                 16                    20\n## 4 -5.762913                 16                    24\n## 5 -7.650646                 16                    20\n## 6 -9.124243                 14                    17\n##   longest_consecutive_pairings position validated TargetScan miRDB\n## 1                            9     3UTR                    0     1\n## 2                            8     3UTR                    0     0\n## 3                            8     3UTR                    0     0\n## 4                           10     3UTR                    0     1\n## 5                            7     3UTR                    0     0\n## 6                            8     3UTR                    0     0\nmir486_3p_targets %&gt;% colnames()\n##  [1] \"mirnaid\"                      \"refseqid\"                    \n##  [3] \"genesymbol\"                   \"duplex\"                      \n##  [5] \"start\"                        \"end\"                         \n##  [7] \"bindingp\"                     \"energy\"                      \n##  [9] \"seed\"                         \"accessibility\"               \n## [11] \"au\"                           \"phylopstem\"                  \n## [13] \"phylopflank\"                  \"me\"                          \n## [15] \"number_of_pairings\"           \"binding_region_length\"       \n## [17] \"longest_consecutive_pairings\" \"position\"                    \n## [19] \"validated\"                    \"TargetScan\"                  \n## [21] \"miRDB\""
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#pre-processing",
     "href": "blog/posts/2023-03-06-mir-486-3p/index.html#pre-processing",
-    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "title": "Enrichmet analysis - hsa-miR-486-3p targets",
     "section": "Pre-Processing",
     "text": "Pre-Processing\ncolnames(mir486_3p_targets)[3] &lt;- \"SYMBOL\"\ncolnames(mir486_3p_targets)[1] &lt;- \"miR\"\ncolnames(mir486_3p_targets)[7] &lt;- \"score\"\nmaps the gene to ENTREZID\nmir486_3p_targets$ENTREZ = mapIds(org.Hs.eg.db,\n                                  key = mir486_3p_targets$SYMBOL,  # data to use for retrieval\n                                  column =  \"ENTREZID\", # information to retreive for given data\n                                  keytype = \"SYMBOL\",multiVals =  \"first\" )"
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#kegg",
     "href": "blog/posts/2023-03-06-mir-486-3p/index.html#kegg",
-    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "title": "Enrichmet analysis - hsa-miR-486-3p targets",
     "section": "KEGG",
     "text": "KEGG\nclusterProfiler_KEGG_486_3p &lt;- enrichKEGG(mir486_3p_targets$ENTREZ)\nhead(summary(clusterProfiler_KEGG_486_3p)[, -8])\n##                ID                     Description GeneRatio  BgRatio\n## hsa04144 hsa04144                     Endocytosis   80/1683 251/8292\n## hsa04713 hsa04713           Circadian entrainment   38/1683  97/8292\n## hsa04725 hsa04725             Cholinergic synapse   39/1683 113/8292\n## hsa04728 hsa04728            Dopaminergic synapse   44/1683 132/8292\n## hsa05163 hsa05163 Human cytomegalovirus infection   67/1683 225/8292\n## hsa04010 hsa04010          MAPK signaling pathway   83/1683 294/8292\n##                pvalue    p.adjust      qvalue Count\n## hsa04144 7.764621e-06 0.002311347 0.001768124    80\n## hsa04713 1.388196e-05 0.002311347 0.001768124    38\n## hsa04725 2.763010e-04 0.023492414 0.017971121    39\n## hsa04728 2.821912e-04 0.023492414 0.017971121    44\n## hsa05163 3.949912e-04 0.026306414 0.020123762    67\n## hsa04010 5.727129e-04 0.027849950 0.021304529    83\ndotplot(clusterProfiler_KEGG_486_3p, showCategory=10) + labs(title =\"hsa-miR-486-3p targets KEGG pathways\")"
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#go-analysis",
     "href": "blog/posts/2023-03-06-mir-486-3p/index.html#go-analysis",
-    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "title": "Enrichmet analysis - hsa-miR-486-3p targets",
     "section": "GO analysis",
     "text": "GO analysis\n\nBP analysis\nclusterProfiler_bp_486_3p &lt;- enrichGO(mir486_3p_targets$ENTREZ, ont=\"BP\",OrgDb =org.Hs.eg.db)\nsummary(clusterProfiler_bp_486_3p)[,-8] %&gt;% head()\n##                    ID\n## GO:0010975 GO:0010975\n## GO:0007265 GO:0007265\n## GO:0031345 GO:0031345\n## GO:0032535 GO:0032535\n## GO:0043161 GO:0043161\n## GO:1901888 GO:1901888\n##                                                                  Description\n## GO:0010975                       regulation of neuron projection development\n## GO:0007265                                   Ras protein signal transduction\n## GO:0031345               negative regulation of cell projection organization\n## GO:0032535                             regulation of cellular component size\n## GO:0043161 proteasome-mediated ubiquitin-dependent protein catabolic process\n## GO:1901888                              regulation of cell junction assembly\n##            GeneRatio   BgRatio       pvalue    p.adjust      qvalue Count\n## GO:0010975  128/3603 446/18903 4.050520e-07 0.002583827 0.002304107   128\n## GO:0007265  103/3603 353/18903 2.375428e-06 0.003794737 0.003383925   103\n## GO:0031345   64/3603 194/18903 2.590133e-06 0.003794737 0.003383925    64\n## GO:0032535  106/3603 367/18903 2.847823e-06 0.003794737 0.003383925   106\n## GO:0043161  125/3603 450/18903 3.450878e-06 0.003794737 0.003383925   125\n## GO:1901888   66/3603 204/18903 3.861954e-06 0.003794737 0.003383925    66\ndotplot(clusterProfiler_bp_486_3p, showCategory=10)+ labs(title =\"hsa-miR-486-3p targets BP GO\")\n\ngoplot(clusterProfiler_bp_486_3p)\n\n\n\nCC analysis\nclusterProfiler_cc_486_3p &lt;- enrichGO(mir486_3p_targets$ENTREZ, ont=\"CC\",OrgDb =org.Hs.eg.db)\nsummary(clusterProfiler_cc_486_3p)[,-8] %&gt;% head()\n##                    ID          Description GeneRatio   BgRatio       pvalue\n## GO:0070382 GO:0070382     exocytic vesicle   79/3786 226/19869 1.093423e-08\n## GO:0008021 GO:0008021     synaptic vesicle   74/3786 208/19869 1.346856e-08\n## GO:0097060 GO:0097060    synaptic membrane  116/3786 378/19869 2.969717e-08\n## GO:0031252 GO:0031252    cell leading edge  124/3786 421/19869 1.321625e-07\n## GO:0030133 GO:0030133    transport vesicle  124/3786 423/19869 1.758511e-07\n## GO:0042734 GO:0042734 presynaptic membrane   52/3786 148/19869 2.792795e-06\n##                p.adjust       qvalue Count\n## GO:0070382 5.205599e-06 4.175254e-06    79\n## GO:0008021 5.205599e-06 4.175254e-06    74\n## GO:0097060 7.651971e-06 6.137415e-06   116\n## GO:0031252 2.554041e-05 2.048519e-05   124\n## GO:0030133 2.718658e-05 2.180554e-05   124\n## GO:0042734 3.598051e-04 2.885888e-04    52\ndotplot(clusterProfiler_cc_486_3p, showCategory=10) + labs(title =\"hsa-miR-486-3p targets CC GO\")\n\ngoplot(clusterProfiler_cc_486_3p)\n\n\n\nMF analysis\nclusterProfiler_mf_486_3p &lt;- enrichGO(mir486_3p_targets$ENTREZ, ont=\"MF\",OrgDb =org.Hs.eg.db)\nsummary(clusterProfiler_mf_486_3p)[,-8] %&gt;% head()\n##                    ID                                    Description GeneRatio\n## GO:0060090 GO:0060090                     molecular adaptor activity  140/3717\n## GO:0030674 GO:0030674         protein-macromolecule adaptor activity  103/3717\n## GO:0004879 GO:0004879                      nuclear receptor activity   23/3717\n## GO:0098531 GO:0098531 ligand-activated transcription factor activity   23/3717\n## GO:0008013 GO:0008013                           beta-catenin binding   33/3717\n## GO:0003779 GO:0003779                                  actin binding  121/3717\n##              BgRatio       pvalue    p.adjust      qvalue Count\n## GO:0060090 492/18432 5.209521e-06 0.006324359 0.005999175   140\n## GO:0030674 347/18432 1.334855e-05 0.008102569 0.007685954   103\n## GO:0004879  52/18432 7.225950e-05 0.020539875 0.019483763    23\n## GO:0098531  52/18432 7.225950e-05 0.020539875 0.019483763    23\n## GO:0008013  87/18432 9.768138e-05 0.020539875 0.019483763    33\n## GO:0003779 439/18432 1.015150e-04 0.020539875 0.019483763   121\ndotplot(clusterProfiler_mf_486_3p, showCategory=20) + labs(title =\"hsa-miR-486-3p targets MF GO\")\n\ngoplot(clusterProfiler_mf_486_3p)"
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#reactome-pathways",
     "href": "blog/posts/2023-03-06-mir-486-3p/index.html#reactome-pathways",
-    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "title": "Enrichmet analysis - hsa-miR-486-3p targets",
     "section": "Reactome Pathways",
     "text": "Reactome Pathways\nreactome_486_3 &lt;- enrichPathway(gene=mir486_3p_targets$ENTREZ, pvalueCutoff = 0.05, readable=TRUE)\ndotplot(reactome_486_3,showCategory=10) + labs(title =\"hsa-miR-486-3p targets reactome pathways\")"
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#mesh",
     "href": "blog/posts/2023-03-06-mir-486-3p/index.html#mesh",
-    "title": "Enrichmet analysis: hsa-miR-486-3p targets",
+    "title": "Enrichmet analysis - hsa-miR-486-3p targets",
     "section": "MESH",
     "text": "MESH\n# already created \n# creating meshDBi\n# ah &lt;- AnnotationHub(localHub=TRUE)\n# hsa &lt;- query(ah, c(\"MeSHDb\", \"Homo sapiens\"))\n# file_hsa &lt;- hsa[[1]]\n# db &lt;- MeSHDbi::MeSHDb(file_hsa)\n# meshes486 &lt;- enrichMeSH(mir486_3p_targets$ENTREZ, MeSHDb = db, database='gendoo', category = 'C')\n# saveRDS(meshes486,'meshes486.rds')\nmeshes486 &lt;- readRDS('meshes486.rds')\ndotplot(meshes486) + labs(title =\"hsa-miR-486-3p targets mesh gendoo Diseases\")\n\n# saveRDS(meshes486,'meshes486.rds')\n# meshes486_pubmed &lt;- enrichMeSH(mir486_3p_targets$ENTREZ, MeSHDb = db, database='gene2pubmed', category = 'C')\n# dotplot(meshes486) + labs(title =\"hsa-miR-486-3p targets mesh gene2pubmed Diseases\")"
   }
