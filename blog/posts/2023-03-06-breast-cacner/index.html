@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../logo1.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../../index.html">
-    <span class="navbar-title">blog</span>
+    <span class="navbar-title">Aviv Leemann</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -209,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Breast cancer data was obtained from single cell portal. single cell analysis executed with <strong>R</strong> program and Seurat package, Pallad expression was examined in Breast cancer data. our lab found PALLD express in breast cancr, PALLD expression was examined between different cell type , different cluster groups, alsotop 10 mrker for each cluster was . <img src="index_files/figure-html/celltypemajorumap.jpeg" class="img-fluid" style="width:80.0%"></p>
+<p>Breast cancer data was obtained from single cell portal. single cell analysis executed with <strong>R</strong> program and Seurat package, Pallad expression was examined in Breast cancer data. our lab found PALLD express in breast cancr, PALLD expression was examined between different cell type , different cluster groups, alsotop 10 mrker for each cluster was .</p>
 <section id="libreries" class="level2">
 <h2 class="anchored" data-anchor-id="libreries">Libreries</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
@@ -290,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">FeatureScatter</span>(BCdata, <span class="at">feature1 =</span> <span class="st">"nCount_RNA"</span>, <span class="at">feature2 =</span> <span class="st">"Percent_mito"</span>,<span class="at">raster=</span><span class="cn">FALSE</span>)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">FeatureScatter</span>(BCdata, <span class="at">feature1 =</span> <span class="st">"nCount_RNA"</span>, <span class="at">feature2 =</span> <span class="st">"nFeature_RNA"</span>,<span class="at">raster=</span><span class="cn">FALSE</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plot2 <span class="sc">+</span> plot1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="index_files/figure-html/feature scatter-1.jpeg" class="img-fluid"></p>
+<p><img src="cell type major umap.jpeg" class="img-fluid" style="width:0.0%"> <img src="index_files/figure-html/feature scatter-1.jpeg" class="img-fluid"></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">VlnPlot</span>(BCdata, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"nFeature_RNA"</span>, <span class="st">"nCount_RNA"</span>,<span class="st">"Percent_mito"</span>), <span class="at">ncol =</span> <span class="dv">3</span>,<span class="at">pt.size  =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="index_files/figure-html/feature scatter-2.jpeg" class="img-fluid"></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">VlnPlot</span>(BCdata, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"nFeature_RNA"</span>, <span class="st">"nCount_RNA"</span>,<span class="st">"Percent_mito"</span>), <span class="at">ncol =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

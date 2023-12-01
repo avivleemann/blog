@@ -319,7 +319,7 @@
     "href": "blog/posts/2023-03-06-mir-432-5p/index.html",
     "title": "Enrichmet analysis - hsa-miR-432-5p targets",
     "section": "",
-    "text": "enrichment analysis purpose is to check if there are: pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target."
+    "text": "enrichment analysis purpose is to check if there are pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target."
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html#libreris",
@@ -480,7 +480,7 @@
     "href": "blog/posts/2023-03-06-breast-cacner/index.html#feature-scatter-violin",
     "title": "SCRNA-seq Breast cancer -analysis",
     "section": "Feature-scatter & violin",
-    "text": "Feature-scatter & violin\nIdents(BCdata) &lt;- \"Breast cancer\"\n\nplot1 &lt;- FeatureScatter(BCdata, feature1 = \"nCount_RNA\", feature2 = \"Percent_mito\",raster=FALSE)\nplot2 &lt;- FeatureScatter(BCdata, feature1 = \"nCount_RNA\", feature2 = \"nFeature_RNA\",raster=FALSE)\nplot2 + plot1\n\nVlnPlot(BCdata, features = c(\"nFeature_RNA\", \"nCount_RNA\",\"Percent_mito\"), ncol = 3,pt.size  = 0)\n\nVlnPlot(BCdata, features = c(\"nFeature_RNA\", \"nCount_RNA\",\"Percent_mito\"), ncol = 3)"
+    "text": "Feature-scatter & violin\nIdents(BCdata) &lt;- \"Breast cancer\"\n\nplot1 &lt;- FeatureScatter(BCdata, feature1 = \"nCount_RNA\", feature2 = \"Percent_mito\",raster=FALSE)\nplot2 &lt;- FeatureScatter(BCdata, feature1 = \"nCount_RNA\", feature2 = \"nFeature_RNA\",raster=FALSE)\nplot2 + plot1\n \nVlnPlot(BCdata, features = c(\"nFeature_RNA\", \"nCount_RNA\",\"Percent_mito\"), ncol = 3,pt.size  = 0)\n\nVlnPlot(BCdata, features = c(\"nFeature_RNA\", \"nCount_RNA\",\"Percent_mito\"), ncol = 3)"
   },
   {
     "objectID": "blog/posts/2023-03-06-breast-cacner/index.html#variable-feature-plot",
@@ -571,7 +571,7 @@
     "href": "blog/posts/2023-03-06-mir-486-3p/index.html",
     "title": "Enrichmet analysis - hsa-miR-486-3p targets",
     "section": "",
-    "text": "enrichment analysis purpose is to check if there are: pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target."
+    "text": "enrichment analysis purpose is to check if there are pathways, molecular function, biological process & cellular components that is connected or related to this bio-marker target."
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-486-3p/index.html#libreris",
