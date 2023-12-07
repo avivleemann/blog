@@ -231,6 +231,83 @@
     "text": "References\n\npydeseq2"
   },
   {
+    "objectID": "blog/posts/2023-12-07-micromamba/micromamba-guide.html",
+    "href": "blog/posts/2023-12-07-micromamba/micromamba-guide.html",
+    "title": "Micromamba & Jupiter-lab Kernels",
+    "section": "",
+    "text": "micromamba is a package manager for the conda ecosystem. It is written in Rust and compiled to a small native binary\nwhich can be installed anywhere in the filesystem.\nIt is fully compatible with conda packages and environments and can be used as a drop-in replacement for conda or Mamba.\none of the main advantages of micromamba is that it is much faster than conda and mamba.\nIn my experience using micromamba is better then python venv, gave more control over the environment and packages.\nnbdev - can used to build packages from jupyter notebooks, also can compile conda packages.\n## Installation\nFor Linux and WSL, you can install micromamba with:"
+  },
+  {
+    "objectID": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#initialize-the-shell",
+    "href": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#initialize-the-shell",
+    "title": "Micromamba & Jupiter-lab Kernels",
+    "section": "Initialize the shell",
+    "text": "Initialize the shell\n./bin/micromamba shell init -s bash -p ~/micromamba -q"
+  },
+  {
+    "objectID": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#enable-the-bioconda-channels",
+    "href": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#enable-the-bioconda-channels",
+    "title": "Micromamba & Jupiter-lab Kernels",
+    "section": "Enable the bioconda channels",
+    "text": "Enable the bioconda channels\nset the channels to bioconda and conda-forge.\nmicromamba config prepend channels conda-forge\nmicromamba config append channels bioconda\nSet the channel priority.\nmicromamba config set channel_priority strict"
+  },
+  {
+    "objectID": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#tips-and-tricks",
+    "href": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#tips-and-tricks",
+    "title": "Micromamba & Jupiter-lab Kernels",
+    "section": "Tips and Tricks",
+    "text": "Tips and Tricks\ncreate a new environment:\nmicromamba create -n myenv\nActivate the environment:\nmicromamba activate myenv\nInstall packages:\nmicromamba install -n myenv numpy\nInstall packages from a file:\nmicromamba install -n myenv -f requirements.txt\nexport the environment:\nmicromamba env export -n myenv &gt; environment.yml\ncreate an environment from a file:\nmicromamba env create -f environment.yml\nremove the environment:\nmicromamba remove -n myenv --all"
+  },
+  {
+    "objectID": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#jupyter-lab",
+    "href": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#jupyter-lab",
+    "title": "Micromamba & Jupiter-lab Kernels",
+    "section": "jupyter-lab",
+    "text": "jupyter-lab\nI use multiple kernels in jupyter-lab, it help me to keep my environments clean and organized.\nFor each project I create a new environment and a new kernel, this way I can use the same packages in different\nprojects with different versions.\nThere is less chance to break something in the environment and I can easily share the environment with my colleagues.\nto get jupyter-lab kernels current list, run:\njupyter kernelspec list\nIn order to use micromamba with jupyter-lab you need to install the jupyter package and the ipykernel package.\nmicromamba install -n myenv jupyter\nmicromamba install -n myenv ipykernel\nthen you need to create a kernel for the environment:\nmicromamba run -n myenv python -m ipykernel install --user --name myenv --display-name \"Python (myenv)\"\nthen you can start jupyter-lab:\njupyter-lab\nand select the kernel from the menu."
+  },
+  {
+    "objectID": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#rkernel",
+    "href": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#rkernel",
+    "title": "Micromamba & Jupiter-lab Kernels",
+    "section": "Rkernel",
+    "text": "Rkernel\nin order to use micromamba with R you need to install the R package and the IRkernel package.\nmicromamba install -n myenv r-base r-essentials\nthen you need to create a kernel for the environment:\nmicromamba run -n myenv R -e \"IRkernel::installspec(user = FALSE)\"\nthen you can start jupyter-lab:\njupyter-lab\nand select the kernel from the menu."
+  },
+  {
+    "objectID": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#references",
+    "href": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#references",
+    "title": "Micromamba & Jupiter-lab Kernels",
+    "section": "References:",
+    "text": "References:\n\nmicromamba\njupyter-lab kernels"
+  },
+  {
+    "objectID": "blog/about.html",
+    "href": "blog/about.html",
+    "title": "About",
+    "section": "",
+    "text": "My background is in bioinformatics and data science.\nThe position I hold at Aummune Ltd. is that of a Bioinformatics researcher.\nI completed my master’s degree at Tel Aviv University Shomron Lab, and I work with both Python and R.\nMy future plans include more public projects.\nMy main areas of interest are bioinformatics and healthcare data science."
+  },
+  {
+    "objectID": "blog/about.html#education",
+    "href": "blog/about.html#education",
+    "title": "About",
+    "section": "Education:",
+    "text": "Education:\nM.Sc. Medical Science & Bioinformatics | Tel Aviv University, 2020 - 2022.\nB.Sc. in Life Science | Tel Aviv University, 2017 - 2020.\nB.Sc. in Computer Science | Israel Open University, 2022 - current"
+  },
+  {
+    "objectID": "blog/about.html#interests",
+    "href": "blog/about.html#interests",
+    "title": "About",
+    "section": "Interests:",
+    "text": "Interests:\n\nComputational biology\nArtificial Intelligence\nBioinformatics\nData science"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Micromamba & Jupiter-lab Kernels\n\n\n\n\n\n\n\nmicromamba\n\n\npython\n\n\nconda\n\n\n\n\n\n\n\n\n\n\n\nDec 7, 2023\n\n\n\n\n\n\n  \n\n\n\n\nBreast Cancer Cell Lines Dataset\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nBreast-cancer\n\n\nscanpy\n\n\n\n\n\n\n\n\n\n\n\nNov 28, 2023\n\n\n\n\n\n\n  \n\n\n\n\nMigrate Blog from Hugo to Quarto\n\n\n\n\n\n\n\nHugo\n\n\nQuarto\n\n\ngh-pages\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2023\n\n\n\n\n\n\n  \n\n\n\n\nRS Virus RNA-Seq\n\n\n\n\n\n\n\nRNA-seq\n\n\nRSV\n\n\npydeseq2\n\n\n\n\n\n\n\n\n\n\n\nNov 19, 2023\n\n\n\n\n\n\n  \n\n\n\n\nEnrichmet analysis - hsa-miR-432-5p targets\n\n\n\n\n\n\n\nEnrichment\n\n\nmiR-432-5p\n\n\n\n\n\n\n\n\n\n\n\nMar 10, 2023\n\n\n\n\n\n\n  \n\n\n\n\nEnrichmet analysis - hsa-miR-486-3p targets\n\n\n\n\n\n\n\nEnrichment\n\n\nmiR-486-3p\n\n\n\n\n\n\n\n\n\n\n\nMar 10, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSCRNA-seq analysis - Astrocytoma\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nAtrocytoma\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSCRNA-seq Breast cancer -analysis\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nBreast-cancer\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSCRNA-seq analysis - Glioblasotma\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nGlioblastoma\n\n\nGBM\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "blog/posts/2023-11-23-migrate-to-Quarto/migrate_from_hugo_to_quarto.html",
     "href": "blog/posts/2023-11-23-migrate-to-Quarto/migrate_from_hugo_to_quarto.html",
     "title": "Migrate Blog from Hugo to Quarto",
@@ -285,34 +362,6 @@
     "title": "Migrate Blog from Hugo to Quarto",
     "section": "Resources",
     "text": "Resources\n\nnbdev.fast.ai/tutorials/tutorial\nquarto.org/docs/websites/website-blog\nhugo-to-quarto-migration\nMigrating from Hugo to Quarto by Lucy D’Agostino McGowan\nBuilding a blog with Quarto\nquarto-tip-a-day\nget-started-quarto"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Posts",
-    "section": "",
-    "text": "Breast Cancer Cell Lines Dataset\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nBreast-cancer\n\n\nscanpy\n\n\n\n\n\n\n\n\n\n\n\nNov 28, 2023\n\n\n\n\n\n\n  \n\n\n\n\nMigrate Blog from Hugo to Quarto\n\n\n\n\n\n\n\nHugo\n\n\nQuarto\n\n\ngh-pages\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2023\n\n\n\n\n\n\n  \n\n\n\n\nRS Virus RNA-Seq\n\n\n\n\n\n\n\nRNA-seq\n\n\nRSV\n\n\npydeseq2\n\n\n\n\n\n\n\n\n\n\n\nNov 19, 2023\n\n\n\n\n\n\n  \n\n\n\n\nEnrichmet analysis - hsa-miR-432-5p targets\n\n\n\n\n\n\n\nEnrichment\n\n\nmiR-432-5p\n\n\n\n\n\n\n\n\n\n\n\nMar 10, 2023\n\n\n\n\n\n\n  \n\n\n\n\nEnrichmet analysis - hsa-miR-486-3p targets\n\n\n\n\n\n\n\nEnrichment\n\n\nmiR-486-3p\n\n\n\n\n\n\n\n\n\n\n\nMar 10, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSCRNA-seq analysis - Astrocytoma\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nAtrocytoma\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSCRNA-seq Breast cancer -analysis\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nBreast-cancer\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n  \n\n\n\n\nSCRNA-seq analysis - Glioblasotma\n\n\n\n\n\n\n\nSCRNA-seq\n\n\nGlioblastoma\n\n\nGBM\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2023\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "blog/about.html",
-    "href": "blog/about.html",
-    "title": "About",
-    "section": "",
-    "text": "My background is in bioinformatics and data science.\nThe position I hold at Aummune Ltd. is that of a Bioinformatics researcher.\nI completed my master’s degree at Tel Aviv University Shomron Lab, and I work with both Python and R.\nMy future plans include more public projects.\nMy main areas of interest are bioinformatics and healthcare data science."
-  },
-  {
-    "objectID": "blog/about.html#education",
-    "href": "blog/about.html#education",
-    "title": "About",
-    "section": "Education:",
-    "text": "Education:\nM.Sc. Medical Science & Bioinformatics | Tel Aviv University, 2020 - 2022.\nB.Sc. in Life Science | Tel Aviv University, 2017 - 2020.\nB.Sc. in Computer Science | Israel Open University, 2022 - current"
-  },
-  {
-    "objectID": "blog/about.html#interests",
-    "href": "blog/about.html#interests",
-    "title": "About",
-    "section": "Interests:",
-    "text": "Interests:\n\nComputational biology\nArtificial Intelligence\nBioinformatics\nData science"
   },
   {
     "objectID": "blog/posts/2023-03-06-mir-432-5p/index.html",
