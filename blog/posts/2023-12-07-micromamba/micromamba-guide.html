@@ -163,8 +163,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#initialize-the-shell" id="toc-initialize-the-shell" class="nav-link active" data-scroll-target="#initialize-the-shell">Initialize the shell</a></li>
   <li><a href="#enable-the-bioconda-channels" id="toc-enable-the-bioconda-channels" class="nav-link" data-scroll-target="#enable-the-bioconda-channels">Enable the bioconda channels</a></li>
-  <li><a href="#tips-and-tricks" id="toc-tips-and-tricks" class="nav-link" data-scroll-target="#tips-and-tricks">Tips and Tricks</a></li>
-  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab">jupyter-lab</a></li>
+  <li><a href="#tips-and-tricks" id="toc-tips-and-tricks" class="nav-link" data-scroll-target="#tips-and-tricks">Tips and Tricks</a>
+  <ul class="collapse">
+  <li><a href="#activate-the-environment" id="toc-activate-the-environment" class="nav-link" data-scroll-target="#activate-the-environment">Activate the environment</a></li>
+  <li><a href="#install-packages" id="toc-install-packages" class="nav-link" data-scroll-target="#install-packages">Install packages:</a></li>
+  <li><a href="#install-packages-from-a-file" id="toc-install-packages-from-a-file" class="nav-link" data-scroll-target="#install-packages-from-a-file">Install packages from a file:</a></li>
+  <li><a href="#export-the-environment" id="toc-export-the-environment" class="nav-link" data-scroll-target="#export-the-environment">Export the environment:</a></li>
+  <li><a href="#create-an-environment-from-a-file" id="toc-create-an-environment-from-a-file" class="nav-link" data-scroll-target="#create-an-environment-from-a-file">Create an environment from a file:</a></li>
+  <li><a href="#remove-the-environment" id="toc-remove-the-environment" class="nav-link" data-scroll-target="#remove-the-environment">Remove the environment:</a></li>
+  </ul></li>
+  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab">Jupyter-lab</a>
+  <ul class="collapse">
+  <li><a href="#list-the-kernels" id="toc-list-the-kernels" class="nav-link" data-scroll-target="#list-the-kernels">List the kernels</a></li>
+  <li><a href="#jupyter-lab-intallation" id="toc-jupyter-lab-intallation" class="nav-link" data-scroll-target="#jupyter-lab-intallation">jupyter-lab intallation</a></li>
+  </ul></li>
   <li><a href="#rkernel" id="toc-rkernel" class="nav-link" data-scroll-target="#rkernel">Rkernel</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References:</a></li>
   </ul>
@@ -203,12 +215,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>micromamba is a package manager for the conda ecosystem. It is written in Rust and compiled to a small native binary</p>
 <p>which can be installed anywhere in the filesystem.</p>
-<p>It is fully compatible with conda packages and environments and can be used as a drop-in replacement for conda or Mamba.</p>
+<p>Fully compatible with conda packages and environments and can be used as a drop-in replacement for conda or Mamba.</p>
 <p>one of the main advantages of micromamba is that it is much faster than conda and mamba.</p>
 <p>In my experience using micromamba is better then python venv, gave more control over the environment and packages.</p>
 <p>nbdev - can used to build packages from jupyter notebooks, also can compile conda packages.</p>
 <p><img src="logo_mamba.webp" class="img-fluid"> ## Installation</p>
-<p>For Linux and WSL, you can install micromamba with:</p>
+<p>For Linux and WSL, follow these steps to install Micromamba:</p>
 <ol type="1">
 <li>Create a bin directory in your home directory</li>
 </ol>
@@ -216,65 +228,90 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Download and extract the micromamba binary</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-Ls</span> https://micro.mamba.pm/api/micromamba/linux-64/latest <span class="kw">|</span> <span class="fu">tar</span> <span class="at">-xj</span> bin/micromamba</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Some</span> Linux systems do not call with bzip2 by default, you would need to install that in your system with</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install bzip2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-Ls</span> https://micro.mamba.pm/api/micromamba/linux-64/latest <span class="kw">|</span> <span class="fu">tar</span> <span class="at">-xj</span> bin/micromamba</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note: Some Linux systems do not call with bzip2 by default, you would need to install that in your system with</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install bzip2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="initialize-the-shell" class="level2">
 <h2 class="anchored" data-anchor-id="initialize-the-shell">Initialize the shell</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./bin/micromamba</span> shell init <span class="at">-s</span> bash <span class="at">-p</span> ~/micromamba <span class="at">-q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Initialize the shell by running the following command:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./bin/micromamba</span> shell init <span class="at">-s</span> bash <span class="at">-p</span> ~/micromamba <span class="at">-q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
 </section>
 <section id="enable-the-bioconda-channels" class="level2">
 <h2 class="anchored" data-anchor-id="enable-the-bioconda-channels">Enable the bioconda channels</h2>
 <p>set the channels to bioconda and conda-forge.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> config prepend channels conda-forge</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> config append channels bioconda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> config prepend channels conda-forge</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> config append channels bioconda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Set the channel priority.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> config set channel_priority strict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> config set channel_priority strict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tips-and-tricks" class="level2">
 <h2 class="anchored" data-anchor-id="tips-and-tricks">Tips and Tricks</h2>
-<p>create a new environment:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> create <span class="at">-n</span> myenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Activate the environment:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> activate myenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Install packages:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> myenv numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Install packages from a file:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> myenv <span class="at">-f</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>export the environment:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> env export <span class="at">-n</span> myenv <span class="op">&gt;</span> environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>create an environment from a file:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> env create <span class="at">-f</span> environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>remove the environment:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> remove <span class="at">-n</span> myenv <span class="at">--all</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To create a new environment, use the <code>create</code> command:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> create <span class="at">-n</span> myenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="activate-the-environment" class="level3">
+<h3 class="anchored" data-anchor-id="activate-the-environment">Activate the environment</h3>
+<p>Once you’ve created the environment, you can activate it using the <code>activate</code> command followed by the name of the environment:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> activate myenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="install-packages" class="level3">
+<h3 class="anchored" data-anchor-id="install-packages">Install packages:</h3>
+<p>To install packages, use the <code>install</code> command followed by the name of the package you want to install:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> myenv numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="install-packages-from-a-file" class="level3">
+<h3 class="anchored" data-anchor-id="install-packages-from-a-file">Install packages from a file:</h3>
+<p>To install packages from a file, used to install multiple packages at once, usally from a requirements.txt file or environment.yml file:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> myenv <span class="at">-f</span> requirements.txt/ environment.yml</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span><span class="ex">tg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="export-the-environment" class="level3">
+<h3 class="anchored" data-anchor-id="export-the-environment">Export the environment:</h3>
+<p>To export the environment, use the <code>export</code> command followed by the name of the environment, and redirect the output to a file:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> env export <span class="at">-n</span> myenv <span class="op">&gt;</span> environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="create-an-environment-from-a-file" class="level3">
+<h3 class="anchored" data-anchor-id="create-an-environment-from-a-file">Create an environment from a file:</h3>
+<p>In order to create an environment from a file, usally from a requirements.txt file or environment.yml file:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> env create <span class="at">-f</span> environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="remove-the-environment" class="level3">
+<h3 class="anchored" data-anchor-id="remove-the-environment">Remove the environment:</h3>
+<p>when you are done with the environment, you can remove it using the <code>remove</code> command followed by the name of the environment:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> remove <span class="at">-n</span> myenv <span class="at">--all</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="jupyter-lab" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-lab">jupyter-lab</h2>
+<h2 class="anchored" data-anchor-id="jupyter-lab">Jupyter-lab</h2>
 <p>I use multiple kernels in jupyter-lab, it help me to keep my environments clean and organized.</p>
 <p>For each project I create a new environment and a new kernel, this way I can use the same packages in different</p>
 <p>projects with different versions.</p>
 <p>There is less chance to break something in the environment and I can easily share the environment with my colleagues.</p>
-<p>to get jupyter-lab kernels current list, run:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> kernelspec list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="list-the-kernels" class="level3">
+<h3 class="anchored" data-anchor-id="list-the-kernels">List the kernels</h3>
+<p>In order to list the kernels you need to run the following command:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> kernelspec list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="jupyter-lab-intallation" class="level3">
+<h3 class="anchored" data-anchor-id="jupyter-lab-intallation">jupyter-lab intallation</h3>
 <p>In order to use micromamba with jupyter-lab you need to install the jupyter package and the ipykernel package.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> myenv jupyter</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> myenv ipykernel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>then you need to create a kernel for the environment:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> myenv python <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> myenv <span class="at">--display-name</span> <span class="st">"Python (myenv)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>then you can start jupyter-lab:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter-lab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>and select the kernel from the menu.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> myenv jupyter</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> myenv ipykernel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then you need to create a kernel for the environment:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> myenv python <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> myenv <span class="at">--display-name</span> <span class="st">"Python (myenv)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then you can start jupyter-lab, and select the kernel from the menu.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter-lab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="rkernel" class="level2">
 <h2 class="anchored" data-anchor-id="rkernel">Rkernel</h2>
 <p>in order to use micromamba with R you need to install the R package and the IRkernel package.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> myenv r-base r-essentials</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>then you need to create a kernel for the environment:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> myenv R <span class="at">-e</span> <span class="st">"IRkernel::installspec(user = FALSE)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>then you can start jupyter-lab:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter-lab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>and select the kernel from the menu.</p>
+<p>This R package allows users to run an R kernel inside JupyterLab and Jupyter Notebook.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> myenv r-base r-essentials</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>to create a kernel for the environment, you need to run the following command:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> myenv R <span class="at">-e</span> <span class="st">"IRkernel::installspec(user = FALSE)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>then you can start jupyter-lab, and select the kernel from the menu.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter-lab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References:</h2>

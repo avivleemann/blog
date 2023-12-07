@@ -235,14 +235,14 @@
     "href": "blog/posts/2023-12-07-micromamba/micromamba-guide.html",
     "title": "Micromamba & Jupiter-lab Kernels",
     "section": "",
-    "text": "micromamba is a package manager for the conda ecosystem. It is written in Rust and compiled to a small native binary\nwhich can be installed anywhere in the filesystem.\nIt is fully compatible with conda packages and environments and can be used as a drop-in replacement for conda or Mamba.\none of the main advantages of micromamba is that it is much faster than conda and mamba.\nIn my experience using micromamba is better then python venv, gave more control over the environment and packages.\nnbdev - can used to build packages from jupyter notebooks, also can compile conda packages.\n## Installation\nFor Linux and WSL, you can install micromamba with:"
+    "text": "micromamba is a package manager for the conda ecosystem. It is written in Rust and compiled to a small native binary\nwhich can be installed anywhere in the filesystem.\nFully compatible with conda packages and environments and can be used as a drop-in replacement for conda or Mamba.\none of the main advantages of micromamba is that it is much faster than conda and mamba.\nIn my experience using micromamba is better then python venv, gave more control over the environment and packages.\nnbdev - can used to build packages from jupyter notebooks, also can compile conda packages.\n## Installation\nFor Linux and WSL, follow these steps to install Micromamba:\nNote: Some Linux systems do not call with bzip2 by default, you would need to install that in your system with"
   },
   {
     "objectID": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#initialize-the-shell",
     "href": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#initialize-the-shell",
     "title": "Micromamba & Jupiter-lab Kernels",
     "section": "Initialize the shell",
-    "text": "Initialize the shell\n./bin/micromamba shell init -s bash -p ~/micromamba -q"
+    "text": "Initialize the shell\nInitialize the shell by running the following command:\n./bin/micromamba shell init -s bash -p ~/micromamba -q"
   },
   {
     "objectID": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#enable-the-bioconda-channels",
@@ -256,21 +256,21 @@
     "href": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#tips-and-tricks",
     "title": "Micromamba & Jupiter-lab Kernels",
     "section": "Tips and Tricks",
-    "text": "Tips and Tricks\ncreate a new environment:\nmicromamba create -n myenv\nActivate the environment:\nmicromamba activate myenv\nInstall packages:\nmicromamba install -n myenv numpy\nInstall packages from a file:\nmicromamba install -n myenv -f requirements.txt\nexport the environment:\nmicromamba env export -n myenv &gt; environment.yml\ncreate an environment from a file:\nmicromamba env create -f environment.yml\nremove the environment:\nmicromamba remove -n myenv --all"
+    "text": "Tips and Tricks\nTo create a new environment, use the create command:\nmicromamba create -n myenv\n\nActivate the environment\nOnce you’ve created the environment, you can activate it using the activate command followed by the name of the environment:\nmicromamba activate myenv\n\n\nInstall packages:\nTo install packages, use the install command followed by the name of the package you want to install:\nmicromamba install -n myenv numpy\n\n\nInstall packages from a file:\nTo install packages from a file, used to install multiple packages at once, usally from a requirements.txt file or environment.yml file:\nmicromamba install -n myenv -f requirements.txt/ environment.yml\n```tg\n\n\nExport the environment:\nTo export the environment, use the export command followed by the name of the environment, and redirect the output to a file:\nmicromamba env export -n myenv &gt; environment.yml\n\n\nCreate an environment from a file:\nIn order to create an environment from a file, usally from a requirements.txt file or environment.yml file:\nmicromamba env create -f environment.yml\n\n\nRemove the environment:\nwhen you are done with the environment, you can remove it using the remove command followed by the name of the environment:\nmicromamba remove -n myenv --all"
   },
   {
     "objectID": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#jupyter-lab",
     "href": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#jupyter-lab",
     "title": "Micromamba & Jupiter-lab Kernels",
-    "section": "jupyter-lab",
-    "text": "jupyter-lab\nI use multiple kernels in jupyter-lab, it help me to keep my environments clean and organized.\nFor each project I create a new environment and a new kernel, this way I can use the same packages in different\nprojects with different versions.\nThere is less chance to break something in the environment and I can easily share the environment with my colleagues.\nto get jupyter-lab kernels current list, run:\njupyter kernelspec list\nIn order to use micromamba with jupyter-lab you need to install the jupyter package and the ipykernel package.\nmicromamba install -n myenv jupyter\nmicromamba install -n myenv ipykernel\nthen you need to create a kernel for the environment:\nmicromamba run -n myenv python -m ipykernel install --user --name myenv --display-name \"Python (myenv)\"\nthen you can start jupyter-lab:\njupyter-lab\nand select the kernel from the menu."
+    "section": "Jupyter-lab",
+    "text": "Jupyter-lab\nI use multiple kernels in jupyter-lab, it help me to keep my environments clean and organized.\nFor each project I create a new environment and a new kernel, this way I can use the same packages in different\nprojects with different versions.\nThere is less chance to break something in the environment and I can easily share the environment with my colleagues.\n\nList the kernels\nIn order to list the kernels you need to run the following command:\njupyter kernelspec list\n\n\njupyter-lab intallation\nIn order to use micromamba with jupyter-lab you need to install the jupyter package and the ipykernel package.\nmicromamba install -n myenv jupyter\nmicromamba install -n myenv ipykernel\nThen you need to create a kernel for the environment:\nmicromamba run -n myenv python -m ipykernel install --user --name myenv --display-name \"Python (myenv)\"\nThen you can start jupyter-lab, and select the kernel from the menu.\njupyter-lab"
   },
   {
     "objectID": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#rkernel",
     "href": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#rkernel",
     "title": "Micromamba & Jupiter-lab Kernels",
     "section": "Rkernel",
-    "text": "Rkernel\nin order to use micromamba with R you need to install the R package and the IRkernel package.\nmicromamba install -n myenv r-base r-essentials\nthen you need to create a kernel for the environment:\nmicromamba run -n myenv R -e \"IRkernel::installspec(user = FALSE)\"\nthen you can start jupyter-lab:\njupyter-lab\nand select the kernel from the menu."
+    "text": "Rkernel\nin order to use micromamba with R you need to install the R package and the IRkernel package.\nThis R package allows users to run an R kernel inside JupyterLab and Jupyter Notebook.\nmicromamba install -n myenv r-base r-essentials\nto create a kernel for the environment, you need to run the following command:\nmicromamba run -n myenv R -e \"IRkernel::installspec(user = FALSE)\"\nthen you can start jupyter-lab, and select the kernel from the menu.\njupyter-lab"
   },
   {
     "objectID": "blog/posts/2023-12-07-micromamba/micromamba-guide.html#references",

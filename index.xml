@@ -20,12 +20,12 @@
 
 <p>micromamba is a package manager for the conda ecosystem. It is written in Rust and compiled to a small native binary</p>
 <p>which can be installed anywhere in the filesystem.</p>
-<p>It is fully compatible with conda packages and environments and can be used as a drop-in replacement for conda or Mamba.</p>
+<p>Fully compatible with conda packages and environments and can be used as a drop-in replacement for conda or Mamba.</p>
 <p>one of the main advantages of micromamba is that it is much faster than conda and mamba.</p>
 <p>In my experience using micromamba is better then python venv, gave more control over the environment and packages.</p>
 <p>nbdev - can used to build packages from jupyter notebooks, also can compile conda packages.</p>
 <p><img src="https://avivleemann.github.io/blog/blog/posts/2023-12-07-micromamba/logo_mamba.webp" class="img-fluid"> ## Installation</p>
-<p>For Linux and WSL, you can install micromamba with:</p>
+<p>For Linux and WSL, follow these steps to install Micromamba:</p>
 <ol type="1">
 <li>Create a bin directory in your home directory</li>
 </ol>
@@ -47,16 +47,15 @@ font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tar</span> <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-xj</span> bin/micromamba</span>
-<span id="cb2-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Some</span> Linux systems do not call with bzip2 by default, you would need to install that in your system with</span>
-<span id="cb2-3"><span class="fu" style="color: #4758AB;
+font-style: inherit;">-xj</span> bin/micromamba</span></code></pre></div>
+<p>Note: Some Linux systems do not call with bzip2 by default, you would need to install that in your system with</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sudo</span> apt install bzip2</span></code></pre></div>
 <section id="initialize-the-shell" class="level2">
 <h2 class="anchored" data-anchor-id="initialize-the-shell">Initialize the shell</h2>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+<p>Initialize the shell by running the following command:</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">./bin/micromamba</span> shell init <span class="at" style="color: #657422;
 background-color: null;
@@ -70,59 +69,81 @@ font-style: inherit;">-q</span></span></code></pre></div>
 <section id="enable-the-bioconda-channels" class="level2">
 <h2 class="anchored" data-anchor-id="enable-the-bioconda-channels">Enable the bioconda channels</h2>
 <p>set the channels to bioconda and conda-forge.</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> config prepend channels conda-forge</span>
-<span id="cb4-2"><span class="ex" style="color: null;
+<span id="cb5-2"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> config append channels bioconda</span></code></pre></div>
 <p>Set the channel priority.</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> config set channel_priority strict</span></code></pre></div>
 </section>
 <section id="tips-and-tricks" class="level2">
 <h2 class="anchored" data-anchor-id="tips-and-tricks">Tips and Tricks</h2>
-<p>create a new environment:</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+<p>To create a new environment, use the <code>create</code> command:</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> create <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-n</span> myenv</span></code></pre></div>
-<p>Activate the environment:</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
+<section id="activate-the-environment" class="level3">
+<h3 class="anchored" data-anchor-id="activate-the-environment">Activate the environment</h3>
+<p>Once you’ve created the environment, you can activate it using the <code>activate</code> command followed by the name of the environment:</p>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> activate myenv</span></code></pre></div>
-<p>Install packages:</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
+</section>
+<section id="install-packages" class="level3">
+<h3 class="anchored" data-anchor-id="install-packages">Install packages:</h3>
+<p>To install packages, use the <code>install</code> command followed by the name of the package you want to install:</p>
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> install <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-n</span> myenv numpy</span></code></pre></div>
-<p>Install packages from a file:</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="ex" style="color: null;
+</section>
+<section id="install-packages-from-a-file" class="level3">
+<h3 class="anchored" data-anchor-id="install-packages-from-a-file">Install packages from a file:</h3>
+<p>To install packages from a file, used to install multiple packages at once, usally from a requirements.txt file or environment.yml file:</p>
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> install <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-n</span> myenv <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-f</span> requirements.txt</span></code></pre></div>
-<p>export the environment:</p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="ex" style="color: null;
+font-style: inherit;">-f</span> requirements.txt/ environment.yml</span>
+<span id="cb10-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">```</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">tg</span></span></code></pre></div>
+</section>
+<section id="export-the-environment" class="level3">
+<h3 class="anchored" data-anchor-id="export-the-environment">Export the environment:</h3>
+<p>To export the environment, use the <code>export</code> command followed by the name of the environment, and redirect the output to a file:</p>
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> env export <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-n</span> myenv <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&gt;</span> environment.yml</span></code></pre></div>
-<p>create an environment from a file:</p>
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="ex" style="color: null;
+</section>
+<section id="create-an-environment-from-a-file" class="level3">
+<h3 class="anchored" data-anchor-id="create-an-environment-from-a-file">Create an environment from a file:</h3>
+<p>In order to create an environment from a file, usally from a requirements.txt file or environment.yml file:</p>
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> env create <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-f</span> environment.yml</span></code></pre></div>
-<p>remove the environment:</p>
-<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><span class="ex" style="color: null;
+</section>
+<section id="remove-the-environment" class="level3">
+<h3 class="anchored" data-anchor-id="remove-the-environment">Remove the environment:</h3>
+<p>when you are done with the environment, you can remove it using the <code>remove</code> command followed by the name of the environment:</p>
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> remove <span class="at" style="color: #657422;
 background-color: null;
@@ -130,29 +151,35 @@ font-style: inherit;">-n</span> myenv <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">--all</span></span></code></pre></div>
 </section>
+</section>
 <section id="jupyter-lab" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-lab">jupyter-lab</h2>
+<h2 class="anchored" data-anchor-id="jupyter-lab">Jupyter-lab</h2>
 <p>I use multiple kernels in jupyter-lab, it help me to keep my environments clean and organized.</p>
 <p>For each project I create a new environment and a new kernel, this way I can use the same packages in different</p>
 <p>projects with different versions.</p>
 <p>There is less chance to break something in the environment and I can easily share the environment with my colleagues.</p>
-<p>to get jupyter-lab kernels current list, run:</p>
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><span class="ex" style="color: null;
+<section id="list-the-kernels" class="level3">
+<h3 class="anchored" data-anchor-id="list-the-kernels">List the kernels</h3>
+<p>In order to list the kernels you need to run the following command:</p>
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">jupyter</span> kernelspec list</span></code></pre></div>
+</section>
+<section id="jupyter-lab-intallation" class="level3">
+<h3 class="anchored" data-anchor-id="jupyter-lab-intallation">jupyter-lab intallation</h3>
 <p>In order to use micromamba with jupyter-lab you need to install the jupyter package and the ipykernel package.</p>
-<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> install <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-n</span> myenv jupyter</span>
-<span id="cb14-2"><span class="ex" style="color: null;
+<span id="cb15-2"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> install <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-n</span> myenv ipykernel</span></code></pre></div>
-<p>then you need to create a kernel for the environment:</p>
-<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><span class="ex" style="color: null;
+<p>Then you need to create a kernel for the environment:</p>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> run <span class="at" style="color: #657422;
 background-color: null;
@@ -167,22 +194,23 @@ background-color: null;
 font-style: inherit;">--display-name</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Python (myenv)"</span></span></code></pre></div>
-<p>then you can start jupyter-lab:</p>
-<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><span class="ex" style="color: null;
+<p>Then you can start jupyter-lab, and select the kernel from the menu.</p>
+<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">jupyter-lab</span></span></code></pre></div>
-<p>and select the kernel from the menu.</p>
+</section>
 </section>
 <section id="rkernel" class="level2">
 <h2 class="anchored" data-anchor-id="rkernel">Rkernel</h2>
 <p>in order to use micromamba with R you need to install the R package and the IRkernel package.</p>
-<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><span class="ex" style="color: null;
+<p>This R package allows users to run an R kernel inside JupyterLab and Jupyter Notebook.</p>
+<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> install <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-n</span> myenv r-base r-essentials</span></code></pre></div>
-<p>then you need to create a kernel for the environment:</p>
-<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><span class="ex" style="color: null;
+<p>to create a kernel for the environment, you need to run the following command:</p>
+<div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">micromamba</span> run <span class="at" style="color: #657422;
 background-color: null;
@@ -191,11 +219,10 @@ background-color: null;
 font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"IRkernel::installspec(user = FALSE)"</span></span></code></pre></div>
-<p>then you can start jupyter-lab:</p>
-<div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><span class="ex" style="color: null;
+<p>then you can start jupyter-lab, and select the kernel from the menu.</p>
+<div class="sourceCode" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">jupyter-lab</span></span></code></pre></div>
-<p>and select the kernel from the menu.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References:</h2>
